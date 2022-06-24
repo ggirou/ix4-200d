@@ -1,0 +1,574 @@
+
+         __  __                      _ _
+        |  \/  | __ _ _ ____   _____| | |
+        | |\/| |/ _` | '__\ \ / / _ \ | |
+        | |  | | (_| | |   \ V /  __/ | |
+        |_|  |_|\__,_|_|    \_/ \___|_|_|
+ _   _     ____              _
+| | | |   | __ )  ___   ___ | |_ 
+| | | |___|  _ \ / _ \ / _ \| __| 
+| |_| |___| |_) | (_) | (_) | |_ 
+ \___/    |____/ \___/ \___/ \__|  ** uboot_ver:v1.1.0 **
+
+ ** MARVELL BOARD: IX4-110 LE 
+
+U-Boot 1.1.4 (Oct 15 2009 - 17:28:22) Marvell version: 3.4.18
+
+U-Boot code: 00600000 -> 0067FFF0  BSS: -> 006CF600
+
+Soc: 88F6281 A1 (DDR2)
+CPU running @ 1200Mhz L2 running @ 400Mhz
+SysClock = 400Mhz , TClock = 200Mhz 
+
+DRAM CAS Latency = 5 tRP = 5 tRAS = 18 tRCD=6
+DRAM CS[0] base 0x00000000   size 256MB 
+DRAM CS[1] base 0x10000000   size 256MB 
+DRAM Total size 512MB  16bit width
+Found 0x20 i2c device
+Set Power State as Always On
+Addresses 8M - 0M are saved for the U-Boot usage.
+Mem malloc Initialization (8M - 7M): Done
+NAND:32 MB
+*** Warning - bad CRC or NAND, using default environment
+
+Found ADT7473, program LED ...(led_volt=90)  OK
+Found ADT7473, program thermal/Fan ...(pwm_min=0) (pwm_max=130) (therm=67) (temp_min=60)  OK
+
+Marvell Serial ATA Adapter
+Integrated Sata device found
+
+
+CPU : Marvell Feroceon (Rev 1)
+Found initrd at 0x2d4000
+Env: Save default environment.
+Erasing Nand...Writing to Nand... done
+
+Streaming disabled 
+Write allocate disabled
+
+Module 0 is RGMII
+Module 1 is RGMII
+
+USB 0: host mode
+PEX 0: PCI Express Root Complex Interface
+PEX interface detected Link X1
+SCSI:  AHCI 0001.0000 32 slots 3 ports 3 Gbps 0x7 impl IDE mode
+flags: 64bit ncq stag led pmp slum part 
+scanning bus for devices...
+Net:   egiga0 [PRIME], egiga1
+Hit any key to stop autoboot:  1  0 
+
+NAND read: device 0 offset 0xb0000, size 0x224000
+
+
+Reading data from 0xb0000 --   0% complete.
+Reading data from 0xb5600 --   1% complete.
+Reading data from 0xbae00 --   2% complete.
+Reading data from 0xc0600 --   3% complete.
+Reading data from 0xc5e00 --   4% complete.
+Reading data from 0xcb600 --   5% complete.
+Reading data from 0xd0e00 --   6% complete.
+Reading data from 0xd6400 --   7% complete.
+Reading data from 0xdbc00 --   8% complete.
+Reading data from 0xe1400 --   9% complete.
+Reading data from 0xe6c00 --  10% complete.
+Reading data from 0xec400 --  11% complete.
+Reading data from 0xf1c00 --  12% complete.
+Reading data from 0xf7200 --  13% complete.
+Reading data from 0xfca00 --  14% complete.
+Reading data from 0x102200 --  15% complete.
+Reading data from 0x107a00 --  16% complete.
+Reading data from 0x10d200 --  17% complete.
+Reading data from 0x112a00 --  18% complete.
+Reading data from 0x118000 --  19% complete.
+Reading data from 0x11d800 --  20% complete.
+Reading data from 0x123000 --  21% complete.
+Reading data from 0x128800 --  22% complete.
+Reading data from 0x12e000 --  23% complete.
+Reading data from 0x133800 --  24% complete.
+Reading data from 0x138e00 --  25% complete.
+Reading data from 0x13e600 --  26% complete.
+Reading data from 0x143e00 --  27% complete.
+Reading data from 0x149600 --  28% complete.
+Reading data from 0x14ee00 --  29% complete.
+Reading data from 0x154600 --  30% complete.
+Reading data from 0x159e00 --  31% complete.
+Reading data from 0x15f400 --  32% complete.
+Reading data from 0x164c00 --  33% complete.
+Reading data from 0x16a400 --  34% complete.
+Reading data from 0x16fc00 --  35% complete.
+Reading data from 0x175400 --  36% complete.
+Reading data from 0x17ac00 --  37% complete.
+Reading data from 0x180200 --  38% complete.
+Reading data from 0x185a00 --  39% complete.
+Reading data from 0x18b200 --  40% complete.
+Reading data from 0x190a00 --  41% complete.
+Reading data from 0x196200 --  42% complete.
+Reading data from 0x19ba00 --  43% complete.
+Reading data from 0x1a1000 --  44% complete.
+Reading data from 0x1a6800 --  45% complete.
+Reading data from 0x1ac000 --  46% complete.
+Reading data from 0x1b1800 --  47% complete.
+Reading data from 0x1b7000 --  48% complete.
+Reading data from 0x1bc800 --  49% complete.
+Reading data from 0x1c1e00 --  50% complete.
+Reading data from 0x1c7600 --  51% complete.
+Reading data from 0x1cce00 --  52% complete.
+Reading data from 0x1d2600 --  53% complete.
+Reading data from 0x1d7e00 --  54% complete.
+Reading data from 0x1dd600 --  55% complete.
+Reading data from 0x1e2e00 --  56% complete.
+Reading data from 0x1e8400 --  57% complete.
+Reading data from 0x1edc00 --  58% complete.
+Reading data from 0x1f3400 --  59% complete.
+Reading data from 0x1f8c00 --  60% complete.
+Reading data from 0x1fe400 --  61% complete.
+Reading data from 0x203c00 --  62% complete.
+Reading data from 0x209200 --  63% complete.
+Reading data from 0x20ea00 --  64% complete.
+Reading data from 0x214200 --  65% complete.
+Reading data from 0x219a00 --  66% complete.
+Reading data from 0x21f200 --  67% complete.
+Reading data from 0x224a00 --  68% complete.
+Reading data from 0x22a000 --  69% complete.
+Reading data from 0x22f800 --  70% complete.
+Reading data from 0x235000 --  71% complete.
+Reading data from 0x23a800 --  72% complete.
+Reading data from 0x240000 --  73% complete.
+Reading data from 0x245800 --  74% complete.
+Reading data from 0x24ae00 --  75% complete.
+Reading data from 0x250600 --  76% complete.
+Reading data from 0x255e00 --  77% complete.
+Reading data from 0x25b600 --  78% complete.
+Reading data from 0x260e00 --  79% complete.
+Reading data from 0x266600 --  80% complete.
+Reading data from 0x26be00 --  81% complete.
+Reading data from 0x271400 --  82% complete.
+Reading data from 0x276c00 --  83% complete.
+Reading data from 0x27c400 --  84% complete.
+Reading data from 0x281c00 --  85% complete.
+Reading data from 0x287400 --  86% complete.
+Reading data from 0x28cc00 --  87% complete.
+Reading data from 0x292200 --  88% complete.
+Reading data from 0x297a00 --  89% complete.
+Reading data from 0x29d200 --  90% complete.
+Reading data from 0x2a2a00 --  91% complete.
+Reading data from 0x2a8200 --  92% complete.
+Reading data from 0x2ada00 --  93% complete.
+Reading data from 0x2b3000 --  94% complete.
+Reading data from 0x2b8800 --  95% complete.
+Reading data from 0x2be000 --  96% complete.
+Reading data from 0x2c3800 --  97% complete.
+Reading data from 0x2c9000 --  98% complete.
+Reading data from 0x2ce800 --  99% complete.
+Reading data from 0x2d3e00 -- 100% complete.
+ 2244608 bytes read: OK
+
+NAND read: device 0 offset 0x2d4000, size 0x224000
+
+
+Reading data from 0x2d4000 --   0% complete.
+Reading data from 0x2d9600 --   1% complete.
+Reading data from 0x2dee00 --   2% complete.
+Reading data from 0x2e4600 --   3% complete.
+Reading data from 0x2e9e00 --   4% complete.
+Reading data from 0x2ef600 --   5% complete.
+Reading data from 0x2f4e00 --   6% complete.
+Reading data from 0x2fa400 --   7% complete.
+Reading data from 0x2ffc00 --   8% complete.
+Reading data from 0x305400 --   9% complete.
+Reading data from 0x30ac00 --  10% complete.
+Reading data from 0x310400 --  11% complete.
+Reading data from 0x315c00 --  12% complete.
+Reading data from 0x31b200 --  13% complete.
+Reading data from 0x320a00 --  14% complete.
+Reading data from 0x326200 --  15% complete.
+Reading data from 0x32ba00 --  16% complete.
+Reading data from 0x331200 --  17% complete.
+Reading data from 0x336a00 --  18% complete.
+Reading data from 0x33c000 --  19% complete.
+Reading data from 0x341800 --  20% complete.
+Reading data from 0x347000 --  21% complete.
+Reading data from 0x34c800 --  22% complete.
+Reading data from 0x352000 --  23% complete.
+Reading data from 0x357800 --  24% complete.
+Reading data from 0x35ce00 --  25% complete.
+Reading data from 0x362600 --  26% complete.
+Reading data from 0x367e00 --  27% complete.
+Reading data from 0x36d600 --  28% complete.
+Reading data from 0x372e00 --  29% complete.
+Reading data from 0x378600 --  30% complete.
+Reading data from 0x37de00 --  31% complete.
+Reading data from 0x383400 --  32% complete.
+Reading data from 0x388c00 --  33% complete.
+Reading data from 0x38e400 --  34% complete.
+Reading data from 0x393c00 --  35% complete.
+Reading data from 0x399400 --  36% complete.
+Reading data from 0x39ec00 --  37% complete.
+Reading data from 0x3a4200 --  38% complete.
+Reading data from 0x3a9a00 --  39% complete.
+Reading data from 0x3af200 --  40% complete.
+Reading data from 0x3b4a00 --  41% complete.
+Reading data from 0x3ba200 --  42% complete.
+Reading data from 0x3bfa00 --  43% complete.
+Reading data from 0x3c5000 --  44% complete.
+Reading data from 0x3ca800 --  45% complete.
+Reading data from 0x3d0000 --  46% complete.
+Reading data from 0x3d5800 --  47% complete.
+Reading data from 0x3db000 --  48% complete.
+Reading data from 0x3e0800 --  49% complete.
+Reading data from 0x3e5e00 --  50% complete.
+Reading data from 0x3eb600 --  51% complete.
+Reading data from 0x3f0e00 --  52% complete.
+Reading data from 0x3f6600 --  53% complete.
+Reading data from 0x3fbe00 --  54% complete.
+Reading data from 0x401600 --  55% complete.
+Reading data from 0x406e00 --  56% complete.
+Reading data from 0x40c400 --  57% complete.
+Reading data from 0x411c00 --  58% complete.
+Reading data from 0x417400 --  59% complete.
+Reading data from 0x41cc00 --  60% complete.
+Reading data from 0x422400 --  61% complete.
+Reading data from 0x427c00 --  62% complete.
+Reading data from 0x42d200 --  63% complete.
+Reading data from 0x432a00 --  64% complete.
+Reading data from 0x438200 --  65% complete.
+Reading data from 0x43da00 --  66% complete.
+Reading data from 0x443200 --  67% complete.
+Reading data from 0x448a00 --  68% complete.
+Reading data from 0x44e000 --  69% complete.
+Reading data from 0x453800 --  70% complete.
+Reading data from 0x459000 --  71% complete.
+Reading data from 0x45e800 --  72% complete.
+Reading data from 0x464000 --  73% complete.
+Reading data from 0x469800 --  74% complete.
+Reading data from 0x46ee00 --  75% complete.
+Reading data from 0x474600 --  76% complete.
+Reading data from 0x479e00 --  77% complete.
+Reading data from 0x47f600 --  78% complete.
+Reading data from 0x484e00 --  79% complete.
+Reading data from 0x48a600 --  80% complete.
+Reading data from 0x48fe00 --  81% complete.
+Reading data from 0x495400 --  82% complete.
+Reading data from 0x49ac00 --  83% complete.
+Reading data from 0x4a0400 --  84% complete.
+Reading data from 0x4a5c00 --  85% complete.
+Reading data from 0x4ab400 --  86% complete.
+Reading data from 0x4b0c00 --  87% complete.
+Reading data from 0x4b6200 --  88% complete.
+Reading data from 0x4bba00 --  89% complete.
+Reading data from 0x4c1200 --  90% complete.
+Reading data from 0x4c6a00 --  91% complete.
+Reading data from 0x4cc200 --  92% complete.
+Reading data from 0x4d1a00 --  93% complete.
+Reading data from 0x4d7000 --  94% complete.
+Reading data from 0x4dc800 --  95% complete.
+Reading data from 0x4e2000 --  96% complete.
+Reading data from 0x4e7800 --  97% complete.
+Reading data from 0x4ed000 --  98% complete.
+Reading data from 0x4f2800 --  99% complete.
+Reading data from 0x4f7e00 -- 100% complete.
+ 2244608 bytes read: OK
+## Booting image at 02000000 ...
+   Image Name:   Linux-2.6.22.18
+   Created:      2010-08-27  19:00:17 UTC
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    1910204 Bytes =  1.8 MB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+OK
+## Loading Ramdisk Image at 12000000 ...
+   Image Name:   
+   Created:      2010-09-03  19:23:13 UTC
+   Image Type:   ARM Linux RAMDisk Image (gzip compressed)
+   Data Size:    1829103 Bytes =  1.7 MB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+
+Starting kernel ...
+
+Uncompressing Linux.......................................................................................................................... done, booting the kernel.
+
+Linux version 2.6.22.18 (soho@bsoho080.lss.emc.com) (gcc version 4.3.2 (crosstool-NG-1.3.1) ) #1 Fri Aug 27 14:59:40 EDT 2010
+CPU: ARM926EJ-S [56251311] revision 1 (ARMv5TE), cr=00053977
+Machine: Feroceon-KW
+Using UBoot passing parameters structure
+Memory policy: ECC disabled, Data cache writeback
+CPU0: D VIVT write-back cache
+CPU0: I cache: 16384 bytes, associativity 4, 32 byte lines, 128 sets
+CPU0: D cache: 16384 bytes, associativity 4, 32 byte lines, 128 sets
+Built 1 zonelists.  Total pages: 130048
+Kernel command line: console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+PID hash table entries: 2048 (order: 11, 8192 bytes)
+Console: colour dummy device 80x30
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 256MB 256MB 0MB 0MB = 512MB total
+Memory: 513920KB available (3520K code, 283K data, 120K init)
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+
+CPU Interface
+-------------
+SDRAM_CS0 ....base 00000000, size 256MB 
+SDRAM_CS1 ....base 10000000, size 256MB 
+SDRAM_CS2 ....disable
+SDRAM_CS3 ....disable
+PEX0_MEM ....base e8000000, size 128MB 
+PEX0_IO ....base f2000000, size   1MB 
+INTER_REGS ....base f1000000, size   1MB 
+NFLASH_CS ....base fa000000, size   2MB 
+SPI_CS ....base f4000000, size  16MB 
+BOOT_ROM_CS ....no such
+DEV_BOOTCS ....no such
+CRYPT_ENG ....base f0000000, size   2MB 
+
+  Marvell Development Board (LSP Version KW_LSP_4.2.7_patch21)-- IX4-110  Soc: 88F6281 A1 LE
+
+ Detected Tclk 200000000 and SysClk 400000000 
+MV Buttons Device Load
+Marvell USB EHCI Host controller #0: c0875600
+PEX0 interface detected Link X1
+PCI: bus0: Fast back to back transfers disabled
+SCSI Scattered Spinup:
+SCSI Scattered Spinup Feature Status: Enabled
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+NET: Registered protocol family 2
+Time: kw_clocksource clocksource has been installed.
+IP route cache hash table entries: 16384 (order: 4, 65536 bytes)
+TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+TCP: Hash tables configured (established 65536 bind 65536)
+TCP reno registered
+checking if image is initramfs...it isn't (no cpio magic); looks like an initrd
+Freeing initrd memory: 1786K
+RTC has been updated!!!
+RTC registered
+Use the XOR engines (acceleration) for enhancing the following functions:
+  o RAID 5 Xor calculation
+  o kernel memcpy
+  o kenrel memzero
+Number of XOR engines to use: 4
+cesadev_init(c0011e28)
+mvCesaInit: sessions=640, queue=64, pSram=f0000000
+MV Buttons Driver Load
+Registering unionfs 2.5.1 (for 2.6.22.19)
+Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+io scheduler noop registered
+io scheduler anticipatory registered (default)
+Serial: 8250/16550 driver $Revision: 1.90 $ 4 ports, IRQ sharing disabled
+serial8250.0: ttyS0 at MMIO 0xf1012000 (irq = 33) is a 16550A
+serial8250.0: ttyS1 at MMIO 0xf1012100 (irq = 34) is a 16550A
+RAMDISK driver initialized: 16 RAM disks of 5120K size 1024 blocksize
+loop: module loaded
+Loading Marvell Ethernet Driver:
+  o Cached descriptors in DRAM
+  o DRAM SW cache-coherency
+  o Single RX Queue support - ETH_DEF_RXQ=0
+  o Single TX Queue support - ETH_DEF_TXQ=0
+  o TCP segmentation offload enabled
+  o Receive checksum offload enabled
+  o Transmit checksum offload enabled
+  o Network Fast Processing (Routing) supported
+  o Driver ERROR statistics enabled
+  o Driver INFO statistics enabled
+  o Proc tool API enabled
+  o Rx descripors: q0=128
+  o Tx descripors: q0=532
+  o Loading network interface(s):
+    o eth0, ifindex = 1, GbE port = 0
+    o eth1, ifindex = 2, GbE port = 1
+
+mvFpRuleDb (c0bc0000): 16384 entries, 65536 bytes
+e100: Intel(R) PRO/100 Network Driver, 3.5.17-k4-NAPI
+e100: Copyright(c) 1999-2006 Intel Corporation
+Marvell Storage Controller is found, using IRQ 9.
+scsi0 : Marvell Storage Controller
+Integrated Sata device found
+scsi1 : Marvell SCSI to SATA adapter
+scsi2 : Marvell SCSI to SATA adapter
+NFTL driver: nftlcore.c $Revision: 1.98 $, nftlmount.c $Revision: 1.41 $
+NAND device: Manufacturer ID: 0xec, Chip ID: 0x75 (Samsung NAND 32MiB 3,3V 8-bit)
+Scanning device for bad blocks
+Bad eraseblock 1026 at 0x01008000
+Bad eraseblock 1232 at 0x01340000
+Bad eraseblock 1436 at 0x01670000
+Bad eraseblock 1584 at 0x018c0000
+Bad eraseblock 1632 at 0x01980000
+Bad eraseblock 1988 at 0x01f10000
+5 cmdlinepart partitions found on MTD device nand_mtd
+Using command line partition definition
+Creating 5 MTD partitions on "nand_mtd":
+0x00000000-0x000a0000 : "uboot"
+0x000a0000-0x000b0000 : "env"
+0x000b0000-0x002d4000 : "zImage"
+0x002d4000-0x004f8000 : "initrd"
+0x00000000-0x02000000 : "flash"
+ehci_marvell ehci_marvell.70059: Marvell Orion EHCI
+ehci_marvell ehci_marvell.70059: new USB bus registered, assigned bus number 1
+ehci_marvell ehci_marvell.70059: irq 19, io base 0xf1050100
+ehci_marvell ehci_marvell.70059: USB 2.0 started, EHCI 1.00, driver 10 Dec 2004
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+USB Universal Host Controller Interface driver v3.0
+usb 1-1: new high speed USB device using ehci_marvell and address 2
+usb 1-1: configuration #1 chosen from 1 choice
+hub 1-1:1.0: USB hub found
+hub 1-1:1.0: 4 ports detected
+usbcore: registered new interface driver usblp
+drivers/usb/class/usblp.c: v0.13: USB Printer Device Class driver
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+mice: PS/2 mouse device common for all mice
+i2c /dev entries driver
+attach_adapter....
+adt7473_detect....
+adt7473 0-002e: adt7473 chip found
+md: linear personality registered for level -1
+md: raid0 personality registered for level 0
+md: raid1 personality registered for level 1
+md: raid10 personality registered for level 10
+raid6: int32x1     91 MB/s
+raid6: int32x2    117 MB/s
+raid6: int32x4    129 MB/s
+raid6: int32x8     98 MB/s
+raid6: using algorithm int32x4 (129 MB/s)
+md: raid6 personality registered for level 6
+md: raid5 personality registered for level 5
+md: raid4 personality registered for level 4
+raid5: measuring checksumming speed
+   arm4regs  :  1078.800 MB/sec
+   8regs     :   800.000 MB/sec
+   32regs    :   874.400 MB/sec
+raid5: using function: arm4regs (1078.800 MB/sec)
+device-mapper: ioctl: 4.11.0-ioctl (2006-10-12) initialised: dm-devel@redhat.com
+dm_crypt using the OCF package.
+wix gpio_init
+wix_lcm: WIX LCM driver version 0.1
+TCP cubic registered
+NET: Registered protocol family 1
+NET: Registered protocol family 17
+md: Autodetecting RAID arrays.
+md: autorun ...
+md: ... autorun DONE.
+RAMDISK: Compressed image found at block 0
+VFS: Mounted root (ext2 filesystem).
+cat: can't open '/sys/block/sda/removable': No such file or directory
+cat: can't open '/sys/block/sdb/removable': No such file or directory
+cat: can't open '/sys/block/sdc/removable': No such file or directory
+cat: can't open '/sys/block/sdd/removable': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+Sys UUID is :0
+Valid Disk 1 in md0: 
+Valid Disk 2 in md0: 
+Valid Disk 3 in md0: 
+Valid Disk 4 in md0: 
+USB Device node is /dev/sda1
+Trying to see the if the reset button is pressed or not
+Started
+/dev/btns file does not exist creating it
+Opened /dev/btns with fd 3
+Reset Key Status: Button Id = 29 Push Count = 1 Release Count = 0
+Reset Button key got pressed
+Checking if there is an attached EMC Imager
+mount: mounting /dev/sda1 on /usb_drive failed: No such device or address
+Going in to Network Imaging Mode
+umount: cannot umount /dev/md0: Invalid argument
+umount: cannot umount /usb_drive: Invalid argument
+eth0: link down
+eth0: started
+udhcpc (v1.9.2) started
+Sending discover...
+Sending discover...
+eth0: link up, full duplex, speed 1 Gbps
+Sending discover...
+Sending select for 192.168.1.42...
+Lease of 192.168.1.42 obtained, lease time 43200
+deleting routers
+route: ioctl 0x890c failed: No such process
+adding dns 192.168.1.2
+adding dns 192.168.1.254
+Device Model- ix4-200d
+Device: Socket Listening on: 2081
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...
+No response received
+Device: Going to send a broadcast again
+
+Mac address = 00:50:43:1b:2f:21
+Device: Sent a broadcast packet
+
+Device: Waiting for Hello Response...

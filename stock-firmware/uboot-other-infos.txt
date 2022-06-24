@@ -1,0 +1,212 @@
+Marvell>> version
+
+U-Boot 1.1.4 (Oct 15 2009 - 17:28:22) Marvell version: 3.4.18
+
+Marvell>> base
+Base Address: 0x00000000
+
+Marvell>> cpumap
+CPU Memory mapping :
+No page table. 
+
+Marvell>> dclk
+
+TCLK 200Mhz, SYSCLK 400Mhz (UART baudrate 115200)
+
+Marvell>> flinfo
+
+Marvell>> fsinfo
+
+mtdids not defined, no default present
+
+Marvell>> ide info
+
+Marvell>> map
+
+
+CPU Interface
+-------------
+SDRAM_CS0 ....base 00000000, size 256MB 
+SDRAM_CS1 ....base 10000000, size 256MB 
+SDRAM_CS2 ....disable
+SDRAM_CS3 ....disable
+PEX0_MEM ....base 90000000, size 256MB 
+PEX0_IO ....base f0000000, size  16MB 
+INTER_REGS ....base f1000000, size   1MB 
+NFLASH_CS ....base f9000000, size   8MB 
+SPI_CS ....base f8000000, size  16MB 
+BOOT_ROM_CS ....base ff000000, size  16MB 
+DEV_BOOTCS ....base ff000000, size  16MB 
+CRYPT_ENG ....base fb000000, size  64KB 
+
+AHB To MBUS Bridge:
+-------------------
+win0 - PEX0_MEM base 90000000, ....size 256MB 
+win1 - NFLASH_CS base f9000000, ....size   8MB 
+win2 - PEX0_IO base f0000000, ....size  16MB 
+win3 - SPI_CS base f8000000, ....size  16MB 
+win4 - BOOT_ROM_CS base ff000000, ....size  16MB 
+win5 - disable
+win6 - disable
+win7 - CRYPT_ENG base fb000000, ....size  64KB 
+win8 - INTER_REGS base f1000000, ....size   1MB 
+
+PEX0:
+-----
+
+Pex Bars 
+
+Internal Regs Bar0.... base f1000000, size   1MB 
+DRAM Bar1............. base 00000000, size 512MB 
+Devices Bar2.......... disable
+
+Pex Decode Windows
+
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+win2 - disable
+win3 - disable
+win4 - disable
+win5 - disable
+default win - target unknown 
+Expansion ROM - NFLASH_CS 
+
+USB:
+----
+Device 0:
+win0 - SDRAM_CS0 base 00000000, size 256MB 
+win1 - SDRAM_CS1 base 10000000, size 256MB 
+win2 - PEX0_MEM base 90000000, size 256MB 
+win3 - disable
+
+ETH 0:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+win2 - NFLASH_CS base f9000000, ....size   8MB 
+win3 - SPI_CS base f8000000, ....size  16MB 
+win4 - BOOT_ROM_CS base ff000000, ....size  16MB 
+win5 - disable
+
+ETH 1:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+win2 - NFLASH_CS base f9000000, ....size   8MB 
+win3 - SPI_CS base f8000000, ....size  16MB 
+win4 - BOOT_ROM_CS base ff000000, ....size  16MB 
+win5 - disable
+
+XOR 0:
+----
+win0 - NFLASH_CS base f9000000, size   8MB 
+win1 - PEX0_MEM base 90000000, size 256MB 
+win2 - SDRAM_CS0 base 0, size 256MB 
+win3 - SDRAM_CS1 base 10000000, size 256MB 
+win4 - SPI_CS base f8000000, size  16MB 
+win5 - CRYPT_ENG base fb000000, size  64KB 
+win6 - disable
+win7 - disable
+
+XOR 1:
+----
+win0 - NFLASH_CS base f9000000, size   8MB 
+win1 - PEX0_MEM base 90000000, size 256MB 
+win2 - SDRAM_CS0 base 0, size 256MB 
+win3 - SDRAM_CS1 base 10000000, size 256MB 
+win4 - SPI_CS base f8000000, size  16MB 
+win5 - CRYPT_ENG base fb000000, size  64KB 
+win6 - disable
+win7 - disable
+
+SATA 0:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+win2 - PEX0_MEM base 90000000, ....size 256MB 
+win3 - disable
+
+SATA 1:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+win2 - PEX0_MEM base 90000000, ....size 256MB 
+win3 - disable
+
+Marvell>> md info
+
+00000000: 56190527 e951edd7 214b814c efe81b00    '..V..Q.L.K!....
+00000010: 00000000 00000000 03838373 01030205    ........s.......
+00000020: 00000000 00000000 00000000 00000000    ................
+00000030: 00000000 00000000 00000000 00000000    ................
+00000040: 08088b1f 4c814b20 6e690300 64727469    .... K.L..initrd
+00000050: 0dddec00 be755458 39fff007 00906073    ....XTu....9s`..
+00000060: cc5eb787 2c105474 d0a8b05f 4ca7b12c    ..^.tT.,_...,..L
+00000070: f6cd0ccb f9bd8ad9 80892502 b6b69430    .........%..0...
+00000080: 76ef7961 bb966b9f 939a5656 b616bbd9    ay.v.k..VV......
+00000090: 635a6565 69599bd2 addddb65 dcc033bb    eeZc..Yie....3..
+000000a0: acb0b150 7ee76dec f919cccf 62181c33    P....m.~....3..b
+000000b0: f2f679c8 37cf3cfd cffff866 e1cefdf9    .y...<.7f.......
+000000c0: b30ccffc 4441094b 9a5bd5bd 2154b610    ....K.AD..[...T!
+000000d0: 18f1e30e 7885108b ec13c8ae ecf3e881    .......x........
+000000e0: a2992c97 c5431147 fe2a5fe5 5cf10379    .,..G.C.._*.y..\
+000000f0: 9fe83d4c 38eedc1a 113906a4 bfef8d51    L=.....8..9.Q...
+
+Marvell>> nand info
+
+
+Device 0: NAND 32MB 3,3V 8-bit, sector size 16 KB
+
+Marvell>> pci
+
+Scanning PCI devices on bus 0
+BusDevFun  VendorId   DeviceId   Device Class       Sub-Class
+_____________________________________________________________
+00.00.00   0x11ab     0x6281     Memory controller       0x80
+00.01.00   0x11ab     0x6121     Mass storage controller 0x01
+
+Marvell>> phyRead
+
+0xffff
+
+Marvell>> sg
+
+PHY 0 :
+---------
+Auto negotiation: Enabled
+Speed: 1000 Mbps
+Duplex: Half
+Link: down
+
+PHY 1 :
+---------
+Auto negotiation: Enabled
+Speed: 1000 Mbps
+Duplex: Half
+Link: down
+
+Marvell>> sp
+
+
+Bus: 0 Device: 0 Func: 0 Vendor ID: 11ab Device ID: 6281
+-------------------------------------------------------------------
+Class: Memory controller
+PCI_BAR0 (Mem-64bit) base: 0f1000000	size: 1048576 bytes
+PCI_BAR1 (Mem-64bit) base: 000000000		size: 536870912 bytes
+
+Bus: 0 Device: 1 Func: 0 Vendor ID: 11ab Device ID: 6121
+-------------------------------------------------------------------
+Class: Mass storage controller
+PCI_BAR0 (I/O-32bit) base: 0			size: 8 bytes
+PCI_BAR1 (I/O-32bit) base: f0000008		size: 4 bytes
+PCI_BAR2 (I/O-32bit) base: 0			size: 8 bytes
+PCI_BAR3 (I/O-32bit) base: f0000018		size: 4 bytes
+PCI_BAR4 (I/O-32bit) base: f0000020		size: 16 bytes
+PCI_BAR5 (Mem-32bit) base: 40000000		size: 1024 bytes
+
+Marvell>> usb start
+
+(Re)start USB...
+USB:   scanning bus for devices... 2 USB Device(s) found
+       scanning bus for storage devices... 0 Storage Device(s) found
+

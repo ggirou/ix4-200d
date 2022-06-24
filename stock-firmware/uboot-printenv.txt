@@ -1,0 +1,70 @@
+bootdelay=1
+baudrate=115200
+loads_echo=0
+ipaddr=10.4.50.165
+serverip=10.4.50.5
+rootpath=/mnt/ARM_FS/
+netmask=255.255.255.0
+run_diag=yes
+CASset=min
+MALLOC_len=1
+ethprime=egiga0
+bootargs_root=root=/dev/nfs rw
+bootargs_end=:::DB88FXX81:eth0:none
+image_name=uImage
+console=console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x00010000@0x000a0000(param),32m@0x0(flash) 
+standalone=fsload 0x2000000 $(image_name);setenv bootargs $(console) root=/dev/mtdblock0 rw ip=$(ipaddr):$(serverip)$(bootargs_end); bootm 0x2000000;
+ethmtu=1500
+mvNetConfig=mv_net_config=(00:11:88:0f:62:81,0:1:2:3),mtu=1500
+usb0Mode=host
+nandEcc=1bit
+netretry=no
+rcvrip=169.254.100.100
+loadaddr=0x02000000
+autoload=no
+uboot_ver=v1.1.0
+ethact=egiga0
+bootcmd=run flash_load
+uboot_start=0x0
+uboot_size=0xa0000
+env_start=0xa0000
+env_size=0x10000
+kernel_start=0xb0000
+kernel_size=0x224000
+initrd_size=0x224000
+flash_load=run make_boot_args;nand read.e 0x2000000 $(kernel_start) $(kernel_size);nand read.e 0x12000000 $(initrd_start) $(initrd_size);bootm 0x2000000 0x12000000
+make_boot_args=setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:;setenv bootargs $(bootargs)$(uboot_size)@$(uboot_start)(uboot),;setenv bootargs $(bootargs)$(env_size)@$(env_start)(env),;setenv bootargs $(bootargs)$(kernel_size)@$(kernel_start)(zImage),;setenv bootargs $(bootargs)$(initrd_size)@$(initrd_start)(initrd),;setenv bootargs $(bootargs)32m@0x0(flash);
+mfgmodel=ix4
+fw_ver=v1_0_4_2125229
+preroot_ver=0.1.5
+serial_number=5560Y01011G01500332J0C1
+ethaddr=00:26:2D:06:AB:AC
+serialno=EUA1703HA1
+modelname=31852200
+runintime=10800
+ftpserver=192.168.43.4
+testfile=100M
+mfgtest_state=system_tested_ok
+stdin=serial
+stdout=serial
+stderr=serial
+mainlineLinux=no
+enaMonExt=no
+enaCpuStream=no
+enaWrAllo=no
+pexMode=RC
+disL2Cache=no
+setL2CacheWT=yes
+disL2Prefetch=yes
+enaICPref=yes
+enaDCPref=yes
+sata_dma_mode=yes
+netbsd_en=no
+vxworks_en=no
+initrd_start=0x2d4000
+disaMvPnp=no
+eth1addr=00:26:2d:06:ab:ad
+enaAutoRecovery=yes
+pcieTune=no
+
+Environment size: 1979/16380 bytes
