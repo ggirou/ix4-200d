@@ -1,0 +1,19 @@
+baudrate=115200
+bootcmd=${x_bootcmd_kernel}; setenv bootargs ${x_bootargs} ${x_bootargs_root}; bootm 0x6400000;
+bootdelay=3
+eth1addr=42:33:4e:9c:0a:96
+ethact=ethernet-controller@72000
+ethaddr=12:8c:57:8b:37:27
+fdtcontroladdr=1fb4da60
+loadaddr=0x800000
+mtddevname=uboot
+mtddevnum=0
+mtdids=nand0=orion_nand
+mtdparts=mtdparts=orion_nand:896k(uboot),128k(env),4M(kernel),-(rootfs)
+nand_erasesize=4000
+nand_oobsize=10
+nand_writesize=200
+partition=nand0,0
+x_bootargs=console=ttyS0,115200 mtdparts=mtdparts=orion_nand:896k(uboot),128k(env),4M(kernel),-(rootfs)x_bootcmd_kernel=nand read 0x6400000 0x100000 0x400000
+x_bootargs_root=root=/dev/mtdblock3 rw rootfstype=jffs2
+x_bootcmd_usb=usb start

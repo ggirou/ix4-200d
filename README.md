@@ -53,7 +53,7 @@ First, keep current u-boot parameters:
     # You may need to build latest kwboot
     sudo apt-get install u-boot-tools
 
-    kwboot -p -t -B 115200 /dev/ttyUSB0 -b shivaplug-u-boot-2022.04.kwb
+    kwboot -p -t -B 115200 /dev/ttyUSB0 -b dist/ix4-200d-u-boot-2022.04.kwb
 
 > Hint: press `ctrl + \` then type `c` to quit.
 

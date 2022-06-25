@@ -1,0 +1,233 @@
+=> version
+U-Boot 2022.04-dirty (Jun 25 2022 - 19:21:32 +0200)
+Iomega ix4-200d
+
+arm-linux-gnueabi-gcc (Debian 10.2.1-6) 10.2.1 20210110
+GNU ld (GNU Binutils for Debian) 2.35.2
+=> base
+Base Address: 0x00000000
+=> cpumap
+Unknown command 'cpumap' - try 'help'
+=> dclk<INTERRUPT>
+=> bdinfo
+boot_params = 0x00000100
+DRAM bank   = 0x00000000
+-> start    = 0x00000000
+-> size     = 0x10000000
+DRAM bank   = 0x00000001
+-> start    = 0x10000000
+-> size     = 0x10000000
+flashstart  = 0x00000000
+flashsize   = 0x00000000
+flashoffset = 0x00000000
+baudrate    = 115200 bps
+relocaddr   = 0x1ff70000
+reloc off   = 0x1f970000
+Build       = 32-bit
+current eth = ethernet-controller@72000
+ethaddr     = 12:32:97:19:0b:1c
+IP addr     = <NULL>
+fdt_blob    = 0x1fb4da60
+new_fdt     = 0x1fb4da60
+fdt_size    = 0x00002480
+lmb_dump_all:
+ memory.cnt  = 0x1
+ memory[0]	[0x0-0x1fffffff], 0x20000000 bytes flags: 0
+ reserved.cnt  = 0x1
+ reserved[0]	[0x1fb497e0-0x1fffffff], 0x004b6820 bytes flags: 0
+devicetree  = separate
+arch_number = 0x00000000
+TLB addr    = 0x1fff0000
+irq_sp      = 0x1fb4da50
+sp start    = 0x1fb4da40
+=> blkcache
+blkcache - block cache diagnostics and control
+
+Usage:
+blkcache show - show and reset statistics
+blkcache configure <blocks> <entries> - set max blocks per entry and max cache entries
+
+=> blkcache show
+hits: 0
+misses: 0
+entries: 0
+max blocks/entry: 8
+max cache entries: 32
+=> coninfo
+List of available devices:
+serial   00000003 IO stdin stdout stderr 
+eserial0 00000003 IO 
+nc       00000003 IO 
+=> fsinfo
+### filesystem type is JFFS2
+Scanning JFFS2 FS:   get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+get_fl_mem: unknown device type, using raw offset!
+
+=> iminfo
+
+## Checking Image at 00800000 ...
+Unknown image format!
+=> md
+md - memory display
+
+Usage:
+md [.b, .w, .l, .q] address [# of objects]
+=> mdio
+mdio - MDIO utility commands
+
+Usage:
+mdio list			- List MDIO buses
+mdio read <phydev> [<devad>.]<reg> - read PHY's register at <devad>.<reg>
+mdio write <phydev> [<devad>.]<reg> <data> - write PHY's register at <devad>.<reg>
+mdio rx <phydev> [<devad>.]<reg> - read PHY's extended register at <devad>.<reg>
+mdio wx <phydev> [<devad>.]<reg> <data> - write PHY's extended register at <devad>.<reg>
+<phydev> may be:
+   <busname>  <addr>
+   <addr>
+   <eth name>
+<addr> <devad>, and <reg> may be ranges, e.g. 1-5.4-0x1f.
+
+=> mii
+mii - MII utility commands
+
+Usage:
+mii device                            - list available devices
+mii device <devname>                  - set current device
+mii info   <addr>                     - display MII PHY info
+mii read   <addr> <reg>               - read  MII PHY <addr> register <reg>
+mii write  <addr> <reg> <data>        - write MII PHY <addr> register <reg>
+mii modify <addr> <reg> <data> <mask> - modify MII PHY <addr> register <reg>
+                                        updating bits identified in <mask>
+mii dump   <addr> <reg>               - pretty-print <addr> <reg> (0-5 only)
+Addr and/or reg may be ranges, e.g. 2-7.
+=> mmc
+mmc - MMC sub system
+
+Usage:
+mmc info - display info of the current MMC device
+mmc read addr blk# cnt
+mmc write addr blk# cnt
+mmc erase blk# cnt
+mmc rescan [mode]
+mmc part - lists available partition on current mmc device
+mmc dev [dev] [part] [mode] - show or set current mmc device [partition] and set mode
+  - the required speed mode is passed as the index from the following list
+    [MMC_LEGACY, MMC_HS, SD_HS, MMC_HS_52, MMC_DDR_52, UHS_SDR12, UHS_SDR25,
+    UHS_SDR50, UHS_DDR50, UHS_SDR104, MMC_HS_200, MMC_HS_400, MMC_HS_400_ES]
+mmc list - lists available devices
+mmc wp - power on write protect boot partitions
+mmc hwpartition <USER> <GP> <MODE> - does hardware partitioning
+  arguments (sizes in 512-byte blocks):
+   USER - <user> <enh> <start> <cnt> <wrrel> <{on|off}>
+	: sets user data area attributes
+   GP - <{gp1|gp2|gp3|gp4}> <cnt> <enh> <wrrel> <{on|off}>
+	: general purpose partition
+   MODE - <{check|set|complete}>
+	: mode, complete set partitioning completed
+  WARNING: Partitioning is a write-once setting once it is set to complete.
+  Power cycling is required to initialize partitions after set to complete.
+mmc setdsr <value> - set DSR register value
+
+=> mmcinfo
+No MMC device available
+=> mtdparts
+
+device nand0 <orion_nand>, # parts = 4
+ #: name		size		offset		mask_flags
+ 0: uboot               0x000e0000	0x00000000	0
+ 1: env                 0x00020000	0x000e0000	0
+ 2: kernel              0x00400000	0x00100000	0
+ 3: rootfs              0x01b00000	0x00500000	0
+
+active partition: nand0,0 - (uboot) 0x000e0000 @ 0x00000000
+
+defaults:
+mtdids  : nand0=orion_nand
+mtdparts: mtdparts=orion_nand:896k(uboot),128k(env),4M(kernel),-(rootfs)
+=> nand
+nand - NAND sub-system
+
+Usage:
+nand info - show available NAND devices
+nand device [dev] - show or set current device
+nand read - addr off|partition size
+nand write - addr off|partition size
+    read/write 'size' bytes starting at offset 'off'
+    to/from memory address 'addr', skipping bad blocks.
+nand read.raw - addr off|partition [count]
+nand write.raw[.noverify] - addr off|partition [count]
+    Use read.raw/write.raw to avoid ECC and access the flash as-is.
+nand erase[.spread] [clean] off size - erase 'size' bytes from offset 'off'
+    With '.spread', erase enough for given file size, otherwise,
+    'size' includes skipped bad blocks.
+nand erase.part [clean] partition - erase entire mtd partition'
+nand erase.chip [clean] - erase entire chip'
+nand bad - show bad blocks
+nand dump[.oob] off - dump page
+nand scrub [-y] off size | scrub.part partition | scrub.chip
+    really clean NAND erasing bad blocks (UNSAFE)
+nand markbad off [...] - mark bad block(s) at offset (UNSAFE)
+nand biterr off bit - make a bit error at offset and bit position (UNSAFE)
+=> nand info
+
+Device 0: nand0, sector size 16 KiB
+  Page size        512 b
+  OOB size          16 b
+  Erase size     16384 b
+  subpagesize      256 b
+  options     0x4000011c
+  bbt options 0x00008000
+=> net
+net - NET sub-system
+
+Usage:
+net list - list available devices
+
+=> net list
+eth0 : ethernet-controller@72000 12:8c:57:8b:37:27 active
+eth1 : ethernet-controller@76000 42:33:4e:9c:0a:96 
+=> ping 192.168.1.1
+ethernet-controller@72000 Waiting for PHY auto negotiation to complete.... done
+*** ERROR: `ipaddr' not set
+ping failed; host 192.168.1.1 is not alive
+=> sata
+sata - SATA sub system
+
+Usage:
+sata init - init SATA sub system
+sata stop [dev] - disable SATA sub system or device
+sata info - show available SATA devices
+sata device [dev] - show or set current device
+sata part [dev] - print partition table
+sata read addr blk# cnt
+sata write addr blk# cnt
+=> sata info
+=> ubi
+ubi - ubi commands
+
+Usage:
+ubi detach - detach ubi from a mtd partition
+ubi part [part] [offset]
+ - Show or set current partition (with optional VID header offset)
+ubi info [l[ayout]] - Display volume and ubi layout information
+ubi check volumename - check if volumename exists
+ubi create[vol] volume [size] [type] [id] [--skipcheck]
+ - create volume name with size ('-' for maximum available size)
+ubi write[vol] address volume size - Write volume from address with size
+ubi write.part address volume size [fullsize]
+ - Write part of a volume from address
+ubi read[vol] address volume [size] - Read volume to address with size
+ubi remove[vol] volume - Remove volume
+ubi skipcheck volume on/off - Set or clear skip_check flag in volume header
+[Legends]
+ volume: character name
+ size: specified in bytes
+ type: s[tatic] or d[ynamic] (default=dynamic)
+=> usbboot
+** No device specified **
+=> 
