@@ -4,6 +4,7 @@ Run Debian on ix4-200d
 Everything here comes essentially from:
 
   - https://forum.doozan.com/read.php?2,22623
+  - https://download.lenovo.com/lenovoemc/na/en/app/cust_alp/p/1031%2c1087/c/73.html
 
 > **DISCLAIMER NOTICE**
 > * I'm not responsible for bricked devices, dead SD cards, thermonuclear war, or you getting fired because the alarm app failed (like it did for me...).
@@ -15,6 +16,7 @@ Everything here comes essentially from:
 # Serial boot
 
 ![Serial pinout](serial.jpg)
+![Zoomed serial pinout](zoom-serial.jpg)
 
 Serial: 115200 baud 3.3v:
 
@@ -25,10 +27,10 @@ Serial: 115200 baud 3.3v:
     -------------- PIN 1 Mark (fat line)
 
 
-    1 = TXD <--> RXD of USB Adapter
-    4 = RXD <--> TXD of USB Adapter
+    1 = RXD <--> TXD of USB Adapter
+    4 = TXD <--> RXD of USB Adapter
     6 = GND <--> GND of USB Adapter
-    10 = 3.3v
+    10 = 3.3v (do not connect)
 
 Open TTY with `screen`:
 
@@ -60,3 +62,23 @@ First, keep current u-boot parameters:
 >     Sending boot message. Please reboot the target...-
 >     Sending boot image...
 >     0 % [+xmodem: Protocol error
+
+# Build U-Boot
+
+    docker compose build --pull
+    docker compose run uboot
+
+> Debugging/testing
+>
+>     docker compose run uboot bash
+>     ./build_uboot.sh
+
+# Deboostrap debian
+
+    docker compose build --pull
+    docker compose run deboot
+
+> For Debugging/Testing:
+>
+>     docker compose run deboot bash
+>     ./deboot.sh armel buster http://ftp.fr.debian.org/debian/ openssh-server

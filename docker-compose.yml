@@ -1,0 +1,15 @@
+version: '3'
+services:
+  deboot:
+    build: .
+    privileged: true
+    volumes:
+      - "./scripts:/scripts"
+      - "./dist:/dist"
+    command: ["/scripts/deboot.sh", "armel", "bullseye", "http://ftp.fr.debian.org/debian/"]
+  uboot:
+    build: .
+    command: ["/scripts/build_uboot.sh"]
+    volumes:
+      - "./scripts:/scripts"
+      - "./dist:/dist"
