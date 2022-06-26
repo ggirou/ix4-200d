@@ -97,10 +97,15 @@ echo "127.0.1.1       $hostname" >> /chroot/etc/hosts
 echo LANG=en_US.UTF-8 > /chroot/etc/default/locale
 echo en_US.UTF-8 UTF-8 >> /chroot/etc/locale.gen
 
-# cat <<EOF > /chroot/etc/network/interfaces.d/eth0
-# auto eth0
-# iface eth0 inet dhcp
-# EOF
+cat <<EOF > /chroot/etc/network/interfaces.d/eth0
+auto eth0
+iface eth0 inet dhcp
+EOF
+
+cat <<EOF > /chroot/etc/network/interfaces.d/eth1
+auto eth1
+iface eth1 inet dhcp
+EOF
 
 # Autorepair option for fsck on boot https://manpages.debian.org/bullseye/initscripts/rcS.5.en.html
 # Replaced by? https://manpages.debian.org/bullseye/systemd/systemd-fsck.8.en.html
@@ -144,7 +149,7 @@ EOF
 # Full test (from DNS320 for UBIFS commands)
 # dpkg-reconfigure $(dpkg --get-selections | egrep 'linux-image-[0-9]' | cut -f1)
 cp /scripts/fit.its /chroot/boot
-cp /scripts/kirkwood-iomega_ix4_200d.dtb /chroot/boot
+cp /scripts/dts/kirkwood-iomega_ix4_200d.dtb /chroot/boot
 cat <<'EOF' > /chroot/etc/kernel/postinst.d/zz-local-build-image
 #!/bin/sh -ex
 # passing the kernel version is required

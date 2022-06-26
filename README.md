@@ -4,6 +4,7 @@ Run Debian on ix4-200d
 Everything here comes essentially from:
 
   - https://forum.doozan.com/read.php?2,22623
+  - https://github.com/1000001101000/ix4-200d-research
   - https://download.lenovo.com/lenovoemc/na/en/app/cust_alp/p/1031%2c1087/c/73.html
 
 > **DISCLAIMER NOTICE**
@@ -53,7 +54,7 @@ First, keep current u-boot parameters:
     # You may need to build latest kwboot
     sudo apt-get install u-boot-tools
 
-    kwboot -p -t -B 115200 /dev/ttyUSB0 -b dist/ix4-200d-u-boot-2022.04.kwb
+    kwboot -p -t -B 115200 /dev/ttyUSB0 -b ix4-200d-u-boot-2022.04.kwb
 
 > Hint: press `ctrl + \` then type `c` to quit.
 
@@ -82,3 +83,14 @@ First, keep current u-boot parameters:
 >
 >     docker compose run deboot bash
 >     ./deboot.sh armel buster http://ftp.fr.debian.org/debian/ openssh-server
+
+# TFTP server
+
+    sudo apt install tftpd-hpa
+    sudo chmod a+rw /srv/tftp
+
+From u-boot:
+
+    > setenv ipaddr 192.168.1.250
+    > setenv serverip 192.168.1.48
+    > tftpboot 0x0a00000 uImage

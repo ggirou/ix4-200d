@@ -30,10 +30,10 @@
 
     sudo mkdir -p /mnt/usb/
     sudo mount /dev/sda1 /mnt/usb/
-    sudo tar xzf ~/bullseye-armel.final.tar.gz -C /mnt/usb/
+    sudo tar xzf bullseye-armel.final.tar.gz -C /mnt/usb/
     ls -la /mnt/usb/
     sudo umount /mnt/usb/
 
 > Only boot files:
 >
->     sudo tar xzf ~/bullseye-armel.final.tar.gz -C /mnt/usb/ ./boot
+>     sudo tar xzf bullseye-armel.final.tar.gz -C /mnt/usb/ ./boot
