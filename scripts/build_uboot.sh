@@ -1,5 +1,6 @@
 #!/bin/sh -ex
 
+target=ix4-200d
 version=v2022.04
 dir=/dist/u-boot
 
@@ -28,15 +29,16 @@ git config user.email "john@doe.xyz"; git config user.name "John Doe"
 # git am --committer-date-is-author-date < /scripts/$version-usbtimeoutfix.patch
 # Apply DNS-320 support patch from https://github.com/avoidik/board_dns320
 # git am --committer-date-is-author-date < /scripts/$version-dns320.patch
+git pull https://github.com/ggirou/u-boot.git v2022.04-ix4-200d
 
 export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
 make distclean
-make sheevaplug_config
+make ${target}_config
 # make menuconfig
 
 make u-boot.kwb
 
 # make cross_tools
 
-cp u-boot.kwb /dist
+cp u-boot.kwb /dist/${target}-u-boot-${version}.kwb
 cp tools/kwboot /dist

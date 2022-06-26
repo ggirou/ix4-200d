@@ -14,20 +14,20 @@ hostname=IX4-200D
 
 # * Mandatory
 packages=(
-  # Kernel / DNS-320
+  # Kernel
   linux-image-marvell # * Linux for Marvell Kirkwood/Orion (meta-package)
   device-tree-compiler # * Device Tree Compiler for Flat Device Trees
 
   # Admin
-  # cron # process scheduling daemon
-  # dbus-user-session # * simple interprocess messaging system (systemd --user integration)
-  # hdparm # * tune hard disk parameters for high performance
-  # htop # interactive processes viewer
-  # iotop # simple top-like I/O monitor
+  cron # process scheduling daemon
+  dbus-user-session # * simple interprocess messaging system (systemd --user integration)
+  hdparm # * tune hard disk parameters for high performance
+  htop # interactive processes viewer
+  iotop # simple top-like I/O monitor
   mtd-utils # * Memory Technology Device Utilities
-  # procps # /proc file system utilities
+  procps # /proc file system utilities
   u-boot-tools # * companion tools for Das U-Boot bootloader
-  # udev # /dev/ and hotplug management daemon
+  udev # /dev/ and hotplug management daemon
 
   # Localization
   locales # * GNU C Library: National Language (locale) data [support]
@@ -37,20 +37,20 @@ packages=(
   ca-certificates # Common CA certificates
 
   # Network
-  # avahi-daemon # Avahi mDNS/DNS-SD daemon
-  # ifupdown # high level tools to configure network interfaces
-  # iputils-ping # Tools to test the reachability of network hosts
-  # isc-dhcp-client # DHCP client for automatically obtaining an IP address
-  # net-tools # NET-3 networking toolkit
-  # netbase # Basic TCP/IP networking system
-  # # ntpdate # client for setting system time from NTP servers (deprecated)
-  # sntp # Network Time Protocol - sntp client
+  avahi-daemon # Avahi mDNS/DNS-SD daemon
+  ifupdown # high level tools to configure network interfaces
+  iputils-ping # Tools to test the reachability of network hosts
+  isc-dhcp-client # DHCP client for automatically obtaining an IP address
+  net-tools # NET-3 networking toolkit
+  netbase # Basic TCP/IP networking system
+  # ntpdate # client for setting system time from NTP servers (deprecated)
+  sntp # Network Time Protocol - sntp client
 
   # Network - Servers
-  # netatalk # Basic TCP/IP networking system
-  # nfs-kernel-server # support for NFS kernel server
-  # openssh-server # secure shell (SSH) server, for secure access from remote machines
-  # samba # SMB/CIFS file, print, and login server for Unix
+  netatalk # Basic TCP/IP networking system
+  nfs-kernel-server # support for NFS kernel server
+  openssh-server # secure shell (SSH) server, for secure access from remote machines
+  samba # SMB/CIFS file, print, and login server for Unix
 
   # Python
   python3-minimal # minimal subset of the Python language (default python3 version)
@@ -59,13 +59,13 @@ packages=(
   bash-completion # programmable completion for the bash shell
 
   # Utils
-  # acl # access control list - utilities
-  # busybox # Tiny utilities for small and embedded systems
-  # console-data # keymaps, fonts, charset maps, fallback tables for 'kbd'.
-  # curl # command line tool for transferring data with URL syntax
-  # dialog # Displays user-friendly dialog boxes from shell scripts
-  # fdisk # collection of partitioning utilities
-  # gnupg # GNU privacy guard - a free PGP replacement
+  acl # access control list - utilities
+  busybox # Tiny utilities for small and embedded systems
+  console-data # keymaps, fonts, charset maps, fallback tables for 'kbd'.
+  curl # command line tool for transferring data with URL syntax
+  dialog # Displays user-friendly dialog boxes from shell scripts
+  fdisk # collection of partitioning utilities
+  gnupg # GNU privacy guard - a free PGP replacement
   nano # small, friendly text editor inspired by Pico
   sudo # Provide limited super user privileges to specific users
   wget # retrieves files from the web
