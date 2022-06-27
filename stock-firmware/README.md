@@ -40,13 +40,13 @@ Boot from serial with new u-boot (ext4write command enabled)
 
     usb start
     nand read 0x1000000 0x0 0xa0000
-    ext4write usb 0:1 0x1000000 /nand.uboot.dump 0xa0000
+    ext4write usb 0:1 0x1000000 /nand-0-uboot.bin 0xa0000
     nand read 0x1000000 0x000a0000 0x10000
-    ext4write usb 0:1 0x1000000 /nand.env.dump 0x10000
+    ext4write usb 0:1 0x1000000 /nand-1-env.bin 0x10000
     nand read 0x2000000 0x000b0000 0x224000
-    ext4write usb 0:1 0x2000000 /nand.zImage.dump 0x224000
+    ext4write usb 0:1 0x2000000 /nand-2-zImage.bin 0x224000
     nand read 0x3000000 0x002d4000 0x224000
-    ext4write usb 0:1 0x3000000 /nand.initrd.dump 0x224000
+    ext4write usb 0:1 0x3000000 /nand-3-initrd.bin 0x224000
 
 ### Full dump
 
@@ -65,7 +65,7 @@ Boot from serial with new u-boot (ext4write command enabled)
     33456128 bytes read: OK
 
     # Adapt the last number with the size read by nand command (may be less)
-    => ext4write usb 0:1 0x1000000 /nand.dump 0x02000000
+    => ext4write usb 0:1 0x1000000 /nand.bin 0x02000000
 
 ## From debian
 
