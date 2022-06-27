@@ -9,6 +9,16 @@ ix4-200d stock firmware
 
 ## Few experiments
 
+Mount `initrd` filesystem:
+
+    cd ix4-200d-3.2.16.30221/
+    dumpimage -l initrd
+    dumpimage -o initrd.img.gz initrd
+    gunzip -v initrd.img.gz
+
+    mkdir initrd.mnt
+    sudo mount initrd.img initrd.mnt/
+
 Mount `apps` filesystem:
 
     cd ix4-200d-3.2.16.30221/
@@ -18,7 +28,7 @@ Mount `apps` filesystem:
 Extract kernel:
 
     dumpimage -l zImage
-    dumpimage -i zImage kernel.extracted
+    dumpimage -o zImage.img zImage
 
 # Backup firmware
 
