@@ -30,6 +30,36 @@ Extract kernel:
     dumpimage -l zImage
     dumpimage -o zImage.img zImage
 
+# Boot a shell in stock firmware initrd
+
+Open serial prompt in stock u-boot:
+
+Open TTY with `screen`:
+
+    screen -L /dev/ttyUSB0 115200
+
+> Hint: press `ctrl + a` then type `:quit` to quit.
+
+Start your device and press any key until `Hit any key to stop autoboot` is displayed. You should see u-boot prompt:
+
+    Marvell>>
+
+Set kernel init parameter to launch shell, then boot:
+
+    run make_boot_args; setenv bootargs $(bootargs) init=/bin/sh; setenv make_boot_args
+    boot
+
+# Boot stock kernel with new u-boot (doesn't work)
+
+    setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash) init=/bin/sh
+    nand read.e 0x2000000 0xb0000 0x224000;nand read.e 0x12000000 0x2d4000 0x224000
+    bootm 0x2000000 0x12000000
+
+Error:
+
+    FDT and ATAGS support not compiled in
+    resetting ...
+
 # Backup firmware
 
 Nand stock mtdparts:
