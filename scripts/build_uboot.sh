@@ -41,4 +41,5 @@ make u-boot.kwb
 # make cross_tools
 
 cp u-boot.kwb /dist/${target}-u-boot-${version}.kwb
+cp arch/arm/dts/kirkwood-ix4-200d.dtb /dist
 cp tools/kwboot /dist

@@ -20,7 +20,7 @@
         };
         fdt-0 {
             description = "Flattened Device Tree blob";
-            data = /incbin/("/boot/kirkwood-iomega_ix4_200d.dtb");
+            data = /incbin/("/boot/kirkwood-ix4-200d.dtb");
             type = "flat_dt";
             arch = "arm";
             compression = "none";

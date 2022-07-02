@@ -1,12 +1,12 @@
 # Get USB key ready
 
-## Format to ext2
+## Format to ext4
     
     # Recreate MBR partition
     sudo apt-get install mbr
     sudo install-mbr /dev/sda
 
-    # Create and formate ext2 partition
+    # Create and formate ext4 partition
     # echo ";" | sudo sfdisk /dev/sda
     sudo parted -l
     sudo parted /dev/sda rm 1
@@ -15,7 +15,7 @@
     #sudo parted -a minimal /dev/sda mkpart primary 0% 100%
     sudo parted /dev/sda set 1 boot on
 
-    sudo mkfs.ext2 /dev/sda1
+    sudo mkfs.ext4 /dev/sda1
 
     # Optionnal, chek bad blocks and fix it
     sudo badblocks -s -w -t 0 /dev/sda1 > badsectors.txt
