@@ -64,6 +64,38 @@ First, keep current u-boot parameters:
 >     Sending boot image...
 >     0 % [+xmodem: Protocol error
 
+# Boot debian from usb
+
+## Automatic boot with uEnv.txt
+
+On USB key with debian, edit `/uEnv.txt`:
+
+    x_bootargs=console=ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
+    x_bootargs_root=root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext2
+    x_bootcmd_kernel=ext4load usb 0:1 ${loadaddr} /boot/uImage
+
+From u-boot prompt:
+
+    boot
+
+## Detailed commands
+
+    # Load from USB uEnv.txt file
+    usb start
+    ext4load usb 0:1 ${loadaddr} uEnv.txt
+    env import -t ${loadaddr} ${filesize}
+
+    # Or set mannually environments
+    setenv x_bootargs console ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
+    setenv x_bootargs_root root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext2
+
+    # Load uImage from USB
+    ext4load usb 0:1 ${loadaddr} /boot/uImage
+
+    # Then set kernel args and boot
+    setenv bootargs ${x_bootargs} ${x_bootargs_root}
+    bootm ${loadaddr}
+
 # Build U-Boot
 
     docker compose build --pull
@@ -91,6 +123,14 @@ First, keep current u-boot parameters:
 
 From u-boot:
 
-    > setenv ipaddr 192.168.1.250
-    > setenv serverip 192.168.1.48
-    > tftpboot 0x0a00000 uImage
+    # To set active ethernet port to the second one
+    # setenv ethact ethernet-controller@76000
+
+    setenv ethaddr 00:26:2d:06:ab:ac
+    setenv eth1addr 00:26:2d:06:ab:ad
+
+    setenv ipaddr 192.168.1.250
+    setenv serverip 192.168.1.48
+
+    ping ${serverip}
+    tftpboot 0x0a00000 uImage
