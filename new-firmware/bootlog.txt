@@ -1,0 +1,751 @@
+U-Boot 2022.04-00005-g368bfb789b-dirty (Jul 03 2022 - 14:59:28 +0200)
+Iomega ix4-200d
+
+SoC:   Kirkwood 88F6281_A1
+DRAM:  512 MiB
+Core:  8 devices, 6 uclasses, devicetree: separate
+NAND:  32 MiB
+MMC:   
+Loading Environment from NAND... OK
+In:    serial
+Out:   serial
+Err:   serial
+Net:   eth0: ethernet-controller@72000, eth1: ethernet-controller@76000
+88E1116 Initialized on ethernet-controller@72000
+88E1116 Initialized on ethernet-controller@76000
+Hit any key to stop autoboot:  3  2  1  0 
+starting USB...
+Bus ehci@50000: USB EHCI 1.00
+scanning bus ehci@50000 for devices... 3 USB Device(s) found
+       scanning usb for storage devices... 1 Storage Device(s) found
+535 bytes read in 23 ms (22.5 KiB/s)
+19117852 bytes read in 1363 ms (13.4 MiB/s)
+## Loading kernel from FIT Image at 02000000 ...
+   Using 'conf-1' configuration
+   Trying 'kernel-0' kernel subimage
+     Description:  Linux Kernel
+     Created:      2022-07-03  10:04:38 UTC
+     Type:         Kernel Image
+     Compression:  uncompressed
+     Data Start:   0x020000d4
+     Data Size:    2452776 Bytes = 2.3 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: 0x00008000
+     Entry Point:  0x00008000
+     Hash algo:    sha1
+     Hash value:   6c60515ab114e137fe9d43738e912eec92e13926
+   Verifying Hash Integrity ... sha1+ OK
+## Loading ramdisk from FIT Image at 02000000 ...
+   Using 'conf-1' configuration
+   Trying 'ramdisk-0' ramdisk subimage
+     Description:  ramdisk
+     Created:      2022-07-03  10:04:38 UTC
+     Type:         RAMDisk Image
+     Compression:  uncompressed
+     Data Start:   0x02259408
+     Data Size:    16653729 Bytes = 15.9 MiB
+     Architecture: ARM
+     OS:           Linux
+     Load Address: unavailable
+     Entry Point:  unavailable
+     Hash algo:    sha1
+     Hash value:   58dc63592b42c9851d887dd6b8ab87da1572cc35
+   Verifying Hash Integrity ... sha1+ OK
+## Loading fdt from FIT Image at 02000000 ...
+   Using 'conf-1' configuration
+   Trying 'fdt-0' fdt subimage
+     Description:  Flattened Device Tree blob
+     Created:      2022-07-03  10:04:38 UTC
+     Type:         Flat Device Tree
+     Compression:  uncompressed
+     Data Start:   0x02256ef0
+     Data Size:    9320 Bytes = 9.1 KiB
+     Architecture: ARM
+     Hash algo:    sha1
+     Hash value:   4cbfc47f501046f939be543ac64e2d0461c0b194
+   Verifying Hash Integrity ... sha1+ OK
+   Booting using the fdt blob at 0x2256ef0
+   Loading Kernel Image
+   Loading Ramdisk to 1eb63000, end 1fb44da1 ... OK
+   Loading Device Tree to 1eb5d000, end 1eb62467 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 5.10.0-13-marvell (debian-kernel@lists.debian.org) (gcc-10 (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2) #1 Debian 5.10.106-1 (2022-03-17)
+[    0.000000] CPU: Feroceon 88FR131 [56251311] revision 1 (ARMv5TE), cr=0005397f
+[    0.000000] CPU: VIVT data cache, VIVT instruction cache
+[    0.000000] OF: fdt: Machine model: Iomega ix4-2OOd
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000]   HighMem  empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000001fffffff]
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 130048
+[    0.000000] Kernel command line: console=ttyS0,115200 mtdparts=orion_nand:896k(uboot),128k(env),-(rootfs) initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext4
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:on, heap free:off
+[    0.000000] Memory: 495824K/524288K available (4748K kernel code, 830K rwdata, 1316K rodata, 296K init, 224K bss, 28464K reserved, 0K cma-reserved, 0K highmem)
+[    0.000000] random: get_random_u32 called from cache_random_seq_create+0x60/0x110 with crng_init=0
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] ftrace: allocating 22277 entries in 66 pages
+[    0.000000] ftrace: allocated 66 pages with 2 groups
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000000] clocksource: orion_clocksource: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 9556302233 ns
+[    0.000011] sched_clock: 32 bits at 200MHz, resolution 5ns, wraps every 10737418237ns
+[    0.000053] Switching to timer-based delay loop, resolution 5ns
+[    0.000166] Calibrating delay loop (skipped), value calculated using timer frequency.. 400.00 BogoMIPS (lpj=800000)
+[    0.000197] pid_max: default: 32768 minimum: 301
+[    0.000509] LSM: Security Framework initializing
+[    0.000713] Yama: disabled by default; enable with sysctl kernel.yama.*
+[    0.000968] AppArmor: AppArmor initialized
+[    0.001108] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.001137] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes, linear)
+[    0.002520] CPU: Testing write buffer coherency: ok
+[    0.004205] Setting up static identity map for 0x8200 - 0x823c
+[    0.004493] mvebu-soc-id: MVEBU SoC ID=0x6281, Rev=0x3
+[    0.005616] devtmpfs: initialized
+[    0.009340] VFP support v0.3: not present
+[    0.009544] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.009584] futex hash table entries: 256 (order: -1, 3072 bytes, linear)
+[    0.009789] pinctrl core: initialized pinctrl subsystem
+[    0.011165] NET: Registered protocol family 16
+[    0.011919] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.012791] audit: initializing netlink subsys (disabled)
+[    0.013816] thermal_sys: Registered thermal governor 'fair_share'
+[    0.013829] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.013847] thermal_sys: Registered thermal governor 'step_wise'
+[    0.013860] thermal_sys: Registered thermal governor 'user_space'
+[    0.013947] cpuidle: using governor ladder
+[    0.013971] cpuidle: using governor menu
+[    0.014409] Feroceon L2: Enabling L2
+[    0.014462] Feroceon L2: Cache support initialised.
+[    0.016863] audit: type=2000 audit(0.012:1): state=initialized audit_enabled=0 res=1
+[    0.024657] No ATAGs?
+[    0.032183] clocksource: Switched to clocksource orion_clocksource
+[    0.072957] VFS: Disk quotas dquot_6.6.0
+[    0.073057] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    0.073672] AppArmor: AppArmor Filesystem Enabled
+[    0.075009] NET: Registered protocol family 2
+[    0.075203] IP idents hash table entries: 8192 (order: 4, 65536 bytes, linear)
+[    0.076343] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.076394] TCP established hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.076466] TCP bind hash table entries: 4096 (order: 2, 16384 bytes, linear)
+[    0.076519] TCP: Hash tables configured (established 4096 bind 4096)
+[    0.076638] UDP hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.076672] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.076871] NET: Registered protocol family 1
+[    0.076909] PCI: CLS 0 bytes, default 32
+[    0.077231] Trying to unpack rootfs image as initramfs...
+[    1.020214] random: fast init done
+[    1.545552] Freeing initrd memory: 16264K
+[    1.546444] Initialise system trusted keyrings
+[    1.546510] Key type blacklist registered
+[    1.546742] workingset: timestamp_bits=30 max_order=17 bucket_order=0
+[    1.551368] zbud: loaded
+[    1.551977] Key type asymmetric registered
+[    1.551994] Asymmetric key parser 'x509' registered
+[    1.552047] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+[    1.554368] kirkwood-pinctrl f1010000.pin-controller: registered pinctrl driver
+[    1.556765] mv_xor f1060800.xor: Marvell shared XOR driver
+[    1.585669] mv_xor f1060800.xor: Marvell XOR (Registers Mode): ( xor cpy intr )
+[    1.586095] mv_xor f1060900.xor: Marvell shared XOR driver
+[    1.617605] mv_xor f1060900.xor: Marvell XOR (Registers Mode): ( xor cpy intr )
+[    1.618198] Serial: 8250/16550 driver, 2 ports, IRQ sharing disabled
+[    1.619295] printk: console [ttyS0] disabled
+[    1.619388] f1012000.serial: ttyS0 at MMIO 0xf1012000 (irq = 25, base_baud = 12500000) is a 16550A
+[    2.164502] printk: console [ttyS0] enabled
+[    2.170208] i2c /dev entries driver
+[    2.174617] ledtrig-cpu: registered to indicate activity on CPUs
+[    2.181444] registered taskstats version 1
+[    2.185599] Loading compiled-in X.509 certificates
+[    2.221686] Loaded X.509 cert 'Debian Secure Boot CA: 6ccece7e4c6c0d1f6149f3dd27dfcc5cbb419ea1'
+[    2.230719] Loaded X.509 cert 'Debian Secure Boot Signer 2021 - linux: 4b6ef5abca669825178e052c84667ccbc0531f8c'
+[    2.241365] AppArmor: AppArmor sha1 policy hashing enabled
+[    2.252585] Freeing unused kernel memory: 296K
+[    2.257070] Kernel memory protection not selected by kernel config.
+[    2.263396] Run /init as init process
+Loading, please wait...
+Starting version 247.3-7
+[    2.735817] rtc-mv f1010300.rtc: registered as rtc0
+[    2.772300] rtc-mv f1010300.rtc: setting system clock to 2000-01-01T00:00:00 UTC (946684800)
+[    2.791846] mv643xx_eth: MV-643xx 10/100/1000 ethernet driver version 1.4
+[    2.877766] SCSI subsystem initialized
+[    2.889699] usbcore: unknown parameter 'autosuspend' ignored
+[    2.935182] usbcore: registered new interface driver usbfs
+[    2.980451] usbcore: registered new interface driver hub
+[    2.999481] sata_mv f1080000.sata: slots 32 ports 2
+[    3.014045] usbcore: registered new device driver usb
+[    3.054638] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    3.070794] scsi host0: sata_mv
+[    3.088004] scsi host1: sata_mv
+[    3.094646] ehci-orion: EHCI orion driver
+[    3.101429] ata1: SATA max UDMA/133 irq 32
+[    3.105604] ata2: SATA max UDMA/133 irq 32
+[    3.123664] orion-ehci f1050000.ehci: EHCI Host Controller
+[    3.138886] orion-ehci f1050000.ehci: new USB bus registered, assigned bus number 1
+[    3.151386] orion-ehci f1050000.ehci: irq 29, io mem 0xf1050000
+[    3.172220] orion-ehci f1050000.ehci: USB 2.0 started, EHCI 1.00
+[    3.178630] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 5.10
+[    3.186970] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.194244] usb usb1: Product: EHCI Host Controller
+[    3.199160] usb usb1: Manufacturer: Linux 5.10.0-13-marvell ehci_hcd
+[    3.205567] usb usb1: SerialNumber: f1050000.ehci
+[    3.212590] hub 1-0:1.0: USB hub found
+[    3.216532] hub 1-0:1.0: 1 port detected
+[    3.422696] ata1: SATA link down (SStatus 0 SControl F300)
+[    3.476214] usb 1-1: new high-speed USB device number 2 using orion-ehci
+[    3.638009] usb 1-1: New USB device found, idVendor=05e3, idProduct=0608, bcdDevice= 9.01
+[    3.646267] usb 1-1: New USB device strings: Mfr=0, Product=1, SerialNumber=0
+[    3.653474] usb 1-1: Product: USB2.0 Hub
+[    3.659688] hub 1-1:1.0: USB hub found
+[    3.664011] hub 1-1:1.0: 4 ports detected
+[    3.669164] mv643xx_eth_port mv643xx_eth_port.0 eth0: port 0 with MAC address 00:26:2d:06:ab:ac
+[    3.743943] ata2: SATA link down (SStatus 0 SControl F300)
+Begin: Loading essential drivers ... [    3.976279] usb 1-1.2: new high-speed USB device number 3 using orion-ehci
+[    4.038597] NET: Registered protocol family 10
+[    4.087999] IPv6: Attempt to unregister permanent protocol 6
+[    4.093741] IPv6: Attempt to unregister permanent protocol 136
+[    4.099625] IPv6: Attempt to unregister permanent protocol 17
+[    4.106443] NET: Unregistered protocol family 10
+[    4.117550] usb 1-1.2: New USB device found, idVendor=058f, idProduct=6387, bcdDevice= 1.0b
+[    4.125999] usb 1-1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[    4.133387] usb 1-1.2: Product: Mass Storage
+[    4.137696] usb 1-1.2: Manufacturer: Generic
+[    4.142002] usb 1-1.2: SerialNumber: 1815A972
+[    4.183675] usb-storage 1-1.2:1.0: USB Mass Storage device detected
+[    4.204339] scsi host2: usb-storage 1-1.2:1.0
+[    4.217029] usbcore: registered new interface driver usb-storage
+[    4.223272] scsi 2:0:0:0: Direct-Access     Generic  Flash Disk       8.07 PQ: 0 ANSI: 4
+[    4.242361] usbcore: registered new interface driver uas
+[    4.299942] sd 2:0:0:0: [sda] 7987200 512-byte logical blocks: (4.09 GB/3.81 GiB)
+[    4.309421] sd 2:0:0:0: [sda] Write Protect is off
+[    4.315157] sd 2:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[    4.344919]  sda: sda1
+[    4.352303] sd 2:0:0:0: [sda] Attached SCSI removable disk
+[    4.385278] mv643xx_eth_port mv643xx_eth_port.1 eth1: port 0 with MAC address 00:26:2d:06:ab:ad
+done.
+Begin: Running /scripts/init-premount ... done.
+Begin: Mounting root file system ... Begin: Running /scripts/local-top ... done.
+Begin: Running /scripts/local-premount ... done.
+Begin: Will now check root file system ... fsck from util-linux 2.36.1
+[/sbin/fsck.ext4 (1) -- /dev/sda1] fsck.ext4 -a -C0 /dev/sda1 
+/dev/sda1: clean, 23464/249984 files, 205408/998144 blocks
+done.
+[    8.341615] EXT4-fs (sda1): mounted filesystem with ordered data mode. Opts: (null)
+done.
+Begin: Running /scripts/local-bottom ... done.
+Begin: Running /scripts/init-bottom ... done.
+[    9.555574] systemd[1]: System time before build time, advancing clock.
+[    9.659227] systemd[1]: Inserted module 'autofs4'
+[    9.774742] NET: Registered protocol family 10
+[    9.907816] Segment Routing with IPv6
+[    9.976358] systemd[1]: systemd 247.3-7 running in system mode. (+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +ZSTD +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+[    9.999563] systemd[1]: Detected architecture arm.
+
+Welcome to [1mDebian GNU/Linux 11 (bullseye)[0m!
+
+[   10.038838] systemd[1]: Set hostname to <ix4-200d>.
+[   10.187989] random: crng init done
+[   12.052646] systemd[1]: Queued start job for default target Graphical Interface.
+[   12.062869] systemd[1]: system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+[   12.075412] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+[   12.090822] systemd[1]: Created slice system-getty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-getty.slice[0m.
+[   12.113828] systemd[1]: Created slice system-modprobe.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-modprobe.slice[0m.
+[   12.137785] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[[0;32m  OK  [0m] Created slice [0;1;39msystem-serial\x2dgetty.slice[0m.
+[   12.161529] systemd[1]: Created slice User and Session Slice.
+[[0;32m  OK  [0m] Created slice [0;1;39mUser and Session Slice[0m.
+[   12.184917] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mDispatch Password …ts to Console Directory Watch[0m.
+[   12.208858] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[[0;32m  OK  [0m] Started [0;1;39mForward Password R…uests to Wall Directory Watch[0m.
+[   12.233724] systemd[1]: Set up automount Arbitrary Executable File Formats File System Automount Point.
+[[0;32m  OK  [0m] Set up automount [0;1;39mArbitrary…s File System Automount Point[0m.
+[   12.260763] systemd[1]: Reached target Local Encrypted Volumes.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal Encrypted Volumes[0m.
+[   12.285117] systemd[1]: Reached target Paths.
+[[0;32m  OK  [0m] Reached target [0;1;39mPaths[0m.
+[   12.304739] systemd[1]: Reached target Slices.
+[[0;32m  OK  [0m] Reached target [0;1;39mSlices[0m.
+[   12.324683] systemd[1]: Reached target Swap.
+[[0;32m  OK  [0m] Reached target [0;1;39mSwap[0m.
+[   12.346029] systemd[1]: Listening on RPCbind Server Activation Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mRPCbind Server Activation Socket[0m.
+[   12.369323] systemd[1]: Listening on fsck to fsckd communication Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mfsck to fsckd communication Socket[0m.
+[   12.392949] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[[0;32m  OK  [0m] Listening on [0;1;39minitctl Compatibility Named Pipe[0m.
+[   12.417968] systemd[1]: Listening on Journal Audit Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Audit Socket[0m.
+[   12.441480] systemd[1]: Listening on Journal Socket (/dev/log).
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket (/dev/log)[0m.
+[   12.465632] systemd[1]: Listening on Journal Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mJournal Socket[0m.
+[   12.487968] systemd[1]: Listening on udev Control Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Control Socket[0m.
+[   12.509513] systemd[1]: Listening on udev Kernel Socket.
+[[0;32m  OK  [0m] Listening on [0;1;39mudev Kernel Socket[0m.
+[   12.533669] systemd[1]: Condition check resulted in Huge Pages File System being skipped.
+[   12.547766] systemd[1]: Mounting POSIX Message Queue File System...
+         Mounting [0;1;39mPOSIX Message Queue File System[0m...
+[   12.575310] systemd[1]: Mounting NFSD configuration filesystem...
+         Mounting [0;1;39mNFSD configuration filesystem[0m...
+[   12.614533] systemd[1]: Mounting RPC Pipe File System...
+         Mounting [0;1;39mRPC Pipe File System[0m...
+[   12.647719] systemd[1]: Mounting Kernel Debug File System...
+         Mounting [0;1;39mKernel Debug File System[0m...
+[   12.682074] systemd[1]: Mounting Kernel Trace File System...
+         Mounting [0;1;39mKernel Trace File System[0m...
+[   12.712835] systemd[1]: Condition check resulted in Kernel Module supporting RPCSEC_GSS being skipped.
+[   12.730340] systemd[1]: Starting Create list of static device nodes for the current kernel...
+         Starting [0;1;39mCreate list of st…odes for the current kernel[0m...
+[   12.801389] systemd[1]: Starting Load Kernel Module configfs...
+         Starting [0;1;39mLoad Kernel Module configfs[0m...
+[   12.840822] systemd[1]: Starting Load Kernel Module drm...
+         Starting [0;1;39mLoad Kernel Module drm[0m...
+[   12.877634] systemd[1]: Starting Load Kernel Module fuse...
+         Starting [0;1;39mLoad Kernel Module fuse[0m...
+[   12.932096] systemd[1]: Condition check resulted in Set Up Additional Binary Formats being skipped.
+[   12.958552] systemd[1]: Condition check resulted in File System Check on Root Device being skipped.
+[   12.995197] fuse: init (API version 7.32)
+[   13.002369] systemd[1]: Starting Journal Service...
+         Starting [0;1;39mJournal Service[0m...
+[   13.110618] systemd[1]: Starting Load Kernel Modules...
+         Starting [0;1;39mLoad Kernel Modules[0m...
+[   13.159228] systemd[1]: Starting Remount Root and Kernel File Systems...
+         Starting [0;1;39mRemount Root and Kernel File Systems[0m...
+[   13.208778] RPC: Registered named UNIX socket transport module.
+[   13.214766] RPC: Registered udp transport module.
+[   13.219511] RPC: Registered tcp transport module.
+[   13.224255] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[   13.235152] systemd[1]: Starting Coldplug All udev Devices...
+         Starting [0;1;39mColdplug All udev Devices[0m...
+[   13.397773] systemd[1]: Mounted POSIX Message Queue File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mPOSIX Message Queue File System[0m.
+[   13.441377] systemd[1]: Mounted RPC Pipe File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mRPC Pipe File System[0m.
+[   13.469270] systemd[1]: Mounted Kernel Debug File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Debug File System[0m.
+[   13.497291] systemd[1]: Mounted Kernel Trace File System.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Trace File System[0m.
+[   13.538992] systemd[1]: Finished Create list of static device nodes for the current kernel.
+[   13.561975] EXT4-fs (sda1): re-mounted. Opts: (null)
+[[0;32m  OK  [0m] Finished [0;1;39mCreate list of st… nodes for the current kernel[0m.
+[   13.638441] systemd[1]: modprobe@configfs.service: Succeeded.
+[   13.669836] systemd[1]: Finished Load Kernel Module configfs.
+[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module configfs[0m.
+[   13.714821] systemd[1]: modprobe@drm.service: Succeeded.
+[   13.739873] Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+[   13.749021] systemd[1]: Finished Load Kernel Module drm.
+[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module drm[0m.
+[   13.794145] systemd[1]: Mounted NFSD configuration filesystem.
+[[0;32m  OK  [0m] Mounted [0;1;39mNFSD configuration filesystem[0m.
+[   13.838816] systemd[1]: modprobe@fuse.service: Succeeded.
+[   13.853792] systemd[1]: Finished Load Kernel Module fuse.
+[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Module fuse[0m.
+[   13.882888] systemd[1]: Finished Load Kernel Modules.
+[[0;32m  OK  [0m] Finished [0;1;39mLoad Kernel Modules[0m.
+[   13.914714] systemd[1]: Finished Remount Root and Kernel File Systems.
+[[0;32m  OK  [0m] Finished [0;1;39mRemount Root and Kernel File Systems[0m.
+[   13.978770] systemd[1]: Mounting FUSE Control File System...
+         Mounting [0;1;39mFUSE Control File System[0m...
+[   14.034436] systemd[1]: Mounting Kernel Configuration File System...
+         Mounting [0;1;39mKernel Configuration File System[0m...
+[   14.090149] systemd[1]: Starting pNFS block layout mapping daemon...
+         Starting [0;1;39mpNFS block layout mapping daemon[0m...
+[   14.140932] systemd[1]: Condition check resulted in Rebuild Hardware Database being skipped.
+[   14.168814] systemd[1]: Condition check resulted in Platform Persistent Storage Archival being skipped.
+[   14.222633] systemd[1]: Starting Load/Save Random Seed...
+         Starting [0;1;39mLoad/Save Random Seed[0m...
+[   14.274938] systemd[1]: Starting Apply Kernel Variables...
+         Starting [0;1;39mApply Kernel Variables[0m...
+[   14.339130] systemd[1]: Starting Create System Users...
+         Starting [0;1;39mCreate System Users[0m...
+[   14.436499] systemd[1]: Started Journal Service.
+[[0;32m  OK  [0m] Started [0;1;39mJournal Service[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mFUSE Control File System[0m.
+[[0;32m  OK  [0m] Mounted [0;1;39mKernel Configuration File System[0m.
+[[0;32m  OK  [0m] Started [0;1;39mpNFS block layout mapping daemon[0m.
+         Starting [0;1;39mFlush Journal to Persistent Storage[0m...
+[[0;32m  OK  [0m] Finished [0;1;39mLoad/Save Random Seed[0m.
+[[0;32m  OK  [0m] Finished [0;1;39mColdplug All udev Devices[0m.
+         Starting [0;1;39mHelper to synchronize boot up for ifupdown[0m...
+[[0;32m  OK  [0m] Finished [0;1;39mApply Kernel Variables[0m.
+[[0;32m  OK  [0m] Finished [0;1;39mCreate System Users[0m.
+[   14.806130] systemd-journald[182]: Received client request to flush runtime journal.
+         Starting [0;1;39mCreate Static Device Nodes in /dev[0m...
+[   14.855994] systemd-journald[182]: File /var/log/journal/26039558baf04ebe9115b3551e1d7cf4/system.journal corrupted or uncleanly shut down, renaming and replacing.
+[[0;32m  OK  [0m] Finished [0;1;39mCreate Static Device Nodes in /dev[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems (Pre)[0m.
+         Mounting [0;1;39m/tmp[0m...
+         Starting [0;1;39mRule-based Manage…for Device Events and Files[0m...
+[[0;32m  OK  [0m] Mounted [0;1;39m/tmp[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLocal File Systems[0m.
+         Starting [0;1;39mPreprocess NFS configuration[0m...
+[[0;32m  OK  [0m] Finished [0;1;39mFlush Journal to Persistent Storage[0m.
+         Starting [0;1;39mCreate Volatile Files and Directories[0m...
+[[0;32m  OK  [0m] Finished [0;1;39mPreprocess NFS configuration[0m.
+         Starting [0;1;39mNFSv4 ID-name mapping service[0m...
+[[0;32m  OK  [0m] Reached target [0;1;39mNFS client services[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNFSv4 ID-name mapping service[0m.
+[[0;32m  OK  [0m] Started [0;1;39mRule-based Manager for Device Events and Files[0m.
+[[0;32m  OK  [0m] Finished [0;1;39mCreate Volatile Files and Directories[0m.
+         Starting [0;1;39mRPC bind portmap service[0m...
+         Starting [0;1;39mUpdate UTMP about System Boot/Shutdown[0m...
+[[0;32m  OK  [0m] Started [0;1;39mRPC bind portmap service[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mRPC Port Mapper[0m.
+[   16.599116] nand: device found, Manufacturer ID: 0xec, Chip ID: 0x75
+[   16.605578] nand: Samsung NAND 32MiB 3,3V 8-bit
+[   16.610181] nand: 32 MiB, SLC, erase size: 16 KiB, page size: 512, OOB size: 16
+[   16.802222] orion_wdt: Initial timeout 21 sec
+[   16.845094] Scanning device for bad blocks
+[[0;32m  OK  [0m] Found device [0;1;39m/dev/ttyS0[0m.
+[   16.960330] marvell-cesa f1030000.crypto: CESA device successfully registered
+[[0;32m  OK  [0m] Finished [0;1;39mUpdate UTMP about System Boot/Shutdown[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSystem Initialization[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily apt download activities[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily apt upgrade and clean activities[0m.
+[[0;32m  OK  [0m] Started [0;1;39mPeriodic ext4 Onli…ata Check for All Filesystems[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDiscard unused blocks once a week[0m.
+[[0;32m  OK  [0m] Started [0;1;39mDaily Cleanup of Temporary Directories[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mTimers[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mAvahi mDNS/DNS-SD Stack Activation Socket[0m.
+[[0;32m  OK  [0m] Listening on [0;1;39mD-Bus System Message Bus Socket[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mSockets[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mBasic System[0m.
+         Starting [0;1;39mAvahi mDNS/DNS-SD Stack[0m...
+[   17.347208] sd 2:0:0:0: Attached scsi generic sg0 type 0
+[[0;32m  OK  [0m] Started [0;1;39mD-Bus System Message Bus[0m.
+         Starting [0;1;39mRemove Stale Onli…t4 Metadata Check Snapshots[0m...
+         Starting [0;1;39mUser Login Management[0m...
+[   17.941727] Bad eraseblock 1026 at 0x000001008000
+[   18.073319] Bad eraseblock 1232 at 0x000001340000
+[   18.204737] Bad eraseblock 1436 at 0x000001670000
+[   18.276595] Bad eraseblock 1584 at 0x0000018c0000
+[   18.310042] Bad eraseblock 1632 at 0x000001980000
+[   18.456901] Bad eraseblock 1988 at 0x000001f10000
+[[0;32m  OK  [0m] Started [0;1;39mAvahi mDNS/DNS-SD Stack[0m.
+[   18.604504] 3 fixed-partitions partitions found on MTD device orion_nand
+[   18.611308] Creating 3 MTD partitions on "orion_nand":
+[   18.618262] 0x000000000000-0x000000100000 : "u-boot"
+[   18.630355] 0x000000100000-0x000000300000 : "uImage"
+[   18.643474] 0x000000300000-0x000000800000 : "rootfs"
+[[0;32m  OK  [0m] Finished [0;1;39mHelper to synchronize boot up for ifupdown[0m.
+         Starting [0;1;39mRaise network interfaces[0m...
+[[0;32m  OK  [0m] Started [0;1;39mUser Login Management[0m.
+[[0;32m  OK  [0m] Finished [0;1;39mRemove Stale Onli…ext4 Metadata Check Snapshots[0m.
+[   20.232152] NET: Registered protocol family 17
+[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (9s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (10s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (10s / 5min 6s)
+[   23.135650] mv643xx_eth_port mv643xx_eth_port.0 eth0: link up, 1000 Mb/s, full duplex, flow control disabled
+[   23.145627] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (11s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (11s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (12s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (12s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (13s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (13s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (14s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (14s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (15s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (15s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (16s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (16s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (17s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (19s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (20s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (20s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (21s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (21s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (22s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (22s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (23s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (23s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (24s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (24s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (25s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (25s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (26s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (26s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (27s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (27s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (28s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (28s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (29s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (29s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (30s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (30s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (31s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (31s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (32s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (32s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (33s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (33s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (34s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (34s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (35s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (35s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (36s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (36s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (37s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (37s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (38s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (38s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (39s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (39s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (40s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (40s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (41s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (41s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (42s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (42s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (43s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (43s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (44s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (44s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (45s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (45s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (46s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (46s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (47s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (47s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (48s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (48s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (49s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (49s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (50s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (50s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (51s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (51s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (52s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (52s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (53s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (53s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (54s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (54s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (55s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (55s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (56s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (56s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise network interfaces (57s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise network interfaces (57s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise network interfaces (58s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise network interfaces (58s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise network interfaces (59s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise network interfaces (59s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise network interfaces (1min / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise network interfaces (1min / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise ne…ork interfaces (1min 1s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise ne…ork interfaces (1min 1s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…ork interfaces (1min 2s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…ork interfaces (1min 2s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…ork interfaces (1min 3s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…ork interfaces (1min 3s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise ne…ork interfaces (1min 4s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…ork interfaces (1min 4s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…ork interfaces (1min 5s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…ork interfaces (1min 5s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…ork interfaces (1min 6s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise ne…ork interfaces (1min 6s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise ne…ork interfaces (1min 7s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise ne…ork interfaces (1min 7s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise ne…ork interfaces (1min 8s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise ne…ork interfaces (1min 8s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…ork interfaces (1min 9s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…ork interfaces (1min 9s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 10s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 10s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 11s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 11s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 12s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…rk interfaces (1min 12s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…rk interfaces (1min 13s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise ne…rk interfaces (1min 13s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise ne…rk interfaces (1min 14s / 5min 6s)
+M
+[K[[0m[0;31m*     [0m] A start job is running for Raise ne…rk interfaces (1min 14s / 5min 6s)
+M
+[K[[0;1;31m*[0m[0;31m*    [0m] A start job is running for Raise ne…rk interfaces (1min 15s / 5min 6s)
+M
+[K[[0;31m*[0;1;31m*[0m[0;31m*   [0m] A start job is running for Raise ne…rk interfaces (1min 15s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…rk interfaces (1min 16s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…rk interfaces (1min 16s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 17s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 17s / 5min 6s)
+M
+[K[     [0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 18s / 5min 6s)
+M
+[K[    [0;31m*[0;1;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 18s / 5min 6s)
+M
+[K[   [0;31m*[0;1;31m*[0m[0;31m*[0m] A start job is running for Raise ne…rk interfaces (1min 19s / 5min 6s)
+M
+[K[  [0;31m*[0;1;31m*[0m[0;31m* [0m] A start job is running for Raise ne…rk interfaces (1min 19s / 5min 6s)
+M
+[K[ [0;31m*[0;1;31m*[0m[0;31m*  [0m] A start job is running for Raise ne…rk interfaces (1min 20s / 5min 6s)
+M
+[K[[0;32m  OK  [0m] Finished [0;1;39mRaise network interfaces[0m.
+[K[[0;32m  OK  [0m] Reached target [0;1;39mNetwork[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mNetwork is Online[0m.
+         Starting [0;1;39mNetatalk AFP fileserver for Macintosh clients[0m...
+         Starting [0;1;39mNFS Mount Daemon[0m...
+         Starting [0;1;39mSamba NMB Daemon[0m...
+         Starting [0;1;39mOpenBSD Secure Shell server[0m...
+[[0;32m  OK  [0m] Started [0;1;39mNFS Mount Daemon[0m.
+         Starting [0;1;39mNFS server and services[0m...
+[[0;32m  OK  [0m] Started [0;1;39mOpenBSD Secure Shell server[0m.
+[[0;32m  OK  [0m] Started [0;1;39mNetatalk AFP fileserver for Macintosh clients[0m.
+[   94.561771] NFSD: Using UMH upcall client tracking operations.
+[   94.567745] NFSD: starting 90-second grace period (net f000001c)
+[[0;32m  OK  [0m] Finished [0;1;39mNFS server and services[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems (Pre)[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mRemote File Systems[0m.
+[[0;32m  OK  [0m] Started [0;1;39mRegular background program processing daemon[0m.
+         Starting [0;1;39mPermit User Sessions[0m...
+[[0;32m  OK  [0m] Finished [0;1;39mPermit User Sessions[0m.
+[[0;32m  OK  [0m] Started [0;1;39mSerial Getty on ttyS0[0m.
+[[0;32m  OK  [0m] Reached target [0;1;39mLogin Prompts[0m.
+[[0;32m  OK  [0m] Started [0;1;39mSamba NMB Daemon[0m.
+         Starting [0;1;39mSamba SMB Daemon[0m...
+
+
+Debian GNU/Linux 11 ix4-200d ttyS0
+
+ix4-200d login: 

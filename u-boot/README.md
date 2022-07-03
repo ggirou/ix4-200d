@@ -22,8 +22,16 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
     # Or one line
     make distclean && make ix4-200d_config && make u-boot.kwb
 
+    # Copy compiled files
+    cp u-boot.kwb ../ix4-200d/dist/ix4-200d-u-boot-2022.04.kwb
+    cp dts/dt.dtb ../ix4-200d/dist/kirkwood-ix4-200d.dtb
+
     # Copy latest kwboot
     sudo cp ./tools/kwboot /usr/bin
+
+# Build DTB file only
+
+    make dts/dt.dtb
 
 # Notes
 

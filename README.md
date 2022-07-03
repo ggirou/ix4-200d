@@ -70,7 +70,7 @@ First, keep current u-boot parameters:
 
 On USB key with debian, edit `/uEnv.txt`:
 
-    x_bootargs=console=ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
+    x_bootargs=console=ttyS0,115200 mtdparts=orion_nand:896k(uboot),128k(env),-(rootfs) initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
     x_bootargs_root=root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext2
     x_bootcmd_kernel=ext4load usb 0:1 ${loadaddr} /boot/uImage
 
@@ -86,7 +86,7 @@ From u-boot prompt:
     env import -t ${loadaddr} ${filesize}
 
     # Or set mannually environments
-    setenv x_bootargs console ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
+    setenv x_bootargs console=ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
     setenv x_bootargs_root root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext2
 
     # Load uImage from USB
