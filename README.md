@@ -96,6 +96,40 @@ From u-boot prompt:
     setenv bootargs ${x_bootargs} ${x_bootargs_root}
     bootm ${loadaddr}
 
+# Persist new u-boot
+
+If everything is OK, load `u-boot.kwb` from USB key:
+
+    usb start
+    ext4load usb 0:1 0x1000000 /u-boot.kwb
+
+or from TFTP server:
+
+    # setenv gatewayip 192.168.1.254
+    setenv ipaddr 192.168.1.250
+    tftpboot 0x1000000 192.168.1.48:u-boot.kwb
+
+Then write it to nand:
+
+    nand erase 0x000000 0xe0000
+    nand write 0x1000000 0x000000 0xe0000
+    env default -a
+    env save
+    reset
+
+First, keep current new u-boot parameters:
+
+    printenv
+
+> Keep the content of `printenv` [output](new-firmware/uboot-printenv.txt). This will be a useful reference if you want to restore any u-boot parameters.
+
+Set few env:
+
+    setenv ethaddr 00:26:2d:06:ab:ac
+    setenv eth1addr 00:26:2d:06:ab:ad
+    env save
+    reset
+
 # Build U-Boot
 
     docker compose build --pull

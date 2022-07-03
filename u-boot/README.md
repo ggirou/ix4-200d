@@ -24,3 +24,7 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
 
     # Copy latest kwboot
     sudo cp ./tools/kwboot /usr/bin
+
+# Notes
+
+`NAND_PAGE_SIZE` should be correct in `kwbimage.cfg`, otherwise it will not boot when flashed on nand.
