@@ -52,7 +52,7 @@ Files to note:
 - `/usr/local/cfg/initrd_bootstrap.sh`: script that runs on Debian startup
 - `/lib/modules/modprobe.txt`: loaded modules at startup
 
-# Boot u-boot and debian from USB key
+# Boot u-boot and debian
 
     cd ix4-200d-3.2.16.30221
 
@@ -75,7 +75,10 @@ Files to note:
     # Optionnal
     # sudo resize2fs /dev/sda1
 
-    # Copy kernel and initrd images
+    # Copy kernel and initrd images to TFTP server
+    sudo cp zImage initrd /srv/tftp/
+
+    # OR Copy kernel and initrd images to usb
     sudo mkdir -p /mnt/usb/
     sudo mount /dev/sda1 /mnt/usb/
     sudo cp zImage initrd /mnt/usb/
@@ -86,11 +89,19 @@ Files to note:
 
     kwboot -p -t -B 115200 /dev/ttyUSB0 -b u-boot-DRAM256-MapowerV5.1_nand.bin
 
-> Hit `Ctrl+C` to stop boot process.
+> Hit `Ctrl+C` several times to stop boot processes.
 
+    # Load from TFTP server (plug on Ethernet port 2)
+    setenv ipaddr 192.168.1.250; setenv serverip 192.168.1.48
+    tftpboot 0x2000000 zImage; tftpboot 0x4500000 initrd
+
+    # OR Load from USB (if it works!)
     usb start
     ext2ls usb 0 /
     ext2load usb 0:1 0x2000000 zImage
     ext2load usb 0:1 0x4500000 initrd
 
-    # WIP
+    setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash) root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw
+    bootm 0x2000000 0x4500000
+
+    # FAIL TO BOOT!

@@ -1,3 +1,4 @@
+*.mnt/
 /dist/
 notes.txt
 screenlog.*
