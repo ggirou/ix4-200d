@@ -1,0 +1,2 @@
+# boot time modprobe list
+SOHO_MODULES="ext3 ext4 isofs udf fat msdos btusb ums-sddr09 ums-sddr55 ums-jumpshot usblp usbhid l2cap rfcomm ufsd xfs raid0 raid10 raid456 nfsd"

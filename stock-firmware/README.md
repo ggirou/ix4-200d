@@ -1,35 +1,6 @@
 ix4-200d stock firmware
 -----------------------
 
-# Download original firmware
-
-    wget http://download.lenovo.com/nasupdate/iomnas/ix4-200d-3.2.16.30221.tgz
-    openssl enc -d -md md5 -aes-128-cbc -in "ix4-200d-3.2.16.30221.tgz" -k "EMCNTGSOHO" -out "ix4-200d-3.2.16.30221-decrypted.tar.gz"
-    tar xzf ix4-200d-3.2.16.30221-decrypted.tar.gz -C ./ix4-200d-3.2.16.30221/
-
-## Few experiments
-
-Mount `initrd` filesystem:
-
-    cd ix4-200d-3.2.16.30221/
-    dumpimage -l initrd
-    dumpimage -o initrd.img.gz initrd
-    gunzip -v initrd.img.gz
-
-    mkdir initrd.mnt
-    sudo mount initrd.img initrd.mnt/
-
-Mount `apps` filesystem:
-
-    cd ix4-200d-3.2.16.30221/
-    mkdir apps.mnt
-    sudo mount apps apps.mnt/
-
-Extract kernel:
-
-    dumpimage -l zImage
-    dumpimage -o zImage.img zImage
-
 # Boot a shell in stock firmware initrd
 
 Open serial prompt in stock u-boot:

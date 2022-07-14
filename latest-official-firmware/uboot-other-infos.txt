@@ -1,0 +1,237 @@
+Marvell>> version
+
+U-Boot 1.1.4 (May 30 2012 - 06:42:24) Marvell version: 3.6.0
+Marvell>> base
+
+Base Address: 0x00000000
+Marvell>> cpumap
+
+CPU Memory mapping :
+No page table. 
+Marvell>> date
+
+Date: 2022-07-14 (Thursday)    Time: 16:09:47
+Marvell>> dclk
+
+TCLK 200Mhz, SYSCLK 400Mhz (UART baudrate 115200)
+Marvell>> eeprom
+
+Usage:
+eeprom  - EEPROM sub-system
+
+Marvell>> help eeprom
+
+eeprom read  devaddr addr off cnt
+eeprom write devaddr addr off cnt
+       - read/write `cnt' bytes from `devaddr` EEPROM at offset `off'
+
+Marvell>> fatinfo
+
+usage: fatinfo <interface> <dev[:part]>
+Marvell>> fatls
+
+usage: fatls <interface> <dev[:part]> [directory]
+Marvell>> flinfo
+
+Marvell>> fsinfo
+
+mtdids not defined, no default present
+Marvell>> ide
+
+
+Warning: Please run 'ide reset' before running other ide commands 
+
+Marvell>> ide info
+
+
+Warning: Please run 'ide reset' before running other ide commands 
+
+Marvell>> ide reset
+
+
+Reset IDE: 
+Marvell Serial ATA Adapter
+Integrated Sata device found
+
+Marvell>> ide infop 
+
+
+Marvell>> map
+
+
+CPU Interface
+-------------
+SDRAM_CS0 ....base 00000000, size 256MB 
+SDRAM_CS1 ....disable
+SDRAM_CS2 ....disable
+SDRAM_CS3 ....disable
+PEX0_MEM ....base 90000000, size 128MB 
+PEX0_IO ....base f0000000, size  16MB 
+PEX1_MEM ....no such
+PEX1_IO ....no such
+INTER_REGS ....base f1000000, size   1MB 
+NFLASH_CS ....base f9000000, size   8MB 
+SPI_CS ....base f8000000, size  16MB 
+BOOT_ROM_CS ....no such
+DEV_BOOTCS ....no such
+CRYPT_ENG ....base fb000000, size  64KB 
+
+AHB To MBUS Bridge:
+-------------------
+win0 - PEX0_MEM base 90000000, ....size 128MB 
+win1 - disable
+win2 - PEX0_IO base f0000000, ....size  16MB 
+win3 - disable
+win4 - NFLASH_CS base f9000000, ....size   8MB 
+win5 - SPI_CS base f8000000, ....size  16MB 
+win6 - disable
+win7 - CRYPT_ENG base fb000000, ....size  64KB 
+win8 - INTER_REGS base f1000000, ....size   1MB 
+
+PEX0:
+-----
+
+Pex Bars 
+
+Internal Regs Bar0.... base f1000000, size   1MB 
+DRAM Bar1............. base 00000000, size 256MB 
+Devices Bar2.......... disable
+
+Pex Decode Windows
+
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - disable
+win2 - disable
+win3 - disable
+win4 - disable
+win5 - disable
+default win - target unknown 
+Expansion ROM - NFLASH_CS 
+
+USB:
+----
+Device 0:
+win0 - SDRAM_CS0 base 00000000, size 256MB 
+win1 - PEX0_MEM base 90000000, size 128MB 
+win2 - disable
+win3 - disable
+
+ETH 0:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - NFLASH_CS base f9000000, ....size   8MB 
+win2 - SPI_CS base f8000000, ....size  16MB 
+win3 - PEX0_IO base f0000000, ....size  16MB 
+win4 - disable
+win5 - disable
+
+ETH 1:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - NFLASH_CS base f9000000, ....size   8MB 
+win2 - SPI_CS base f8000000, ....size  16MB 
+win3 - PEX0_IO base f0000000, ....size  16MB 
+win4 - disable
+win5 - disable
+
+XOR 0:
+----
+win0 - NFLASH_CS base f9000000, size   8MB 
+win1 - PEX0_MEM base 90000000, size 128MB 
+win2 - SDRAM_CS0 base 0, size 256MB 
+win3 - SPI_CS base f8000000, size  16MB 
+win4 - CRYPT_ENG base fb000000, size  64KB 
+win5 - disable
+win6 - disable
+win7 - disable
+
+XOR 1:
+----
+win0 - NFLASH_CS base f9000000, size   8MB 
+win1 - PEX0_MEM base 90000000, size 128MB 
+win2 - SDRAM_CS0 base 0, size 256MB 
+win3 - SPI_CS base f8000000, size  16MB 
+win4 - CRYPT_ENG base fb000000, size  64KB 
+win5 - disable
+win6 - disable
+win7 - disable
+
+SATA 0:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - PEX0_MEM base 90000000, ....size 128MB 
+win2 - disable
+win3 - disable
+
+SATA 1:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - PEX0_MEM base 90000000, ....size 128MB 
+win2 - disable
+win3 - disable
+
+AUDIO:
+----
+win0 - SDRAM_CS0 base 00000000, ....size 256MB 
+win1 - SDRAM_CS1 base 10000000, ....size 256MB 
+Marvell>> me
+
+PCI 0 Master enabled.
+Marvell>> np
+
+Unknown command 'np' - try 'help'
+Marvell>> mp
+
+mapping pci 0 to address 0x0
+PCI 0 Access base address : 90000000
+Marvell>> nand info
+
+
+Device 0: NAND 32MB 3,3V 8-bit, sector size 16 KB
+Marvell>> pci
+
+Scanning PCI devices on bus 0
+BusDevFun  VendorId   DeviceId   Device Class       Sub-Class
+_____________________________________________________________
+00.00.00   0x11ab     0x6281     Memory controller       0x80
+00.01.00   0x11ab     0x6121     Mass storage controller 0x01
+Marvell>> phyRead
+
+0x0
+Marvell>> se
+
+Usage:
+se	- PCI Slave enable
+
+Marvell>> se info
+
+Usage:
+se	- PCI Slave enable
+
+Marvell>> help se
+
+se  [0/1] bus dev 
+	Enable the PCI device as Slave on PCI 0/1. 
+
+Marvell>> sg
+
+PHY 0 :
+---------
+Auto negotiation: Enabled
+Speed: Uknown
+Duplex: Full
+Link: up
+
+PHY 1 :
+---------
+Auto negotiation: Enabled
+Speed: Uknown
+Duplex: Full
+Link: up
+
+Marvell>> Temp
+
+Unknown command 'Temp' - try 'help'
+Marvell>> temp
+
+Tj temp is 0

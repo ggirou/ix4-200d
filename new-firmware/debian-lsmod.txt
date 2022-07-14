@@ -1,0 +1,61 @@
+Module                  Size  Used by
+af_packet              49152  4
+ofpart                 20480  0
+cmdlinepart            16384  0
+sg                     28672  0
+marvell_cesa           36864  0
+orion_wdt              16384  0
+libdes                 28672  1 marvell_cesa
+adt7475                28672  0
+watchdog               20480  1 orion_wdt
+hwmon_vid              16384  1 adt7475
+libaes                 16384  1 marvell_cesa
+orion_nand             16384  0
+nand                   94208  1 orion_nand
+nand_ecc               16384  1 nand
+bch                    20480  1 nand
+nandcore               16384  1 nand
+fuse                   98304  1
+nfsd                  380928  13
+auth_rpcgss            98304  1 nfsd
+nfs_acl                16384  1 nfsd
+lockd                  81920  1 nfsd
+grace                  16384  2 nfsd,lockd
+configfs               40960  1
+sunrpc                393216  18 auth_rpcgss,nfsd,nfs_acl,lockd
+ip_tables              24576  0
+x_tables               28672  1 ip_tables
+hmac                   16384  3
+ipv6                  430080  50
+autofs4                40960  2
+ext4                  606208  1
+crc16                  16384  1 ext4
+mbcache                16384  1 ext4
+jbd2                  102400  1 ext4
+crc32c_generic         16384  2
+gpio_keys              20480  0
+sd_mod                 45056  2
+t10_pi                 16384  1 sd_mod
+crc_t10dif             20480  1 t10_pi
+crct10dif_generic      16384  1
+crct10dif_common       16384  2 crct10dif_generic,crc_t10dif
+uas                    24576  0
+evdev                  20480  0
+usb_storage            57344  2 uas
+ubi                   143360  0
+mtd                    61440  7 ofpart,nand,cmdlinepart,orion_nand,ubi
+kirkwood_thermal       16384  0
+gpio_fan               16384  0
+hwmon                  28672  2 gpio_fan,adt7475
+ehci_orion             20480  0
+ehci_hcd               61440  1 ehci_orion
+sata_mv                28672  0
+libata                188416  1 sata_mv
+marvell                24576  2
+scsi_mod              180224  5 sd_mod,usb_storage,libata,uas,sg
+usbcore               176128  4 ehci_orion,usb_storage,ehci_hcd,uas
+usb_common             16384  2 ehci_hcd,usbcore
+nls_base               16384  1 usbcore
+mv643xx_eth            36864  0
+mvmdio                 16384  0
+rtc_mv                 16384  1

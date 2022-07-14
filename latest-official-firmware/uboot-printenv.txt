@@ -1,0 +1,68 @@
+baudrate=115200
+loads_echo=0
+ipaddr=10.4.52.165
+serverip=10.4.52.7
+rootpath=/srv/ubuntu
+netmask=255.255.255.0
+run_diag=yes
+stdin=serial
+stdout=serial
+stderr=serial
+console=console=ttyS0,115200 mtdparts=nand_mtd:0xc0000@0(uboot)ro,0x1f00000@0x100000(root)
+mainlineLinux=no
+enaMonExt=no
+enaCpuStream=no
+enaWrAllo=no
+pexMode=RC
+disL2Cache=no
+setL2CacheWT=yes
+disL2Prefetch=yes
+enaICPref=yes
+enaDCPref=yes
+sata_dma_mode=yes
+ethprime=egiga1
+netbsd_en=no
+vxworks_en=no
+bootargs_root=root=/dev/nfs rw
+bootargs_end=:::DB88FXX81:eth0:none
+image_name=uImage
+standalone=fsload 0x2000000 $(image_name);setenv bootargs $(console) root=/dev/mtdblock0 rw ip=$(ipaddr):$(serverip)$(bootargs_end) $(mvPhoneConfig); bootm 0x2000000;
+bootdelay=3
+disaMvPnp=no
+ethaddr=00:50:43:40:20:02
+ethmtu=1500
+eth1addr=00:50:43:04:20:02
+eth1mtu=1500
+mvPhoneConfig=mv_phone_config=dev[0]:fxs,dev[1]:fxo
+mvNetConfig=mv_net_config=(00:11:88:0f:62:81,0:1:2:3),mtu=1500
+usb0Mode=host
+yuk_ethaddr=00:00:00:EE:51:81
+nandEcc=1bit
+netretry=no
+rcvrip=169.254.100.100
+loadaddr=0x02000000
+autoload=no
+enaAutoRecovery=yes
+pcieTune=no
+image_multi=yes
+ethact=egiga0
+FanHysteresis=2
+FanTempStart=58
+uboot_start=0x0
+uboot_size=0xc0000
+env_start=0x84000
+env_size=0x4000
+kernel_start=0x100000
+kernel_size=0x300000
+initrd_start=0x540000
+initrd_size=0x300000
+bootcmd=run flash_load
+flash_load=run make_boot_args load1 load2 boot
+load1=nand read.e 0x2000000 $(kernel_start) $(kernel_size)
+load2=nand read.e 0x4500000 $(initrd_start) $(initrd_size)
+boot=bootm 0x2000000 0x4500000
+make_boot_args=setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:;setenv bootargs $(bootargs)$(uboot_size)@$(uboot_start)(uboot),;setenv bootargs $(bootargs)$(env_size)@$(env_start)(env),;setenv bootargs $(bootargs)$(kernel_size)@$(kernel_start)(zImage),;setenv bootargs $(bootargs)$(initrd_size)@$(initrd_start)(initrd),;setenv bootargs $(bootargs)32m@0x0(flash);saveenv;
+iomega=123
+bootargs=console=ttyS0,115200 mtdparts=nand_mtd:0xc0000@0x0(uboot),0x4000@0x84000(env),0x300000@0x100000(zImage),0x300000@0x540000(initrd),32m@0x0(flash)
+
+Environment size: 2068/16380 bytes
