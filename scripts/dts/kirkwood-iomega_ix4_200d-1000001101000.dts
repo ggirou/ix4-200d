@@ -10,23 +10,23 @@
 
 #include <dt-bindings/input/input.h>
 #include <dt-bindings/gpio/gpio.h>
-#include "kirkwood.dtsi"      
-#include "kirkwood-6281.dtsi" 
+#include "kirkwood.dtsi"
+#include "kirkwood-6281.dtsi"
 
 / {
 	model = "Iomega ix4-200d";
 	compatible = "marvell,rd88f6281-a", "marvell,rd88f6281", "marvell,kirkwood-88f6281", "marvell,kirkwood";
 
-memory {                                    
-        device_type = "memory";             
-        reg = <0x00000000 0x20000000>;      
-};                                          
-                                            
-chosen {                                    
+memory {
+        device_type = "memory";
+        reg = <0x00000000 0x20000000>;
+};
+
+chosen {
         bootargs = "console=ttyS0,115200n8 earlyprintk";
-        stdout-path = &uart0;               
-};                                          
-                                            
+        stdout-path = &uart0;
+};
+
 ocp@f1000000 {
 	pinctrl: pin-controller@10000
 	{
@@ -180,15 +180,16 @@ ocp@f1000000 {
                 };
 	};
 
-        serial@12000 {                               
-                status = "ok";                       
+        serial@12000 {
+                status = "ok";
         };
-                                                     
-        sata@80000 {                                 
+
+        sata@80000 {
                 status = "okay";
+		//status = "disabled";
                 nr-ports = <4>;
-        };                                           
-                                                     
+        };
+
 };
 
 };
@@ -196,6 +197,37 @@ ocp@f1000000 {
 &nand {
         chip-delay = <40>;
         status = "okay";
+
+        partition@0 {
+                label = "u-boot";
+                reg = <0x00000000 0x000a0000>;
+                read-only;
+        };
+
+        partition@a0000 {
+                label = "env";
+                reg = <0x000a0000 0x00010000>;
+        };
+
+	partition@b0000 {
+                label = "zImage";
+                reg = <0x000b0000 0x00228000>;
+        };
+
+	partition@2d8000 {
+                label = "initrd";
+                reg = <0x002d8000 0x00300000>;
+        };
+
+        //partition@0500000 {
+        //        label = "rootfs";
+        //        reg = <0x0500000 0x2000000>;
+        //};
+//0x000000000000-0x0000000a0000 : "uboot"
+//0x0000000a0000-0x0000000b0000 : "env"
+//0x0000000b0000-0x0000002d8000 : "zImage"
+//0x0000002d8000-0x0000005d8000 : "initrd"
+//0x000000000000-0x000002000000 : "flash"
 };
 
 &mdio {

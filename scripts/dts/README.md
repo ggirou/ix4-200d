@@ -8,7 +8,7 @@ https://www.devicetree.org/
 DTS files come fron Linux Kernel :
 https://github.com/torvalds/linux/blob/master/arch/arm/boot/dts/kirkwood-iomega_ix2_200.dts
 
-Iomega ix4-200
+Iomega ix2-200
 
     wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/kirkwood-iomega_ix2_200.dts
     wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/kirkwood.dtsi
@@ -20,8 +20,10 @@ D-Link DNS 320
 
 # Community DTS
 
-- https://forum.doozan.com/read.php?2,22623
-- https://github.com/1000001101000/ix4-200d-research/blob/master/device-tree/kirkwood-iomega_ix4_200d.dts
+- `kirkwood-iomega_ix4_200d-damacc.dts` by damacc: https://forum.doozan.com/read.php?2,22623,22673#msg-22673
+- `kirkwood-iomega_ix4_200d-1000001101000.dts` by 1000001101000: https://github.com/1000001101000/ix4-200d-research/blob/master/device-tree/kirkwood-iomega_ix4_200d.dts
+- `kirkwood-iomega_ix4_200d-bodhi.dts` by bodhi: https://github.com/pepaslabs/bodhi-kirkwood-kernel-mirror/blob/master/linux-5.4.2-kirkwood-tld-1.patch#L1215-L1321
+- https://forum.doozan.com/read.php?2,94079,94319#msg-94319
 
 # Compile DTS to DTB (doesn't work)
 

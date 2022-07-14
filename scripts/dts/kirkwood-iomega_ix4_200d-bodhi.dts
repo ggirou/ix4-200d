@@ -1,0 +1,107 @@
+/*
+ *  Device tree file for the Iomega ix4-200d
+ *
+ * Copyright (c) 2016, bodhi <mibodhi@gmail.com>
+ * Copyright (c) 2015, DaMacc
+ *
+*/
+
+/dts-v1/;
+
+#include "kirkwood.dtsi"
+#include "kirkwood-6281.dtsi"
+
+/ {
+	model = "Iomega ix4-200d";
+	compatible = "marvell,rd88f6281-a", "marvell,rd88f6281", "marvell,kirkwood-88f6281", "marvell,kirkwood";
+
+memory {
+        device_type = "memory";
+        reg = <0x00000000 0x20000000>;
+};
+
+chosen {
+        bootargs = "console=ttyS0,115200n8 earlyprintk";
+        stdout-path = &uart0;
+};
+
+ocp@f1000000 {
+
+	i2c@11000 {
+		status = "okay";
+
+		adt7473@2e {
+			compatible = "adi,adt7473";
+			reg = <0x2e>;
+		};
+	};
+
+        serial@12000 {
+                status = "ok";
+        };
+
+        sata@80000 {
+                status = "okay";
+                nr-ports = <2>;
+        };
+
+};
+
+};
+
+&nand {
+        chip-delay = <40>;
+        status = "okay";
+
+        partition@0 {
+                label = "u-boot";
+                reg = <0x0000000 0x100000>;
+                read-only;
+        };
+
+        partition@100000 {
+                label = "uImage";
+                reg = <0x0100000 0x0500000>;
+        };
+
+        partition@0500000 {
+                label = "rootfs";
+                reg = <0x0500000 0x2000000>;
+        };
+};
+
+&mdio {
+	status = "okay";
+
+	ethphy0: ethernet-phy@8 {
+		device_type = "ethernet-phy";
+		reg = <8>;
+	};
+
+	ethphy1: ethernet-phy@9 {
+		device_type = "ethernet-phy";
+		reg = <9>;
+	};
+};
+
+&eth0 {
+	status = "okay";
+	ethernet0-port@0 {
+		phy-handle = <&ethphy0>;
+	};
+};
+
+&eth1 {
+	status = "okay";
+	ethernet1-port@0 {
+		phy-handle = <&ethphy1>;
+	};
+};
+
+&pciec {
+	status = "okay";
+};
+
+&pcie0 {
+	status = "okay";
+};

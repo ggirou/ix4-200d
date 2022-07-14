@@ -1,9 +1,13 @@
 Run Debian on ix4-200d
 ----------------------
 
+- U-Boot 2022.04
+- Debian 11 Bullseye
+
 Everything here comes essentially from:
 
   - https://forum.doozan.com/read.php?2,22623
+  - https://forum.doozan.com/read.php?2,12096
   - https://github.com/1000001101000/ix4-200d-research
   - https://download.lenovo.com/lenovoemc/na/en/app/cust_alp/p/1031%2c1087/c/73.html
 
