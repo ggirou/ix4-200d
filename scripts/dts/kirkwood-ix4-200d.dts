@@ -1,67 +1,67 @@
 /dts-v1/;
 
-#include "kirkwood.dtsi"      
-#include "kirkwood-6281.dtsi" 
+#include "kirkwood.dtsi"
+#include "kirkwood-6281.dtsi"
 
 / {
-	model = "Iomega ix4-2OOd";
-	compatible = "marvell,rd88f6281-a", "marvell,rd88f6281","marvell,kirkwood-88f6281", "marvell,kirkwood";
+	model = "Iomega ix4-200d";
+	compatible = "marvell,rd88f6281-a", "marvell,rd88f6281", "marvell,kirkwood-88f6281", "marvell,kirkwood";
 
-memory {                                    
-        device_type = "memory";             
-        reg = <0x00000000 0x20000000>;      
-};                                          
-                                            
-chosen {                                    
-        bootargs = "console=ttyS0,115200n8 earlyprintk";
-        stdout-path = &uart0;               
-};                                          
-                                            
-mbus {                                      
-        pcie-controller {                   
-                status = "okay";            
-                                            
-                pcie@1,0 {                  
-                        status = "okay";    
-                };                          
-        };                                  
+memory {
+	device_type = "memory";
+	reg = <0x00000000 0x20000000>;
+};
+
+chosen {
+	bootargs = "console=ttyS0,115200n8 earlyprintk";
+	stdout-path = &uart0;
 };
 
 ocp@f1000000 {
 
-        serial@12000 {                               
-                status = "ok";                       
-        };                                           
-                                                     
-        sata@80000 {                                 
-                status = "okay";                     
-                nr-ports = <2>;                      
-        };                                           
-                                                     
-};
+	i2c@11000 {
+		status = "okay";
+
+		adt7473@2e {
+			compatible = "adi,adt7473";
+			reg = <0x2e>;
+		};
+	};
+
+	serial@12000 {
+		status = "okay";
+	};
+
+	sata@80000 {
+		status = "okay";
+		nr-ports = <2>;
+	};
 
 };
 
-&nand {                                    
-        status = "okay";                   
-                                           
-        partition@0 {                      
-                label = "u-boot";          
-                reg = <0x0000000 0x100000>;
-                read-only;                 
-        };                                 
-                                           
-        partition@100000 {                 
-                label = "uImage";          
-                reg = <0x0100000 0x200000>;
-        };                                 
-                                           
-        partition@300000 {                 
-                label = "rootfs";          
-                reg = <0x0300000 0x500000>;
-        };                                 
-};                                         
-                                           
+};
+
+&nand {
+	status = "okay";
+
+	partition@0 {
+		label = "u-boot";
+		reg = <0x0000000 0x100000>;
+		read-only;
+	};
+
+	partition@a0000 {
+		label = "env";
+		reg = <0xE0000 0x20000>;
+		read-only;
+	};
+
+	partition@100000 {
+		label = "rootfs";
+		reg = <0x100000 0x1F00000>;
+	};
+};
+
 &mdio {
 	status = "okay";
 
@@ -87,5 +87,15 @@ ocp@f1000000 {
 	status = "okay";
 	ethernet1-port@0 {
 		phy-handle = <&ethphy1>;
+	};
+};
+
+mbus {
+	pcie-controller {
+		status = "okay";
+
+		pcie@1,0 {
+			status = "okay";
+		};
 	};
 };
