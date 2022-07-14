@@ -20,6 +20,7 @@
 # Thermal management
 gpio-fan
 kirkwood_thermal
+adt7475
 # SATA
 ehci_orion
 sata_mv

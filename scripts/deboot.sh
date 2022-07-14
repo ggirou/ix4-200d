@@ -42,7 +42,7 @@ packages=(
   net-tools # NET-3 networking toolkit
   netbase # Basic TCP/IP networking system
   # ntpdate # client for setting system time from NTP servers (deprecated)
-  sntp # Network Time Protocol - sntp client
+  systemd-timesyncd # minimalistic service to synchronize local time with NTP servers
 
   # Network - Servers
   netatalk # Basic TCP/IP networking system
