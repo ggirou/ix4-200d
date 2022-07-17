@@ -7,38 +7,37 @@
 	model = "Iomega ix4-200d";
 	compatible = "marvell,rd88f6281-a", "marvell,rd88f6281", "marvell,kirkwood-88f6281", "marvell,kirkwood";
 
-memory {
-	device_type = "memory";
-	reg = <0x00000000 0x20000000>;
-};
+	memory {
+		device_type = "memory";
+		reg = <0x00000000 0x20000000>; /* 512MB */
+	};
 
-chosen {
-	bootargs = "console=ttyS0,115200n8 earlyprintk";
-	stdout-path = &uart0;
-};
+	chosen {
+		bootargs = "console=ttyS0,115200n8 earlyprintk";
+		stdout-path = &uart0;
+	};
 
-ocp@f1000000 {
+	ocp@f1000000 {
 
-	i2c@11000 {
-		status = "okay";
+		i2c@11000 {
+			status = "okay";
 
-		adt7473@2e {
-			compatible = "adi,adt7473";
-			reg = <0x2e>;
+			adt7473@2e {
+				compatible = "adi,adt7473";
+				reg = <0x2e>;
+			};
 		};
+
+		serial@12000 {
+			status = "okay";
+		};
+
+		sata@80000 {
+			status = "okay";
+			nr-ports = <4>;
+		};
+
 	};
-
-	serial@12000 {
-		status = "okay";
-	};
-
-	sata@80000 {
-		status = "okay";
-		nr-ports = <2>;
-	};
-
-};
-
 };
 
 &nand {
@@ -87,15 +86,5 @@ ocp@f1000000 {
 	status = "okay";
 	ethernet1-port@0 {
 		phy-handle = <&ethphy1>;
-	};
-};
-
-mbus {
-	pcie-controller {
-		status = "okay";
-
-		pcie@1,0 {
-			status = "okay";
-		};
 	};
 };
