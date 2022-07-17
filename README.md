@@ -85,19 +85,19 @@ From u-boot prompt:
 ## Detailed commands
 
     # Load from USB uEnv.txt file
-    usb start
-    ext4load usb 0:1 ${loadaddr} uEnv.txt
+    usb start;
+    ext4load usb 0:1 ${loadaddr} uEnv.txt;
     env import -t ${loadaddr} ${filesize}
 
-    # Or set mannually environments
-    setenv x_bootargs console=ttyS0,115200 mtdparts=${mtdparts} initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
-    setenv x_bootargs_root root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext2
+    # OR set mannually environments
+    setenv x_bootargs console=ttyS0,115200 mtdparts=orion_nand:896k(uboot),128k(env),-(rootfs) initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
+    setenv x_bootargs_root root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw rootfstype=ext4
 
     # Load uImage from USB
     ext4load usb 0:1 ${loadaddr} /boot/uImage
 
     # Then set kernel args and boot
-    setenv bootargs ${x_bootargs} ${x_bootargs_root}
+    setenv bootargs ${x_bootargs} ${x_bootargs_root};
     bootm ${loadaddr}
 
 # Persist new u-boot
@@ -107,7 +107,7 @@ If everything is OK, load `u-boot.kwb` from USB key:
     usb start
     ext4load usb 0:1 0x1000000 /u-boot.kwb
 
-or from TFTP server:
+or from TFTP server (plug on Ethernet port 2):
 
     # setenv gatewayip 192.168.1.254
     setenv ipaddr 192.168.1.250
@@ -117,22 +117,22 @@ Then write it to nand:
 
     nand erase 0x000000 0xe0000
     nand write 0x1000000 0x000000 0xe0000
+
+Set environments variables:
+
     env default -a
-    env save
-    reset
-
-First, keep current new u-boot parameters:
-
+    # print default parameters:
     printenv
-
-> Keep the content of `printenv` [output](new-firmware/uboot-printenv.txt). This will be a useful reference if you want to restore any u-boot parameters.
-
-Set few env:
 
     setenv ethaddr 00:26:2d:06:ab:ac
     setenv eth1addr 00:26:2d:06:ab:ad
     env save
+
+Reboot:
+
     reset
+
+> Keep the content of `printenv` [output](new-firmware/uboot-printenv.txt). This will be a useful reference if you want to restore any u-boot parameters.
 
 # Build U-Boot
 

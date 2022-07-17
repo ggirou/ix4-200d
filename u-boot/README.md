@@ -31,6 +31,10 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
 
 # Build DTB file only
 
+    # To update DTS from this repo
+    cp ../ix4-200d/scripts/dts/kirkwood-ix4-200d.dts arch/arm/dts/
+
+    export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
     make dts/dt.dtb
 
 # Notes

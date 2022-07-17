@@ -51,6 +51,7 @@ Files to note:
 
 - `/usr/local/cfg/initrd_bootstrap.sh`: script that runs on Debian startup
 - `/lib/modules/modprobe.txt`: loaded modules at startup
+- `/etc/sensons.conf`: loaded modules at startup
 
 # Boot u-boot and debian
 
