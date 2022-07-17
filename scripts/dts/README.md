@@ -14,6 +14,10 @@ Iomega ix2-200
     wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/kirkwood.dtsi
     wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/kirkwood-6281.dtsi
 
+Lenovo ix4-300d
+
+    wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/armada-xp-lenovo-ix4-300d.dts
+
 D-Link DNS 320
 
     wget https://raw.githubusercontent.com/torvalds/linux/master/arch/arm/boot/dts/kirkwood-dns320.dts
