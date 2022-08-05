@@ -1,0 +1,3 @@
+iomega@ix4-200d:~$ lspci
+00:01.0 PCI bridge: Marvell Technology Group Ltd. 88F6281 [Kirkwood] ARM SoC (rev 03)
+01:00.0 IDE interface: Marvell Technology Group Ltd. 88SE6111/6121 SATA II / PATA Controller (rev b2)
