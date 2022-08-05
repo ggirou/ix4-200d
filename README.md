@@ -85,9 +85,7 @@ From u-boot prompt:
 ## Detailed commands
 
     # Load from USB uEnv.txt file
-    usb start;
-    ext4load usb 0:1 ${loadaddr} uEnv.txt;
-    env import -t ${loadaddr} ${filesize}
+    usb start; ext4load usb 0:1 ${loadaddr} uEnv.txt; env import -t ${loadaddr} ${filesize}
 
     # OR set mannually environments
     setenv x_bootargs console=ttyS0,115200 mtdparts=orion_nand:896k(uboot),128k(env),-(rootfs) initramfs.runsize=32M usb-storage.delay_use=0 rootdelay=1 usbcore.autosuspend=-1 fsck.repair=preen
@@ -97,8 +95,7 @@ From u-boot prompt:
     ext4load usb 0:1 ${loadaddr} /boot/uImage
 
     # Then set kernel args and boot
-    setenv bootargs ${x_bootargs} ${x_bootargs_root};
-    bootm ${loadaddr}
+    setenv bootargs ${x_bootargs} ${x_bootargs_root}; bootm ${loadaddr}
 
 # Persist new u-boot
 

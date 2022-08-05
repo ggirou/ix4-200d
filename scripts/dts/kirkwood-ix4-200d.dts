@@ -34,7 +34,8 @@
 
 		sata@80000 {
 			status = "okay";
-			nr-ports = <4>;
+			// nr-ports = <4>;
+			nr-ports = <2>;
 		};
 
 	};
@@ -88,3 +89,11 @@
 		phy-handle = <&ethphy1>;
 	};
 };
+
+// &pciec {
+// 	status = "okay";
+// };
+
+// &pcie0 {
+// 	status = "okay";
+// };
