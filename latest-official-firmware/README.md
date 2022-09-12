@@ -106,3 +106,96 @@ Files to note:
     bootm 0x2000000 0x4500000
 
     # FAIL TO BOOT!
+
+# Download source code from Lenovo Lifeline FossKit
+
+    wget http://download.lenovo.com/nas/foss/lenovoemc-lifeline-fosskit-20120827.zip
+    unzip lenovoemc-lifeline-fosskit-20120827.zip
+
+    cd EMCLifeline-GPL-Bellagio/
+
+    tar xvf Lifeline_OSSKit/u-boot/u-boot-3.6.0.tar.bz2
+
+    tar xvf Lifeline_OSSKit/linux-2.6.31.8.tar.bz2
+    mv Lifeline_OSSKit/kernel/linux-2.6.31.8/ix4-200d/ .
+
+    tar xvf debian_src_pkgs.tar
+
+## Explore
+
+Reminder:
+
+    MARVELL BOARD: IX4-110 LE
+    Soc: 88F6281 A1 (DDR2)
+
+> LE: Little Endian
+
+
+### Kernel
+
+    grep -R -i 88F6281 linux-2.6.31.8/
+
+### IX4-200d patches
+
+    grep -R -i 88F6281 ix4-200d/
+    cat ix4-200d/config_ix4-200d
+    ...
+    #
+    # Feroceon SoC options
+    #
+    CONFIG_MV88F6281=y
+    # CONFIG_JTAG_DEBUG is not set
+
+    #
+    # Feroceon SoC Included Features
+    #
+    CONFIG_MV_INCLUDE_PEX=y
+    CONFIG_MV_INCLUDE_USB=y
+    CONFIG_MV_INCLUDE_XOR=y
+    CONFIG_MV_INCLUDE_CESA=y
+    CONFIG_MV_INCLUDE_NAND=y
+    CONFIG_MV_INCLUDE_INTEG_SATA=y
+    CONFIG_MV_INCLUDE_TDM=y
+    CONFIG_MV_INCLUDE_GIG_ETH=y
+    # CONFIG_MV_INCLUDE_SPI is not set
+    # CONFIG_MV_INCLUDE_SDIO is not set
+    # CONFIG_MV_INCLUDE_AUDIO is not set
+    # CONFIG_MV_INCLUDE_TS is not set
+    # CONFIG_MV_INCLUDE_LCD is not set
+    CONFIG_MV_GPP_MAX_PINS=64
+    CONFIG_MV_DCACHE_SIZE=0x4000
+    CONFIG_MV_ICACHE_SIZE=0x4000
+    ...
+
+### U-Boot
+
+    grep -R -i 88F6281 u-boot-3.6/
+    find u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/
+
+    cat u-boot-3.6/u-boot-3.6.0/create_all_imagesKW.sh | grep 88f6281 | grep LE
+
+    grep -R -i "Set Power State" u-boot-3.6/
+
+    cat u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/kw_family/ctrlEnv/mvCtrlEnvSpec.h
+
+    /* This enumerator defines the Marvell Units ID      */
+    typedef enum _mvUnitId
+    {
+        DRAM_UNIT_ID,
+        PEX_UNIT_ID, // PCI Express
+        ETH_GIG_UNIT_ID,
+        USB_UNIT_ID,
+        IDMA_UNIT_ID, // 	Internal Direct Memory Access
+        XOR_UNIT_ID, // 	Marvell XOR engine
+        SATA_UNIT_ID,
+        TDM_UNIT_ID,
+        UART_UNIT_ID,
+        CESA_UNIT_ID,
+        SPI_UNIT_ID,
+        AUDIO_UNIT_ID,
+        SDIO_UNIT_ID,
+        TS_UNIT_ID,
+        LCD_UNIT_ID,
+        MAX_UNITS_ID
+
+    }MV_UNIT_ID;
