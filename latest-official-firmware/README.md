@@ -172,9 +172,97 @@ Reminder:
     grep -R -i 88F6281 u-boot-3.6/
     find u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/
 
-    cat u-boot-3.6/u-boot-3.6.0/create_all_imagesKW.sh | grep 88f6281 | grep LE
+    cat u-boot-3.6/u-boot-3.6.0/create_all_imagesKW.sh | grep 88f6281 | grep RD | grep LE
+
+    grep -Ri RD_88F6281A_ID u-boot-3.6/
 
     grep -R -i "Set Power State" u-boot-3.6/
+
+    cat u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/kw_family/boardEnv/mvBoardEnvSpec.h | grep -A 2 -B 2 -P 'RD.88F6281A.(?!PCAC)'
+
+    #define BOARD_ID_BASE           		0x0
+    #define RD_88F6281A_ID                          (BOARD_ID_BASE+0x1)
+
+    /* RD-88F6281A */
+    #if defined(MV_NAND)
+        #define RD_88F6281A_MPP0_7                          0x21111111
+    #else
+        #define RD_88F6281A_MPP0_7                          0x21112220
+    #endif
+    #define RD_88F6281A_MPP8_15                     0x00003311
+    #define RD_88F6281A_MPP16_23                    0x33331100
+    #define RD_88F6281A_MPP24_31                    0x33003333
+    #define RD_88F6281A_MPP32_39                    0x00000533
+    #define RD_88F6281A_MPP40_47                    0x00000000
+    #define RD_88F6281A_MPP48_55                    0x00000000
+    #define RD_88F6281A_OE_LOW                      0xfffccfff
+    #define RD_88F6281A_OE_HIGH                     0x0000000f
+    #define RD_88F6281A_OE_VAL_LOW                0x00033000
+    #define RD_88F6281A_OE_VAL_HIGH                  0x0
+
+    cat u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/kw_family/boardEnv/mvBoardEnvSpec.c | grep -A 2 -B 2 -P 'RD.88F6281A.(?!PCAC)'
+
+    #define RD_88F6281A_BOARD_PCI_IF_NUM            0x0
+    #define RD_88F6281A_BOARD_TWSI_DEF_NUM          0x2
+    #define RD_88F6281A_BOARD_MAC_INFO_NUM          0x2
+    #define RD_88F6281A_BOARD_GPP_INFO_NUM          0x5
+    #define RD_88F6281A_BOARD_MPP_GROUP_TYPE_NUM    0x1
+    #define RD_88F6281A_BOARD_MPP_CONFIG_NUM                0x1
+    #if defined(MV_NAND) && defined(MV_NAND_BOOT)
+        #define RD_88F6281A_BOARD_DEVICE_CONFIG_NUM     0x1
+    #elif defined(MV_NAND) && defined(MV_SPI_BOOT)
+        #define RD_88F6281A_BOARD_DEVICE_CONFIG_NUM     0x2
+    #else
+        #define RD_88F6281A_BOARD_DEVICE_CONFIG_NUM     0x1
+    #endif
+    #define RD_88F6281A_BOARD_DEBUG_LED_NUM         0x0
+    #define RD_88F6281A_BOARD_NAND_READ_PARAMS                  0x003e07cf
+    #define RD_88F6281A_BOARD_NAND_WRITE_PARAMS                 0xf0f0f
+    #define RD_88F6281A_BOARD_NAND_CONTROL                  0x01c7d943
+
+    MV_BOARD_MPP_INFO       rd88f6281AInfoBoardMppConfigValue[] = 
+            {{{
+            RD_88F6281A_MPP0_7,
+            RD_88F6281A_MPP8_15,
+            RD_88F6281A_MPP16_23,
+            RD_88F6281A_MPP24_31,
+            RD_88F6281A_MPP32_39,
+            RD_88F6281A_MPP40_47,
+            RD_88F6281A_MPP48_55
+            }}};
+
+    MV_BOARD_INFO rd88f6281AInfo = {
+            "RD-88F6281A",                          /* boardName[MAX_BOARD_NAME_LEN] */
+            RD_88F6281A_BOARD_MPP_GROUP_TYPE_NUM,           /* numBoardMppGroupType */
+            rd88f6281AInfoBoardMppTypeInfo,
+            RD_88F6281A_BOARD_MPP_CONFIG_NUM,               /* numBoardMppConfig */
+            rd88f6281AInfoBoardMppConfigValue,
+            0,                                              /* intsGppMaskLow */
+            (1 << 3),                                       /* intsGppMaskHigh */
+            RD_88F6281A_BOARD_DEVICE_CONFIG_NUM,            /* numBoardDevIf */
+            rd88f6281AInfoBoardDeCsInfo,
+            RD_88F6281A_BOARD_TWSI_DEF_NUM,                 /* numBoardTwsiDev */
+            rd88f6281AInfoBoardTwsiDev,
+            RD_88F6281A_BOARD_MAC_INFO_NUM,                 /* numBoardMacInfo */
+            rd88f6281AInfoBoardMacInfo,
+            RD_88F6281A_BOARD_GPP_INFO_NUM,                 /* numBoardGppInfo */
+            rd88f6281AInfoBoardGppInfo,
+            RD_88F6281A_BOARD_DEBUG_LED_NUM,                        /* activeLedsNumber */              
+            NULL,
+            0,                                                                              /* ledsPolarity */
+            RD_88F6281A_OE_LOW,                             /* gppOutEnLow */
+            RD_88F6281A_OE_HIGH,                            /* gppOutEnHigh */
+            RD_88F6281A_OE_VAL_LOW,                         /* gppOutValLow */
+            RD_88F6281A_OE_VAL_HIGH,                                /* gppOutValHigh */
+            0,                                              /* gppPolarityValLow */
+            BIT6,                                           /* gppPolarityValHigh */
+            NULL,
+            //rd88f6281AInfoBoardSwitchInfo,                        /* pSwitchInfo */
+        RD_88F6281A_BOARD_NAND_READ_PARAMS,
+        RD_88F6281A_BOARD_NAND_WRITE_PARAMS,
+        RD_88F6281A_BOARD_NAND_CONTROL
+    };
+
 
     cat u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_kw/kw_family/ctrlEnv/mvCtrlEnvSpec.h
 

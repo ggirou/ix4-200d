@@ -10,6 +10,7 @@ Everything here comes essentially from:
   - https://forum.doozan.com/read.php?2,12096
   - https://github.com/1000001101000/ix4-200d-research
   - https://download.lenovo.com/lenovoemc/na/en/app/cust_alp/p/1031%2c1087/c/73.html
+  - https://web.archive.org/web/20130730091033/https://www.marvell.com/embedded-processors/kirkwood/assets/FS_88F6180_9x_6281_OpenSource.pdf
 
 > **DISCLAIMER NOTICE**
 > * I'm not responsible for bricked devices, dead SD cards, thermonuclear war, or you getting fired because the alarm app failed (like it did for me...).
