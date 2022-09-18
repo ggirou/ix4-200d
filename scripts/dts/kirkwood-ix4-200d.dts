@@ -1,3 +1,11 @@
+/*
+ *  Device tree file for the Iomega ix4-200d
+ *
+ * Copyright (c) 2016, bodhi <mibodhi@gmail.com>
+ * Copyright (c) 2015, DaMacc
+ *
+*/
+
 /dts-v1/;
 
 #include "kirkwood.dtsi"
@@ -90,10 +98,10 @@
 	};
 };
 
-// &pciec {
-// 	status = "okay";
-// };
+&pciec {
+	status = "okay";
+};
 
-// &pcie0 {
-// 	status = "okay";
-// };
+&pcie0 {
+	status = "okay";
+};
