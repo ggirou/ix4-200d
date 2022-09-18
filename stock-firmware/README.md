@@ -17,7 +17,7 @@ Nand stock mtdparts:
 
 Boot from serial with new u-boot (ext4write command enabled)
 
-    kwboot -p -t -B 115200 /dev/ttyUSB0 -b ix4-200d-u-boot-2022.04.kwb
+    kwboot -p -t -B 115200 /dev/ttyUSB0 -b ix4-200d-u-boot-2022.07.kwb
 
 ### Partition dump
 

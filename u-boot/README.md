@@ -9,7 +9,7 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
 
 # Get sources
 
-    git clone -b v2022.04 https://github.com/u-boot/u-boot.git
+    git clone -b v2022.07 https://github.com/u-boot/u-boot.git
     cd u-boot/
 
 # Build
@@ -23,7 +23,7 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
     make distclean && make ix4-200d_config && make u-boot.kwb
 
     # Copy compiled files
-    cp u-boot.kwb ../ix4-200d/dist/ix4-200d-u-boot-2022.04.kwb
+    cp u-boot.kwb ../ix4-200d/dist/ix4-200d-u-boot-2022.07.kwb
     cp dts/dt.dtb ../ix4-200d/dist/kirkwood-ix4-200d.dtb
 
     # Copy latest kwboot

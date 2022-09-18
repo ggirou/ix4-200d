@@ -1,7 +1,7 @@
 #!/bin/sh -ex
 
 target=ix4-200d
-version=v2022.04
+version=v2022.07
 dir=/dist/u-boot
 
 if [ ! -d $dir ]; then
@@ -29,7 +29,7 @@ git config user.email "john@doe.xyz"; git config user.name "John Doe"
 # git am --committer-date-is-author-date < /scripts/$version-usbtimeoutfix.patch
 # Apply DNS-320 support patch from https://github.com/avoidik/board_dns320
 # git am --committer-date-is-author-date < /scripts/$version-dns320.patch
-git pull https://github.com/ggirou/u-boot.git v2022.04-ix4-200d
+git pull https://github.com/ggirou/u-boot.git v2022.07-ix4-200d
 
 export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
 make distclean

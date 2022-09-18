@@ -1,7 +1,7 @@
 Run Debian on ix4-200d
 ----------------------
 
-- U-Boot 2022.04
+- U-Boot 2022.07
 - Debian 11 Bullseye
 
 Everything here comes essentially from:
