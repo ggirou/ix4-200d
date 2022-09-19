@@ -220,6 +220,15 @@ Reminder:
     #define RD_88F6281A_BOARD_NAND_WRITE_PARAMS                 0xf0f0f
     #define RD_88F6281A_BOARD_NAND_CONTROL                  0x01c7d943
 
+    MV_BOARD_GPP_INFO rd88f6281AInfoBoardGppInfo[] = 
+        /* {{MV_BOARD_GPP_CLASS	devClass, MV_U8	gppPinNum}} */
+        {{BOARD_GPP_SDIO_DETECT, 28},
+        {BOARD_GPP_USB_OC, 29},
+        {BOARD_GPP_WPS_BUTTON, 35},
+        //{BOARD_GPP_MV_SWITCH, 38},
+        {BOARD_GPP_USB_VBUS, 49}
+        };
+
     MV_BOARD_MPP_INFO       rd88f6281AInfoBoardMppConfigValue[] = 
             {{{
             RD_88F6281A_MPP0_7,
@@ -287,3 +296,17 @@ Reminder:
         MAX_UNITS_ID
 
     }MV_UNIT_ID;
+
+    cat u-boot-3.6/u-boot-3.6.0/board/mv_feroceon/mv_hal/gpp/mvGppRegs.h
+
+    #define GPP_DATA_OUT_REG(grp)			((grp == 0) ? 0x10100 : 0x10140)
+    #define GPP_DATA_OUT_EN_REG(grp)		((grp == 0) ? 0x10104 : 0x10144)
+    #define GPP_BLINK_EN_REG(grp)			((grp == 0) ? 0x10108 : 0x10148)
+    #define GPP_DATA_IN_POL_REG(grp)		((grp == 0) ? 0x1010C : 0x1014c)
+    #define GPP_DATA_IN_REG(grp)			((grp == 0) ? 0x10110 : 0x10150)
+    #define GPP_INT_CAUSE_REG(grp)			((grp == 0) ? 0x10114 : 0x10154)
+    #define GPP_INT_MASK_REG(grp)			((grp == 0) ? 0x10118 : 0x10158)
+    #define GPP_INT_LVL_REG(grp)			((grp == 0) ? 0x1011c : 0x1015c)
+
+    #define GPP_DATA_OUT_SET_REG			0x10120
+    #define GPP_DATA_OUT_CLEAR_REG			0x10124
