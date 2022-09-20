@@ -1,0 +1,166 @@
+// SPDX-License-Identifier: GPL-2.0+
+/*
+ * Device Tree file for Seagate Blackarmor NAS440
+ *
+ * Copyright (C) 2021 Hajo Noerenberg <hajo-uboot@noerenberg.de>
+ * Copyright (C) 2015 Andreas Fischer <af@bantuX.org>
+ * Copyright (C) 2014 Evgeni Dobrev <evgeni@studio-punkt.com>
+ */
+
+/dts-v1/;
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/input/input.h>
+#include "kirkwood.dtsi"
+#include "kirkwood-6281.dtsi"
+
+/ {
+	model = "Seagate Blackarmor NAS440";
+	compatible = "seagate,blackarmor-nas440","marvell,kirkwood-88f6281",
+		     "marvell,kirkwood";
+
+	memory { /* 256 MB */
+		device_type = "memory";
+		reg = <0x00000000 0x10000000>;
+	};
+
+	chosen {
+		bootargs = "console=ttyS0,115200n8";
+		stdout-path = &uart0;
+	};
+
+	gpio_poweroff {
+		compatible = "gpio-poweroff";
+		gpios = <&gpio1 16 GPIO_ACTIVE_LOW>;		/* GPIO1-16 is MPP48 */
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+
+		reset {
+			label = "Reset";
+			linux,code = <KEY_POWER>;
+			gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
+		};
+
+		button {
+			label = "Power";
+			linux,code = <KEY_SLEEP>;
+			gpios = <&gpio1 17 GPIO_ACTIVE_LOW>;	/* GPIO1-17 is MPP49 */
+		};
+	};
+
+	regulators {
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <0>;
+		pinctrl-0 = <&pmx_power_socsata>;
+		pinctrl-names = "default";
+
+		socsata_power: regulator@1 {
+			compatible = "regulator-fixed";
+			reg = <1>;
+			regulator-name = "SoC SATA Power";
+			regulator-min-microvolt = <12000000>;
+			regulator-max-microvolt = <12000000>;
+			enable-active-high;
+			regulator-always-on;
+			regulator-boot-on;
+			gpio = <&gpio0 28 GPIO_ACTIVE_HIGH>;
+		};
+	};
+};
+
+/*
+ * Serial port routed to connector CN4
+ *
+ * pin 1 - TX (CPU's TX)
+ * pin 4 - RX (CPU's RX)
+ * pin 6 - GND
+ */
+&uart0 {
+	status = "okay";
+};
+
+&pinctrl {
+	pinctrl-0 = <&pmx_button_reset &pmx_button_power>;
+	pinctrl-names = "default";
+
+	pmx_act_sata0: pmx-act-sata0 {
+		marvell,pins = "mpp15";
+		marvell,function = "sata0";
+	};
+
+	pmx_act_sata1: pmx-act-sata1 {
+		marvell,pins = "mpp16";
+		marvell,function = "sata1";
+	};
+
+	pmx_power_socsata: pmx-power-socsata {
+		marvell,pins = "mpp28";
+		marvell,function = "gpio";
+	};
+
+	pmx_button_reset: pmx-button-reset {
+		marvell,pins = "mpp29";
+		marvell,function = "gpio";
+	};
+
+	pmx_button_power: pmx-button-power {
+		marvell,pins = "mpp49";
+		marvell,function = "gpio";
+	};
+};
+
+&sata {
+	status = "okay";
+	nr-ports = <2>;
+};
+
+&pciec {
+	status = "okay";
+};
+
+&pcie0 {
+	status = "okay";
+};
+
+&i2c0 {
+	status = "okay";
+
+	adt7473: thermal@2e {
+		compatible = "adi,adt7473";
+		reg = <0x2e>;
+	};
+};
+
+&nand {
+	status = "okay";
+};
+
+&mdio {
+	status = "okay";
+
+	ethphy0: ethernet-phy@8 {
+		 reg = <8>;
+	};
+	ethphy1: ethernet-phy@9 {
+		 reg = <9>;
+	};
+};
+
+&eth0 {
+	status = "okay";
+
+	ethernet0-port@0 {
+		phy-handle = <&ethphy0>;
+	};
+};
+
+&eth1 {
+	status = "okay";
+
+	ethernet1-port@0 {
+		phy-handle = <&ethphy1>;
+	};
+};
