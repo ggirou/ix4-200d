@@ -1,6 +1,8 @@
 ix4-200d latest offcial firmware
 --------------------------------
 
+Source: https://download.lenovo.com/lenovoemc/eu/en/app/answers/detail/a_id/26789.html
+
 # Download original firmware
 
     wget http://download.lenovo.com/nasupdate/iomnas/ix4-200d-3.2.16.30221.tgz
@@ -38,6 +40,7 @@ Mount `initrd` filesystem:
 Files to note:
 
 - `/linuxrc`: Shell script that runs on startup
+- `/usr/bin/status_led_DEEP.sh`: This script is used in ix4-200d platforms to show the DEEP imaging status using the status LED.
 
 ### Debian image
 
@@ -51,7 +54,9 @@ Files to note:
 
 - `/usr/local/cfg/initrd_bootstrap.sh`: script that runs on Debian startup
 - `/lib/modules/modprobe.txt`: loaded modules at startup
-- `/etc/sensons.conf`: loaded modules at startup
+- `/etc/sensors.conf`: Sensors conf
+- `/usr/bin/sohoshutdown2`: Shutdown script (Disable auto power on)
+- `/bin/bashbug`: create a bug report and mail it to the bug address
 
 # Boot u-boot and debian
 
@@ -118,6 +123,7 @@ Files to note:
 
     tar xvf Lifeline_OSSKit/linux-2.6.31.8.tar.bz2
     mv Lifeline_OSSKit/kernel/linux-2.6.31.8/ix4-200d/ .
+    unzip ix4-200d/linux-feroceon_5_1_3_KW.zip
 
     tar xvf debian_src_pkgs.tar
 
