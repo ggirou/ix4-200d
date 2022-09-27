@@ -1,3 +1,25 @@
+# Functional specification
+
+Source: http://natisbad.org/NAS/refs/Marvell/FS_88F6180_9x_6281_OpenSource.pdf
+
+Register Name       Offset
+GPIO Data Out Register 0x10100
+GPIO Data Out Enable Control Register 0x10104
+GPIO Blink Enable Register 0x10108
+GPIO Data In Polarity Register 0x1010C
+GPIO Data In Register 0x10110
+GPIO Interrupt Cause Register 0x10114
+GPIO Interrupt Mask Register 0x10118
+GPIO Interrupt Level Mask Register 0x1011C
+GPIO High Data Out Register 0x10140
+GPIO High Data Out Enable Control Register 0x10144
+GPIO High Blink Enable Register 0x10148
+GPIO High Data In Polarity Register 0x1014C
+GPIO High Data In Register 0x10150
+GPIO High Interrupt Cause Register 0x10154
+GPIO High Interrupt Mask Register 0x10158
+GPIO High Interrupt Level Mask Register 0x1015C
+
 
 # u-boot constants
 

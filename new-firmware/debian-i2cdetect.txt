@@ -1,0 +1,35 @@
+# Enable
+# echo pca9534 0x20 | sudo tee /sys/bus/i2c/devices/i2c-0/new_device
+
+iomega@ix4-200d:~$ sudo apt install i2c-tools
+
+iomega@ix4-200d:~$ sudo i2cdetect -l
+i2c-0   i2c             mv64xxx_i2c adapter                     I2C adapter
+
+iomega@ix4-200d:~$ sudo  i2cdetect -y 0
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:                         -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: 20 -- -- -- -- -- -- -- -- -- -- -- -- -- UU -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+60: -- -- -- -- 64 -- -- -- -- -- -- -- -- -- -- -- 
+70: -- -- -- -- -- -- -- --                         
+
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 0 b
+0x01
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 1 b
+0xff
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 2 b
+0x00
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 3 b
+0xfe
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 4 b
+Error: Read failed
+
+# autopower off
+sudo i2cset -y 0 0x20 1 0xfe
+
+# autopower on
+sudo i2cset -y 0 0x20 1 0xff

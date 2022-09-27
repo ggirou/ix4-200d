@@ -37,6 +37,9 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
     export ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
     make dts/dt.dtb
 
+    # Copy compiled file
+    cp dts/dt.dtb ../ix4-200d/dist/kirkwood-ix4-200d.dtb
+
 # Notes
 
 `NAND_PAGE_SIZE` should be correct in `kwbimage.cfg`, otherwise it will not boot when flashed on nand.
