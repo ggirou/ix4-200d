@@ -13,3 +13,9 @@ services:
     volumes:
       - "./scripts:/scripts"
       - "./dist:/dist"
+  linux:
+    build: .
+    command: ["/scripts/build_linux.sh"]
+    volumes:
+      - "./scripts:/scripts"
+      - "./dist:/dist"

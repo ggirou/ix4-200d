@@ -120,7 +120,7 @@ LANG=C.UTF-8 chroot /chroot qemu-arm-static /bin/bash -ex /setup.sh
 rm /chroot/usr/bin/qemu-arm-static /chroot/setup.sh
 
 tar czf /dist/$suite-$arch.final.tar.gz -C /chroot/ .
-cp /chroot/boot/uImage-* /dist/uImage
+cp /chroot/vmlinuz /chroot/initrd.img /chroot/boot/uImage /dist
 
 # Debugging
 ls -lah /chroot/boot
