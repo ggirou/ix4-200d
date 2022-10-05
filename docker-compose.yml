@@ -19,3 +19,4 @@ services:
     volumes:
       - "./scripts:/scripts"
       - "./dist:/dist"
+      - "./build:/build" # optionnal
