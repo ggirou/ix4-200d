@@ -165,9 +165,74 @@ _____________________________________________________________
 00.00.00   0x11ab     0x6281     Memory controller       0x80
 00.01.00   0x11ab     0x6121     Mass storage controller 0x01
 
+Marvell>> pci list
+
+Scanning PCI devices on bus 0
+
+Found PCI device 00.00.00:
+  vendor ID =                   0x11ab
+  device ID =                   0x6281
+  command register =            0x0407
+  status register =             0x0010
+  revision ID =                 0x03
+  class code =                  0x05 (Memory controller)
+  sub class code =              0x80
+  programming interface =       0x00
+  cache line =                  0x00
+  latency time =                0x00
+  header type =                 0x00
+  BIST =                        0x00
+  base address 0 =              0xf100000c
+  base address 1 =              0x00000000
+  base address 2 =              0x0000000c
+  base address 3 =              0x00000000
+  base address 4 =              0x00000000
+  base address 5 =              0x00000000
+  cardBus CIS pointer =         0x00000000
+  sub system vendor ID =        0x11ab
+  sub system ID =               0x11ab
+  expansion ROM base address =  0x00000000
+  interrupt line =              0x00
+  interrupt pin =               0x01
+  min Grant =                   0x00
+  max Latency =                 0x00
+
+Found PCI device 00.01.00:
+  vendor ID =                   0x11ab
+  device ID =                   0x6121
+  command register =            0x0007
+  status register =             0x0010
+  revision ID =                 0xb2
+  class code =                  0x01 (Mass storage controller)
+  sub class code =              0x01
+  programming interface =       0x8f
+  cache line =                  0x00
+  latency time =                0x00
+  header type =                 0x00
+  BIST =                        0x00
+  base address 0 =              0x00000001
+  base address 1 =              0xf0000009
+  base address 2 =              0x00000001
+  base address 3 =              0xf0000019
+  base address 4 =              0xf0000021
+  base address 5 =              0x40000000
+  cardBus CIS pointer =         0x00000000
+  sub system vendor ID =        0x11ab
+  sub system ID =               0x6121
+  expansion ROM base address =  0x00000000
+  interrupt line =              0x00
+  interrupt pin =               0x01
+  min Grant =                   0x00
+  max Latency =                 0x00
+
 Marvell>> phyRead
 
 0xffff
+
+Marvell>> scsi info
+SCSI dev. 0:  (1:0) Vendor: ATA Prod.: PNY CS900 120GB Rev: CS90
+            Type: Hard Disk
+            Capacity: 114473.4 MB = 111.7 GB (234441648 x 512)
 
 Marvell>> sg
 

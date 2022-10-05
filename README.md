@@ -170,3 +170,7 @@ From u-boot:
 
     ping ${serverip}
     tftpboot 0x0a00000 uImage
+
+# Known issues
+
+https://bugzilla.kernel.org/show_bug.cgi?id=216094

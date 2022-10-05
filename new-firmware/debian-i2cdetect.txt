@@ -28,6 +28,12 @@ iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 3 b
 iomega@ix4-200d:~$ sudo i2cget -y 0 0x20 4 b
 Error: Read failed
 
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x2e 0
+Error: Could not set address to 0x2e: Device or resource busy
+
+iomega@ix4-200d:~$ sudo i2cget -y 0 0x64 0
+Error: Read failed
+
 # autopower off
 sudo i2cset -y 0 0x20 1 0xfe
 

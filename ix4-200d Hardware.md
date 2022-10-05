@@ -52,6 +52,9 @@ Dual Positive-Edge-Triggered D-Type Flip-Flop;Texas Instruments;SN74AHC74;;1;
 
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/i2c/i2c-gpio.txt
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/spi/spi-gpio.txt
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/power/reset/gpio-poweroff.txt
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/ata/sata-common.yaml
 
 - Marvell 88F6281:
 
@@ -59,8 +62,9 @@ Dual Positive-Edge-Triggered D-Type Flip-Flop;Texas Instruments;SN74AHC74;;1;
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/pinctrl/marvell%2Cmvebu-pinctrl.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/gpio-mvebu.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/bus/mvebu-mbus.txt
-  - https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/mvebu-pci.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/i2c/i2c-mv64xxx.txt
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/pci/mvebu-pci.txt
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/ata/marvell.txt
 
 - ADT7473:
 
