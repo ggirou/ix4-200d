@@ -40,11 +40,12 @@ Hex Buffer and Driver With Open-Drain Outputs;Texas Instruments;SN74LVC07A;;1;
 Dual Positive-Edge-Triggered D-Type Flip-Flop;Texas Instruments;SN74AHC74;;1;
 ```
 
-# Hardware Spec
+# Hardware Spec / Datasheet
 
 - Marvell 88F6281: https://lafibre.info/images/free/201101_Marvell_Kirkwood_88F6281_2_Hardware_Spec.pdf
 - PCA9534: https://www.nxp.com/docs/en/data-sheet/PCA9534.pdf
 - 74HC164D: https://assets.nexperia.com/documents/data-sheet/74HC_HCT164.pdf
+- APW7145 : https://datasheetspdf.com/pdf-file/659354/AnpecElectronicsCoropration/APW7145/1
 
 # DTS
 
@@ -55,6 +56,7 @@ Dual Positive-Edge-Triggered D-Type Flip-Flop;Texas Instruments;SN74AHC74;;1;
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/spi/spi-gpio.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/power/reset/gpio-poweroff.txt
   - https://www.kernel.org/doc/Documentation/devicetree/bindings/ata/sata-common.yaml
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/regulator/fixed-regulator.txt
 
 - Marvell 88F6281:
 

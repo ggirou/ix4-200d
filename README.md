@@ -171,6 +171,27 @@ From u-boot:
     ping ${serverip}
     tftpboot 0x0a00000 uImage
 
+# Hardware control
+
+    sudo -s
+
+    # Autopower on
+    i2cset -y 0 0x20 1 0xff
+    # Autopower off
+    i2cset -y 0 0x20 1 0xfe
+
+    # Poweroff (autopower needs to be off)
+    echo 14 >/sys/class/gpio/export
+    echo 1 > /sys/class/gpio14/gpio/value
+
+    # Fan control
+    echo 0 > /sys/class/hwmon/hwmon0/pwm1
+    echo 255 > /sys/class/hwmon/hwmon0/pwm1
+
+    # LCD Brightness
+    echo 0 > /sys/class/hwmon/hwmon0/pwm3
+    echo 255 > /sys/class/hwmon/hwmon0/pwm3
+
 # Known issues
 
 https://bugzilla.kernel.org/show_bug.cgi?id=216094

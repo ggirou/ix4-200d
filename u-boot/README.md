@@ -18,9 +18,9 @@ https://u-boot.readthedocs.io/en/latest/build/gcc.html#dependencies
 
     make distclean
     make ix4-200d_config
-    make u-boot.kwb
+    make -j`nproc` u-boot.kwb
     # Or one line
-    make distclean && make ix4-200d_config && make u-boot.kwb
+    make distclean && make ix4-200d_config && make -j`nproc` u-boot.kwb
 
     # Copy compiled files
     cp u-boot.kwb ../ix4-200d/dist/ix4-200d-u-boot-2022.07.kwb
