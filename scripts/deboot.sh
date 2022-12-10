@@ -67,6 +67,7 @@ packages=(
   nano # small, friendly text editor inspired by Pico
   sudo # Provide limited super user privileges to specific users
   wget # retrieves files from the web
+  zstd # fast lossless compression algorithm
 )
 
 mkdir -p /chroot
@@ -83,7 +84,7 @@ else
 
     # apt update && apt-cache search "^($(join \| ${packages[@]}))$"
 
-    debootstrap --arch=$arch --variant=minbase --include=$include $suite /chroot $mirror \
+    debootstrap --arch=$arch --include=$include $suite /chroot $mirror \
        || (cp /chroot/debootstrap/debootstrap.log /dist && exit 1)
     tar cf /dist/$suite-$arch.tar -C /chroot/ .
 fi
@@ -96,38 +97,18 @@ ls -la /chroot
 # Copy base files in chroot
 cp -r /scripts/base/* /chroot
 
-# HDD Hibernate
-# cat <<'EOF' >> /chroot/etc/hdparm.conf
-# # Not tested, is it useful?
-# # Disable Power Management for disk on usb
-# # /dev/disk/by-path/platform-f1050000.ehci-usb-0:1:1.0-scsi-0:0:0:0 {
-# #   apm = 255
-# # }
-
-# /dev/disk/by-path/platform-f1080000.sata-ata-1 {
-#     # Hibernate after 5min (5s * 60)
-#     spindown_time = 60
-# }
-
-# /dev/disk/by-path/platform-f1080000.sata-ata-2 {
-#     # Hibernate after 5min (5s * 60)
-#     spindown_time = 60
-# }
-# EOF
-
 cp /usr/bin/qemu-arm-static /chroot/usr/bin
 LANG=C.UTF-8 chroot /chroot qemu-arm-static /bin/bash -ex /setup.sh
 rm /chroot/usr/bin/qemu-arm-static /chroot/setup.sh
 
 tar czf /dist/$suite-$arch.final.tar.gz -C /chroot/ .
-cp /chroot/vmlinuz /chroot/initrd.img /chroot/boot/uImage /dist
+cp /chroot/vmlinuz /chroot/initrd.img /chroot/boot/uImage-* /dist
 
 # Debugging
 ls -lah /chroot/boot
 
 cat /chroot/etc/hostname
-cat /chroot/etc/default/locale
-cat /chroot/etc/locale.gen | egrep '^[^#]'
+cat /chroot/etc/default/locale.gen
 cat /chroot/etc/timezone
 
 cat /chroot/etc/fstab

@@ -6,10 +6,10 @@ services:
     volumes:
       - "./scripts:/scripts"
       - "./dist:/dist"
-    command: ["/scripts/deboot.sh", "armel", "bullseye", "http://ftp.fr.debian.org/debian/"]
+    command: ["/scripts/deboot.sh", "armel", "$DEBIAN_VERSION", "http://ftp.fr.debian.org/debian/"]
   uboot:
     build: .
-    command: ["/scripts/build_uboot.sh"]
+    command: ["/scripts/build_uboot.sh", "$UBOOT_VERSION", "$UBOOT_TARGET"]
     volumes:
       - "./scripts:/scripts"
       - "./dist:/dist"
@@ -20,3 +20,11 @@ services:
       - "./scripts:/scripts"
       - "./dist:/dist"
       - "./build:/build" # optionnal
+  tftp:
+    image: pghalliday/tftp
+    ports:
+      - "192.168.1.23:69:69/udp"
+    volumes:
+      - "./scripts:/scripts"
+      # - "./dist/boot:/srv/tftp"
+      - "./dist:/var/tftpboot"
