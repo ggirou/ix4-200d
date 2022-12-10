@@ -5,6 +5,7 @@ blkcache  - block cache diagnostics and control
 boot      - boot default, i.e., run 'bootcmd'
 bootd     - boot default, i.e., run 'bootcmd'
 bootelf   - Boot from an ELF image in memory
+bootflow  - Boot flows
 bootm     - boot application image from memory
 bootp     - boot image via network using BOOTP/TFTP protocol
 bootvx    - Boot vxWorks from an ELF image
@@ -26,6 +27,7 @@ ext2ls    - list files in a directory (default /)
 ext4load  - load binary file from a Ext4 filesystem
 ext4ls    - list files in a directory (default /)
 ext4size  - determine a file's size
+ext4write - create a file in the root directory
 false     - do nothing, unsuccessfully
 fatinfo   - print information about filesystem
 fatload   - load binary file from a dos filesystem
@@ -37,6 +39,7 @@ fsload    - load binary file from a filesystem image
 fsls      - list files in a directory (default /)
 go        - start application at address 'addr'
 help      - print command description/usage
+i2c       - I2C sub-system
 ide       - IDE sub-system
 iminfo    - print header information for application image
 imxtract  - extract a part of a multi-image
@@ -67,6 +70,8 @@ reset     - Perform RESET of the CPU
 run       - run commands in an environment variable
 sata      - SATA sub system
 saveenv   - save environment variables to persistent storage
+scsi      - SCSI sub-system
+scsiboot  - boot from SCSI device
 setenv    - set environment variables
 showvar   - print local hushshell variables
 sleep     - delay execution for some time

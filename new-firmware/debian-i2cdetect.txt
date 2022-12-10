@@ -39,3 +39,23 @@ sudo i2cset -y 0 0x20 1 0xfe
 
 # autopower on
 sudo i2cset -y 0 0x20 1 0xff
+
+###### Tests GPIO9 on ADT7473
+
+# Disable adt7475 module
+modprobe -r adt7475
+
+# Set pin9 mode to GPIO (0x7D<1:0> := 11)
+i2cget -y 0 0x2e 0X7D
+0x00
+i2cset -y 0 0x2e 0X7D 0x3
+
+# Set pin9 to GPIO output (0x7C<2> := 1)
+i2cget -y 0 0x2e 0x7C
+0x00
+i2cset -y 0 0x2e 0x7C 0x4
+
+# Set pin9 to 1 (0X42<5> := 1)
+i2cget -y 0 0x2e 0X42
+0x00
+i2cset -y 0 0x2e 0X42 0x20

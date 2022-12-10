@@ -204,3 +204,23 @@ To reactivate the SATA port, perform the following sequence:
 1. Clear the <PhyShutdown>. This setting places the PHY in Operational mode.
 2. Set the <FORCE_PU_TX>, <FORCE_PU_RX>, <PU_PLL>, and <PU_IVREF> to 0x1.
 3. Set the <SPD> field in the SControl Register (Table 369 p. 525) to 0x3. This setting places the PHY in Active mode.
+
+-----------------------
+
+# ADT7473 Registers
+
+- 0X42 − INTERRUPT STATUS REGISTER 2 (POWER-ON DEFAULT = 0X00)
+  - <5> When Pin 9 is programmed as a GPIO output, writing to this bit determines the logic output of
+the GPIO.
+- 0x40 Config. Register 1 - Default 0x01
+- 0x73 Config. Register 2 - Default 0x00
+- 0x78 Config. Register 3 - Default 0x00
+- 0x7C Config. Register 4 - Default 0x00
+  - <2> GPIOD − GPIO direction. When GPIO function is enabled, this determines whether the GPIO is an input (0) or an output (1).
+  - <3> GPIOP − GPIO polarity. When the GPIO function is enabled and is programmed as an output, this bit determines whether the GPIO is active low (0) or high (1).
+- 0x7D Config. Register 5 - Default 0x00
+  - <1:0> Pin9FUNC R/W These bits set the functionality of Pin 9.
+    - 00 = TACH4 (Default)
+    - 01 = THERM
+    - 10 = SMBALERT
+    - 11 = GPIO
