@@ -13,6 +13,7 @@ services:
     volumes:
       - "./scripts:/scripts"
       - "./dist:/dist"
+      - "./tmp:/tmp"
   linux:
     build: .
     command: ["/scripts/build_linux.sh"]
