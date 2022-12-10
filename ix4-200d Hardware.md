@@ -40,9 +40,18 @@ Hex Buffer and Driver With Open-Drain Outputs;Texas Instruments;SN74LVC07A;;1;
 Dual Positive-Edge-Triggered D-Type Flip-Flop;Texas Instruments;SN74AHC74;;1;
 ```
 
+# Buses
+
+I2C:
+
+- `@2e`: ADT7473
+- `@20` : PCA9534
+- `@64` : unknown
+
 # Hardware Spec / Datasheet
 
 - Marvell 88F6281: https://lafibre.info/images/free/201101_Marvell_Kirkwood_88F6281_2_Hardware_Spec.pdf
+- ADT7473 : https://www.onsemi.com/pdf/datasheet/adt7473-d.pdf
 - PCA9534: https://www.nxp.com/docs/en/data-sheet/PCA9534.pdf
 - 74HC164D: https://assets.nexperia.com/documents/data-sheet/74HC_HCT164.pdf
 - APW7145 : https://datasheetspdf.com/pdf-file/659354/AnpecElectronicsCoropration/APW7145/1
@@ -166,3 +175,32 @@ only for more detailed description in this document.
     mpp47         47       gpio, ts(mp11), tdm(drx)
     mpp48         48       gpio, ts(mp12), tdm(dtx)
     mpp49         49       gpio, ts(mp9), tdm(rx0ql), ptp(clk)
+
+#  SATA Power Saving
+
+When using the SATA interface, it is possible to reduce the device power consumption by disabling the SATA PHY. If the SATA interface is not used, it is still recommended to disable the SATA PHY to ensure the minimal device power consumption.
+To disable the PHY, shut down the link and then disable the port PHY.
+
+## Shutting down the port link
+
+To disable the PHY, shut down the link, and then, disable the port PHY.
+To shut down the link:
+1. Set the <SPM> field in the SControl Register (Table 369 p. 525) to:
+• 0x1 = Initiate a Partial power management mode, a faster, but less effective power
+management state.
+OR
+• 0x2 = Initiate Slumber power management mode
+2. Ensure that the <IPM> field represents the enabled interface power management states that can be invoked via the Serial ATA interface power management capabilities.
+
+## Disabling the port PHY
+
+After the <SPD> field is set, disable the port PHY by using the following sequence:
+1. In the PHY Mode 2 Register (Table 374 p. 532), clear the <FORCE_PU_TX>, <FORCE_PU_RX>, <PU_PLL>, and <PU_IVREF> fields.
+2. Set the <PhyShutdown> field in the Serial-ATA Interface Configuration Register (Table 365 p. 519) to 0x1. This setting places the PHY in Shutdown mode.
+
+## Reactivating the SATA port
+
+To reactivate the SATA port, perform the following sequence:
+1. Clear the <PhyShutdown>. This setting places the PHY in Operational mode.
+2. Set the <FORCE_PU_TX>, <FORCE_PU_RX>, <PU_PLL>, and <PU_IVREF> to 0x1.
+3. Set the <SPD> field in the SControl Register (Table 369 p. 525) to 0x3. This setting places the PHY in Active mode.
