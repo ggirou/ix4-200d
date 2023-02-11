@@ -1,0 +1,658 @@
+
+         __  __                      _ _
+        |  \/  | __ _ _ ____   _____| | |
+        | |\/| |/ _` | '__\ \ / / _ \ | |
+        | |  | | (_| | |   \ V /  __/ | |
+        |_|  |_|\__,_|_|    \_/ \___|_|_|
+ _   _     ____              _
+| | | |   | __ )  ___   ___ | |_ 
+| | | |___|  _ \ / _ \ / _ \| __| 
+| |_| |___| |_) | (_) | (_) | |_ 
+ \___/    |____/ \___/ \___/ \__|  ** uboot_ver:v1.1.0 **
+
+ ** MARVELL BOARD: IX4-110 LE 
+
+U-Boot 1.1.4 (Oct 15 2009 - 17:28:22) Marvell version: 3.4.18
+
+U-Boot code: 00600000 -> 0067FFF0  BSS: -> 006CF600
+
+Soc: 88F6281 A1 (DDR2)
+CPU running @ 1200Mhz L2 running @ 400Mhz
+SysClock = 400Mhz , TClock = 200Mhz 
+
+DRAM CAS Latency = 5 tRP = 5 tRAS = 18 tRCD=6
+DRAM CS[0] base 0x00000000   size 256MB 
+DRAM CS[1] base 0x10000000   size 256MB 
+DRAM Total size 512MB  16bit width
+Found 0x20 i2c device
+Set Power State as Always On
+Addresses 8M - 0M are saved for the U-Boot usage.
+Mem malloc Initialization (8M - 7M): Done
+NAND:32 MB
+Found ADT7473, program LED ...(led_volt=90)  OK
+Found ADT7473, program thermal/Fan ...(pwm_min=0) (pwm_max=130) (therm=67) (temp_min=60)  OK
+
+Marvell Serial ATA Adapter
+Integrated Sata device found
+
+
+CPU : Marvell Feroceon (Rev 1)
+Could not found correct initrd
+
+Streaming disabled 
+Write allocate disabled
+
+Module 0 is RGMII
+Module 1 is RGMII
+
+USB 0: host mode
+PEX 0: PCI Express Root Complex Interface
+PEX interface detected Link X1
+SCSI:  AHCI 0001.0000 32 slots 3 ports 3 Gbps 0x7 impl IDE mode
+flags: 64bit ncq stag led pmp slum part 
+scanning bus for devices...
+  Device 0: (0:0) Vendor: ATA Prod.: PNY CS900 120GB Rev: CS90
+            Type: Hard Disk
+            Capacity: 114473.4 MB = 111.7 GB (234441648 x 512)
+Net:   egiga0 [PRIME], egiga1
+Hit any key to stop autoboot:  0 
+Marvell>> 
+Marvell>> setenv ipaddr 192.168.1.250; setenv serverip 192.168.1.109
+Marvell>> tftpboot 0x2000000 zImage
+egiga0 no link
+Using egiga1 device
+TFTP from server 192.168.1.109; our IP address is 192.168.1.250
+Filename 'zImage'.
+Load address: 0x2000000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ################
+done
+Bytes transferred = 2076824 (1fb098 hex)
+Marvell>> tftpboot 0x4500000 initrd
+Using egiga1 device
+TFTP from server 192.168.1.109; our IP address is 192.168.1.250
+Filename 'initrd'.
+Load address: 0x4500000
+Loading: #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         #################################################################
+         ########
+done
+Bytes transferred = 3032589 (2e460d hex)
+Marvell>> setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+Marvell>> bootm 0x2000000 0x4500000
+## Booting image at 02000000 ...
+   Image Name:   Linux-2.6.31.8
+   Created:      2015-06-10  18:53:13 UTC
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    2076760 Bytes =  2 MB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+OK
+## Loading Ramdisk Image at 04500000 ...
+   Image Name:   
+   Created:      2019-04-05  12:40:15 UTC
+   Image Type:   ARM Linux RAMDisk Image (gzip compressed)
+   Data Size:    3032525 Bytes =  2.9 MB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+
+Starting kernel ...
+
+Uncompressing Linux...................................................................................................................................... done, booting the kernel.
+Linux version 2.6.31.8 (soho@bsoho173.iomegacorp.com) (gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) ) #1 Wed Jun 10 14:53:10 EDT 2015
+CPU: Feroceon 88FR131 [56251311] revision 1 (ARMv5TE), cr=00053977
+CPU: VIVT data cache, VIVT instruction cache
+Machine: Feroceon-KW
+Using UBoot passing parameters structure
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 130048
+Kernel command line: console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+PID hash table entries: 2048 (order: 11, 8192 bytes)
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 256MB 256MB = 512MB total
+Memory: 508032KB available (3868K code, 297K data, 124K init, 0K highmem)
+Hierarchical RCU implementation.
+NR_IRQS:128
+Console: colour dummy device 80x30
+Calibrating delay loop... 1192.75 BogoMIPS (lpj=5963776)
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+Feroceon L2: Enabling L2
+Feroceon L2: Cache support initialised.
+
+CPU Interface
+-------------
+SDRAM_CS0 ....base 00000000, size 256MB 
+SDRAM_CS1 ....base 10000000, size 256MB 
+SDRAM_CS2 ....disable
+SDRAM_CS3 ....disable
+PEX0_MEM ....base e0000000, size 128MB 
+PEX0_IO ....base f2000000, size   1MB 
+INTER_REGS ....base f1000000, size   1MB 
+NFLASH_CS ....base fa000000, size   2MB 
+SPI_CS ....base f4000000, size  16MB 
+BOOT_ROM_CS ....no such
+DEV_BOOTCS ....no such
+CRYPT_ENG ....base f0000000, size   2MB 
+
+  Marvell Development Board (LSP Version KW_LSP_5.1.3_patch22)-- IX4-110  Soc: 88F6281 A1 LE
+
+ Detected Tclk 200000000 and SysClk 400000000 
+MV Buttons Device Load
+Marvell USB EHCI Host controller #0: d003a740
+PEX0 interface detected Link X1
+pci 0000:00:01.0: PME# supported from D0 D1 D3hot
+pci 0000:00:01.0: PME# disabled
+PCI: bus0: Fast back to back transfers disabled
+bio: create slab <bio-0> at 0
+SCSI Scattered Spinup:
+SCSI Scattered Spinup Feature Status: Enabled
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+NET: Registered protocol family 2
+IP route cache hash table entries: 16384 (order: 4, 65536 bytes)
+TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+TCP: Hash tables configured (established 65536 bind 65536)
+TCP reno registered
+NET: Registered protocol family 1
+Trying to unpack rootfs image as initramfs...
+rootfs image is not initramfs (no cpio magic); looks like an initrd
+Freeing initrd memory: 2960K
+rtc mv_rtc: rtc core: registered kw-rtc as rtc0
+RTC registered
+XOR registered 4 channels
+XOR 2nd invalidate WA enabled
+cesadev_init(c000ebb0)
+mvCesaInit: sessions=640, queue=64, pSram=f0000000
+MV Buttons Driver Load
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+msgmni has been set to 998
+alg: No test for cipher_null (cipher_null-generic)
+alg: No test for ecb(cipher_null) (ecb-cipher_null)
+alg: No test for digest_null (digest_null-generic)
+alg: No test for compress_null (compress_null-generic)
+alg: No test for stdrng (krng)
+alg: No test for hmac(digest_null) (hmac(digest_null-generic))
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+io scheduler noop registered
+io scheduler anticipatory registered (default)
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+serial8250.0: ttyS0 at MMIO 0xf1012000 (irq = 33) is a 16550A
+console [ttyS0] enabled
+brd: module loaded
+loop: module loaded
+Marvell Storage Controller is found, using IRQ 9.
+scsi0 : Marvell Storage Controller
+scsi 0:0:0:0: Direct-Access     ATA      CS900 120GB SSD  CS90 PQ: 0 ANSI: 5
+Integrated Sata device found
+IRQ 21/mvSata: IRQF_DISABLED is not guaranteed on shared IRQs
+scsi1 : Marvell SCSI to SATA adapter
+scsi2 : Marvell SCSI to SATA adapter
+sd 0:0:0:0: [sda] 234441648 512-byte logical blocks: (120 GB/111 GiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, supports DPO and FUA
+ sda:
+sd 0:0:0:0: Attached scsi generic sg0 type 0
+Loading Marvell Ethernet Driver:
+  o Cached descriptors in DRAM
+  o DRAM SW cache-coherency
+  o 2 Giga ports supported
+  o Single RX Queue support - ETH_DEF_RXQ=0
+  o Single TX Queue support - ETH_DEF_TXQ=0
+  o TCP segmentation offload (TSO) supported
+  o Receive checksum offload supported
+  o Transmit checksum offload supported
+  o Network Fast Processing (Routing) supported - (Disabled)
+  o Driver ERROR statistics enabled
+  o Driver INFO statistics enabled
+  o Proc tool API enabled
+  o SKB Reuse supported - (Disabled)
+  o SKB Recycle supported - (Disabled)
+  o Rx descripors: q0=128
+  o Tx descripors: q0=532
+  o Loading network interface(s):
+     o register under mv88fx_eth platform
+     o eth0, ifindex = 2, GbE port = 0
+     o eth1, ifindex = 3, GbE port = 1
+
+mvFpRuleDb (d06c0000): 16384 entries, 65536 bytes
+e100: Intel(R) PRO/100 Network Driver, 3.5.24-k2-NAPI
+e100: Copyright(c) 1999-2006 Intel Corporation
+tun: Universal TUN/TAP device driver, 1.6
+tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+NAND device: Manufacturer ID: 0xec, Chip ID: 0x75 (Samsung NAND 32MiB 3,3V 8-bit)
+Scanning device for bad blocks
+Bad eraseblock 1026 at 0x000001008000
+Bad eraseblock 1232 at 0x000001340000
+Bad eraseblock 1436 at 0x000001670000
+Bad eraseblock 1584 at 0x0000018c0000
+Bad eraseblock 1632 at 0x000001980000
+Bad eraseblock 1988 at 0x000001f10000
+5 cmdlinepart partitions found on MTD device nand_mtd
+Using command line partition definition
+Creating 5 MTD partitions on "nand_mtd":
+0x000000000000-0x0000000a0000 : "uboot"
+ sda1
+sd 0:0:0:0: [sda] Attached SCSI disk
+0x0000000a0000-0x0000000b0000 : "env"
+0x0000000b0000-0x0000002d4000 : "zImage"
+0x0000002d4000-0x0000004f8000 : "initrd"
+0x000000000000-0x000002000000 : "flash"
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci_marvell ehci_marvell.70059: Marvell Orion EHCI
+ehci_marvell ehci_marvell.70059: new USB bus registered, assigned bus number 1
+ehci_marvell ehci_marvell.70059: irq 19, io base 0xf1050100
+ehci_marvell ehci_marvell.70059: USB 2.0 started, EHCI 1.00
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+usbcore: registered new interface driver ums-datafab
+usbcore: registered new interface driver ums-freecom
+usbcore: registered new interface driver ums-usbat
+mice: PS/2 mouse device common for all mice
+i2c /dev entries driver
+adt7473 0-002e: adt7473 chip found
+md: linear personality registered for level -1
+md: raid1 personality registered for level 1
+device-mapper: ioctl: 4.15.0-ioctl (2009-04-01) initialised: dm-devel@redhat.com
+wix gpio_init
+wix_lcm: WIX LCM driver version 0.1
+TCP cubic registered
+NET: Registered protocol family 17
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+802.1Q VLAN Support v1.8 Ben Greear <greearb@candelatech.com>
+All bugs added by David S. Miller <davem@redhat.com>
+rtc mv_rtc: setting system clock to 2023-01-30 18:03:01 UTC (1675101781)
+md: Waiting for all devices to be available before autodetect
+md: If you don't use raid, use raid=noautodetect
+md: Autodetecting RAID arrays.
+md: Scanned 0 and added 0 devices.
+md: autorun ...
+md: ... autorun DONE.
+RAMDISK: gzip image found at block 0
+usb 1-1: new high speed USB device using ehci_marvell and address 2
+usb 1-1: configuration #1 chosen from 1 choice
+hub 1-1:1.0: USB hub found
+hub 1-1:1.0: 4 ports detected
+EXT2-fs warning: checktime reached, running e2fsck is recommended
+VFS: Mounted root (ext2 filesystem) on device 1:0.
+Looking for shell in cmdline: console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+cat: can't open '/sys/block/sdb/removable': No such file or directory
+cat: can't open '/sys/block/sdc/removable': No such file or directory
+cat: can't open '/sys/block/sdd/removable': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+Sys UUID is :360a0fb6:79ae3a29:a7ae2270:7fd6cb81
+Valid Disk 1 in md0: /dev/sda1
+Valid Disk 2 in md0: 
+Valid Disk 3 in md0: 
+Valid Disk 4 in md0: 
+USB Device node is sdb
+Checking to see the if the reset button is pressed or not
+Started
+/dev/btns file does not exist creating it
+Opened /dev/btns with fd 3
+Reset Key Status: Button Id = 29 Push Count = 0 Release Count = 0
+Checking for valid image in hard drives
+md: md0 stopped.
+md: bind<sda1>
+raid1: raid set md0 active with 1 out of 4 mirrors
+md0: detected capacity change from 0 to 21484339200
+mdadm: /dev/md0 has been started with 1 drive (out of 4).
+ md0: unknown partition table
+  1 logical volume(s) in volume group "md0_vg" now active
+Found Valid EMC Image in disk...
+Mounting apps image...
+Mounting config image...
+Check config filesystem
+e2fsck 1.41.3 (12-Oct-2008)
+ext2fs_check_if_mount: No such file or directory while determining whether /dev/loop1 is mounted.
+Constructing root filesystem...
+Bootstrapping ...
+rootdir=/
+table='/usr/local/cfg/device_table.txt'
+makedevs: line 42: chown failed for /bin/busybox: Read-only file system
+makedevs: line 49: regular file '/usr/share/udhcpc/default.script' does not exist: No such file or directory
+Installing knfsd (copyright (C) 1996 okir@monad.swb.de).
+Loading ext3...
+Loading ext4...
+Loading isofs...
+Loading udf...
+Loading fat...
+FATAL: Module fat not found.
+Loading msdos...
+Loading btusb...
+Bluetooth: Core ver 2.15
+NET: Registered protocol family 31
+Bluetooth: HCI device and connection manager initialized
+Bluetooth: HCI socket layer initialized
+Bluetooth: Generic Bluetooth USB driver ver 0.5
+usbcore: registered new interface driver btusb
+Loading ums-sddr09...
+usbcore: registered new interface driver ums-sddr09
+Loading ums-sddr55...
+usbcore: registered new interface driver ums-sddr55
+Loading ums-jumpshot...
+usbcore: registered new interface driver ums-jumpshot
+Loading usblp...
+usbcore: registered new interface driver usblp
+Loading usbhid...
+usbcore: registered new interface driver hiddev
+usbcore: registered new interface driver usbhid
+usbhid: v2.6:USB HID core driver
+Loading l2cap...
+Bluetooth: L2CAP ver 2.13
+Bluetooth: L2CAP socket layer initialized
+Loading rfcomm...
+Bluetooth: RFCOMM socket layer initialized
+Bluetooth: RFCOMM ver 1.11
+Loading ufsd...
+ufsd: module license 'Commercial product' taints kernel.
+Disabling lock debugging due to kernel taint
+ufsd: driver 8.5 (Mar 12 2019 07:52:48) LBD=ON with delayalloc with ioctl loaded at bf13f000
+NTFS support included
+Hfs+/HfsX support included
+Built for: EMC_ix2_2Loading xfs...
+
+SGI XFS with ACLs, security attributes, large block/inode numbers, no debug enabled
+SGI XFS Quota Management subsystem
+Loading raid0...
+md: raid0 personality registered for level 0
+Loading raid10...
+md: raid10 personality registered for level 10
+Loading raid456...
+xor: measuring software checksum speed
+   arm4regs  :  1072.000 MB/sec
+   8regs     :   821.600 MB/sec
+   32regs    :   803.200 MB/sec
+xor: using function: arm4regs (1072.000 MB/sec)
+async_tx: api initialized (sync-only)
+raid6: int32x1     77 MB/s
+raid6: int32x2     99 MB/s
+raid6: int32x4    110 MB/s
+raid6: int32x8     91 MB/s
+raid6: using algorithm int32x4 (110 MB/s)
+md: raid6 personality registered for level 6
+md: raid5 personality registered for level 5
+md: raid4 personality registered for level 4
+Loading nfsd...
+Initialization complete.
+Freeing init memory: 124K
+INIT: version 2.86 booting
+Running file /etc/init.d/rcS
+Running file /etc/init.d/rc
+Running file /etc/rcS.d/S01glibc.sh
+Running file /etc/rcS.d/S01showlcdprogress50
+Running file /etc/rcS.d/S02hostname.sh
+Running file /etc/rcS.d/S02mountkernfs.sh
+Running file /etc/rcS.d/S04mountdevsubfs.sh
+Running file /etc/rcS.d/S05bootlogd
+Running file /etc/rcS.d/S07hdparm
+Setting parameters of disc: (none).
+Running file /etc/rcS.d/S08hwclockfirst.sh
+Setting the system clock.
+Running file /etc/rcS.d/S11hwclock.sh
+Setting the system clock.
+Running file /etc/rcS.d/S12mtab.sh
+mount: according to mtab, tmpfs is already mounted on /lib/init/rw
+
+Running file /etc/rcS.d/S18ifupdown-clean
+Cleaning up ifupdown....
+Running file /etc/rcS.d/S20module-init-tools
+Loading kernel modules...done.
+Running file /etc/rcS.d/S26lvm2
+Setting up LVM Volume Groups  Reading all physical volumes.  This may take a while...
+  Found volume group "md0_vg" using metadata type lvm2
+  1 logical volume(s) in volume group "md0_vg" now active
+.
+Running file /etc/rcS.d/S30checkfs.sh
+Checking file systems...fsck 1.41.3 (12-Oct-2008)
+done.
+Running file /etc/rcS.d/S30procps
+Setting kernel variables (/etc/sysctl.conf)...Running file /etc/rcS.d/S35mountall.sh
+Mounting local filesystems...done.
+Activating swapfile swap...done.
+Running file /etc/rcS.d/S36mountall-bootclean.sh
+Running file /etc/rcS.d/S37mountoverflowtmp
+dhclient host identical
+Running file /etc/rcS.d/S39ifupdown
+Setting up networking....
+Running file /etc/rcS.d/S40networking
+Configuring network interfaces...done.
+Running file /etc/rcS.d/S43portmap
+Starting portmap daemon....
+Running file /etc/rcS.d/S45mountnfs.sh
+Running file /etc/rcS.d/S46mountnfs-bootclean.sh
+Running file /etc/rcS.d/S55bootmisc.sh
+Running file /etc/rcS.d/S55urandom
+Running file /etc/rcS.d/S99stop-bootlogd-single
+INIT: Entering runlevel: 2
+Running file /etc/init.d/rc
+Running file /etc/rc2.d/S10rsyslog
+Starting enhanced syslogd: rsyslogd.
+Running file /etc/rc2.d/S12dbus
+chown: invalid user: `messagebus'
+Running file /etc/rc2.d/S20rsync
+Running file /etc/rc2.d/S20smartmontools
+Not starting S.M.A.R.T. daemon smartd, disabled via /etc/default/smartmontools (warning).
+Running file /etc/rc2.d/S20sysfsutils
+Setting sysfs variables....
+Running file /etc/rc2.d/S23ntp
+Starting NTP server: ntpdRunning file /etc/rc2.d/S25bluetooth
+Starting bluetooth: hcid.
+Starting netplugd...
+eth0: started
+eth1: link down
+eth1: started
+eth1: link up, full duplex, speed 1 Gbps
+Generating RSA Key...
+/usr/bin/ssh-keygen: /usr/lib/libcrypto.so.0.9.8: no version information available (required by /usr/bin/ssh-keygen)
+Generating public/private rsa1 key pair.
+Your identification has been saved in /etc/ssh/ssh_host_key.
+Your public key has been saved in /etc/ssh/ssh_host_key.pub.
+The key fingerprint is:
+9c:be:9e:85:6b:53:09:99:98:ee:b6:bf:6c:15:fb:5f 
+The key's randomart image is:
++--[RSA1 2048]----+
+|                 |
+|                 |
+|       o o       |
+|      o.+..      |
+|     .  S. +     |
+|      .. .=      |
+|     .  oo..    E|
+|      o.+=  .  . |
+|     ..*Oo   ..  |
++-----------------+
+Starting sshd: OK
+hostnamed begin to start...
+## Error: "serialno" not defined
+Name now registered and active
+hostnamed finished
+Running file /etc/rc2.d/S59showlcdprogress75
+IP obtaining in progress...
+IP obtained
+Starting executord
+Done.
+Running file /etc/rc2.d/S99rc.local
+Running file /etc/rc2.d/S99rmnologin
+Running file /etc/rc2.d/S99stop-bootlogd
+Running file /etc/init.d/bootlogd
+
+
+
+Welcome to CenterPoint.
+ix4-200d-D7PVKK login: md: bind<sda2>
+md1: detected capacity change from 0 to 98549563392
+ md1: unknown partition table
+XFS mounting filesystem dm-1
+XFS mounting filesystem dm-2
+Adding 524280k swap on /mnt/system/swapfile.  Priority:-1 extents:11 across:533460k 
+
+Welcome to CenterPoint.
+ix4-200d-D7PVKK login: ggirou
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: root
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: root
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: 
+Login timed out 
+
+
+Welcome to CenterPoint.
+ix4-200d-D7PVKK login: root
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: soho
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: ggiropu^[[D      u
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: ggirou
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: soho
+Password: 
+Maximum number o
+
+
+Welcome to CenterPoint.
+ix4-200d-D7PVKK login: soho
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: soho
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: root
+Password: 
+
+Login incorrect
+ix4-200d-D7PVKK login: 
+Login timed out 
+
+
+Welcome to CenterPoint.
+ix4-200d-D7PVKK login: INIT: INIT: Running file /etc/init.d/rc
+Stopping iSCSI Target: ietdConnection refused.
+No /usr/sbin/ietd found running; none killed.
+.
+Running file /etc/rc0.d/K20rsync
+Stopping rsync daemon: rsync.
+Running file /etc/rc0.d/K20smartmontools
+Stopping S.M.A.R.T. daemon: smartd.
+Running file /etc/rc0.d/K23ntp
+Stopping NTP server: ntpd.
+Running file /etc/rc0.d/K25hwclock.sh
+Saving the system clock.
+Running file /etc/rc0.d/K25mdadm
+Running file /etc/rc0.d/K63mountoverflowtmp
+Running file /etc/rc0.d/K74bluetooth
+Stopping bluetooth: hcid.
+Running file /etc/rc0.d/K90rsyslog
+Stopping enhanced syslogd: rsyslogd.
+Running file /etc/rc0.d/S20sendsigs
+Asking all remaining processes to terminate...mDNSResponder: mDNSResponder (Engineering Build) (Jun 10 2015 15:01:41) stopping
+mDNSResponder: mDNS_FinalExit failed to send goodbye for: 0006CAB0 01   41 _workstation._tcp.local. PTR ix4-200d-D7PVKK._workstation._tcp.local.
+mDNSResponder: mDNS_FinalExit failed to send goodbye for: 0006E148 01   44 _LifeLineDevice._tcp.local. PTR ix4-200d-D7PVKK._LifeLineDevice._tcp.local.
+done.
+Killing all remaining processes...[31mfailed.[39;49m
+Running file /etc/rc0.d/S30urandom
+Running file /etc/rc0.d/S31umountnfs.sh
+Running file /etc/rc0.d/S32portmap
+Stopping portmap daemon....
+Running file /etc/rc0.d/S35networking
+Deconfiguring network interfaces...There is already a pid file /var/run/dhclient.eth1.pid with pid 1316
+removed stale PID file
+Internet Systems Consortium DHCP Client V3.1.1
+Copyright 2004-2008 Internet Systems Consortium.
+All rights reserved.
+For info, please visit http://www.isc.org/sw/dhcp/
+
+Listening on LPF/eth1/00:50:43:8c:07:15
+Sending on   LPF/eth1/00:50:43:8c:07:15
+Sending on   Socket/fallback
+DHCPRELEASE on eth1 to 192.168.1.253 port 67
+eth1: stopped
+done.
+Running file /etc/rc0.d/S36ifupdown
+Running file /etc/init.d/ifupdown-clean
+Cleaning up ifupdown....
+Running file /etc/rc0.d/S50lvm2
+Shutting down LVM Volume Groups  Can't deactivate volume group "28a9415e_vg" with 1 open logical volume(s)
+  Can't deactivate volume group "md0_vg" with 2 open logical volume(s)
+ [31mfailed![39;49m
+Running file /etc/rc0.d/S60mdadm-raid
+md: md1 still in use.
+md: md0 still in use.
+md: md1 still in use.
+md: md0 still in use.
+Stopping MD array md1...[31mfailed (busy).[39;49m
+Stopping MD array md0...[31mfailed (busy).[39;49m
+Running file /etc/rc0.d/S90halt
+Will now halt.
+INIT: cannot execute "/sbin/addLog"
+INIT: no more processes left in this runlevel
+  0 logical volume(s) in volume group "28a9415e_vg" now active
+md: md0 still in use.
+md: md1 stopped.
+md: unbind<sda2>
+md: export_rdev(sda2)
+
+Pivot root to /shutdown in RAM
+
+Mount table prior to shutdown:
+rootfs on / type rootfs (rw)
+none on /sysroot type tmpfs (rw,relatime,size=51200k,nr_inodes=63921)
+tmpfs on / type tmpfs (rw,relatime)
+proc on /proc type proc (rw,relatime)
+sysfs on /sys type sysfs (rw,relatime)
+
+Execute shutdown command: poweromd: stopping all md devices.
+ff -f
+md: md0 switched to read-only mode.
+sd 0:0:0:0: [sda] Synchronizing SCSI cache
+sd 0:0:0:0: [sda] Synchronizing SCSI cache

@@ -57,6 +57,10 @@ Files to note:
 - `/etc/sensors.conf`: Sensors conf
 - `/usr/bin/sohoshutdown2`: Shutdown script (Disable auto power on)
 - `/bin/bashbug`: create a bug report and mail it to the bug address
+- `/usr/local/sohoWebContent/`: website root folder
+- `/usr/lib/libCP.so`, `usr/lib/libsvc.so`, `/usr/local/svcd/svcd`: binary files with references to API commands
+
+For the ix4-200d specifically, the units shipped with either a 500GB, 1TB, or 2TB Seagate Barracuda LP (5900rpm) Hepburn disks.  ST3500412AS, ST31000520AS, ST32000542AS
 
 # Boot u-boot and debian
 
@@ -91,15 +95,20 @@ Files to note:
     ls -la /mnt/usb/
     sudo umount /mnt/usb/
 
-## Serial boot u-boot
+## Serial boot last firmware
 
-    kwboot -p -t -B 115200 /dev/ttyUSB0 -b u-boot-DRAM256-MapowerV5.1_nand.bin
+    # FAIL TO BOOT! with the following u-boot
+    # kwboot -p -t -B 115200 /dev/ttyUSB0 -b u-boot-DRAM256-MapowerV5.1_nand.bin
+
+    # Boot with stock u-boot
+    kwboot -p -b stock-firmware/nand-0-uboot.bin -B115200 -t /dev/ttyUSB0
 
 > Hit `Ctrl+C` several times to stop boot processes.
 
     # Load from TFTP server (plug on Ethernet port 2)
-    setenv ipaddr 192.168.1.250; setenv serverip 192.168.1.48
-    tftpboot 0x2000000 zImage; tftpboot 0x4500000 initrd
+    setenv ipaddr 192.168.1.250; setenv serverip 192.168.1.109
+    tftpboot 0x2000000 zImage
+    tftpboot 0x4500000 initrd
 
     # OR Load from USB (if it works!)
     usb start
@@ -107,10 +116,13 @@ Files to note:
     ext2load usb 0:1 0x2000000 zImage
     ext2load usb 0:1 0x4500000 initrd
 
-    setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash) root=/dev/disk/by-path/platform-f1050000.ehci-usb-0:1.2:1.0-scsi-0:0:0:0-part1 rw
+    setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
     bootm 0x2000000 0x4500000
 
-    # FAIL TO BOOT!
+See `bootlog-stockuboot-lastfirmwareboot.txt`
+
+> Enable SSH on the NAS: Go to http://your-nas-adress/diagnostics.html, click "enable SSH".  
+> If the admin password of the NAS is `pass` the `root` password to use in ssh is `sohopass`.(thanks http://planetkris.com/2010/05/iomega-storcenter-ix2-ssh-email-notifications-and-busybox-init-d).
 
 # Download source code from Lenovo Lifeline FossKit
 

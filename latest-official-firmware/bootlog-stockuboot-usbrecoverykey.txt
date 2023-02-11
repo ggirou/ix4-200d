@@ -1,0 +1,599 @@
+         __  __                      _ _
+        |  \/  | __ _ _ ____   _____| | |
+        | |\/| |/ _` | '__\ \ / / _ \ | |
+        | |  | | (_| | |   \ V /  __/ | |
+        |_|  |_|\__,_|_|    \_/ \___|_|_|
+ _   _     ____              _
+| | | |   | __ )  ___   ___ | |_ 
+| | | |___|  _ \ / _ \ / _ \| __| 
+| |_| |___| |_) | (_) | (_) | |_ 
+ \___/    |____/ \___/ \___/ \__|  ** uboot_ver:v1.1.0 **
+
+ ** MARVELL BOARD: IX4-110 LE 
+
+U-Boot 1.1.4 (Oct 15 2009 - 17:28:22) Marvell version: 3.4.18
+
+U-Boot code: 00600000 -> 0067FFF0  BSS: -> 006CF600
+
+Soc: 88F6281 A1 (DDR2)
+CPU running @ 1200Mhz L2 running @ 400Mhz
+SysClock = 400Mhz , TClock = 200Mhz 
+
+DRAM CAS Latency = 5 tRP = 5 tRAS = 18 tRCD=6
+DRAM CS[0] base 0x00000000   size 256MB 
+DRAM CS[1] base 0x10000000   size 256MB 
+DRAM Total size 512MB  16bit width
+Found 0x20 i2c device
+Set Power State as Always On
+Addresses 8M - 0M are saved for the U-Boot usage.
+Mem malloc Initialization (8M - 7M): Done
+NAND:32 MB
+Found ADT7473, program LED ...(led_volt=90)  OK
+Found ADT7473, program thermal/Fan ...(pwm_min=0) (pwm_max=130) (therm=67) (temp_min=60)  OK
+
+Marvell Serial ATA Adapter
+Integrated Sata device found
+
+
+CPU : Marvell Feroceon (Rev 1)
+Could not found correct initrd
+
+Streaming disabled 
+Write allocate disabled
+
+Module 0 is RGMII
+Module 1 is RGMII
+
+USB 0: host mode
+PEX 0: PCI Express Root Complex Interface
+PEX interface detected Link X1
+SCSI:  AHCI 0001.0000 32 slots 3 ports 3 Gbps 0x7 impl IDE mode
+flags: 64bit ncq stag led pmp slum part 
+scanning bus for devices...
+  Device 0: (0:0) Vendor: ATA Prod.: PNY CS900 120GB Rev: CS90
+            Type: Hard Disk
+            Capacity: 114473.4 MB = 111.7 GB (234441648 x 512)
+Net:   egiga0 [PRIME], egiga1
+Hit any key to stop autoboot:  0 
+Marvell>> 
+
+Marvell>> setenv ipaddr 192.168.1.250; setenv serverip 192.168.1.109
+Marvell>> tftpboot 0x2000000 zImage; tftpboot 0x4500000 initrd
+egiga0 no link
+Using egiga1 device
+TFTP from server 192.168.1.109; our IP address is 192.168.1.250
+Filename 'zImage'.
+Load address: 0x2000000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ################
+done
+Bytes transferred = 2076824 (1fb098 hex)
+Using egiga1 device
+TFTP from server 192.168.1.109; our IP address is 192.168.1.250
+Filename 'initrd'.
+Load address: 0x4500000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ###########################################################
+Abort
+Marvell>> tftpboot 0x4500000 initrd
+Using egiga1 device
+TFTP from server 192.168.1.109; our IP address is 192.168.1.250
+Filename 'initrd'.
+Load address: 0x4500000
+Loading: *#################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 #################################################################
+	 ########
+done
+Bytes transferred = 3032589 (2e460d hex)
+Marvell>> setenv bootargs console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+Marvell>> bootm 0x2000000 0x4500000
+## Booting image at 02000000 ...
+   Image Name:   Linux-2.6.31.8
+   Created:      2015-06-10  18:53:13 UTC
+   Image Type:   ARM Linux Kernel Image (uncompressed)
+   Data Size:    2076760 Bytes =  2 MB
+   Load Address: 00008000
+   Entry Point:  00008000
+   Verifying Checksum ... OK
+OK
+## Loading Ramdisk Image at 04500000 ...
+   Image Name:   
+   Created:      2019-04-05  12:40:15 UTC
+   Image Type:   ARM Linux RAMDisk Image (gzip compressed)
+   Data Size:    3032525 Bytes =  2.9 MB
+   Load Address: 00000000
+   Entry Point:  00000000
+   Verifying Checksum ... OK
+
+Starting kernel ...
+
+Uncompressing Linux...................................................................................................................................... done, booting the kernel.
+Linux version 2.6.31.8 (soho@bsoho173.iomegacorp.com) (gcc version 4.3.2 (Sourcery G++ Lite 2008q3-72) ) #1 Wed Jun 10 14:53:10 EDT 2015
+CPU: Feroceon 88FR131 [56251311] revision 1 (ARMv5TE), cr=00053977
+CPU: VIVT data cache, VIVT instruction cache
+Machine: Feroceon-KW
+Using UBoot passing parameters structure
+Memory policy: ECC disabled, Data cache writeback
+Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 130048
+Kernel command line: console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+PID hash table entries: 2048 (order: 11, 8192 bytes)
+Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+Memory: 256MB 256MB = 512MB total
+Memory: 508032KB available (3868K code, 297K data, 124K init, 0K highmem)
+Hierarchical RCU implementation.
+NR_IRQS:128
+Console: colour dummy device 80x30
+Calibrating delay loop... 1192.75 BogoMIPS (lpj=5963776)
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+NET: Registered protocol family 16
+Feroceon L2: Enabling L2
+Feroceon L2: Cache support initialised.
+
+CPU Interface
+-------------
+SDRAM_CS0 ....base 00000000, size 256MB 
+SDRAM_CS1 ....base 10000000, size 256MB 
+SDRAM_CS2 ....disable
+SDRAM_CS3 ....disable
+PEX0_MEM ....base e0000000, size 128MB 
+PEX0_IO ....base f2000000, size   1MB 
+INTER_REGS ....base f1000000, size   1MB 
+NFLASH_CS ....base fa000000, size   2MB 
+SPI_CS ....base f4000000, size  16MB 
+BOOT_ROM_CS ....no such
+DEV_BOOTCS ....no such
+CRYPT_ENG ....base f0000000, size   2MB 
+
+  Marvell Development Board (LSP Version KW_LSP_5.1.3_patch22)-- IX4-110  Soc: 88F6281 A1 LE
+
+ Detected Tclk 200000000 and SysClk 400000000 
+MV Buttons Device Load
+Marvell USB EHCI Host controller #0: d003a740
+PEX0 interface detected Link X1
+pci 0000:00:01.0: PME# supported from D0 D1 D3hot
+pci 0000:00:01.0: PME# disabled
+PCI: bus0: Fast back to back transfers disabled
+bio: create slab <bio-0> at 0
+SCSI Scattered Spinup:
+SCSI Scattered Spinup Feature Status: Enabled
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+NET: Registered protocol family 2
+IP route cache hash table entries: 16384 (order: 4, 65536 bytes)
+TCP established hash table entries: 65536 (order: 7, 524288 bytes)
+TCP bind hash table entries: 65536 (order: 6, 262144 bytes)
+TCP: Hash tables configured (established 65536 bind 65536)
+TCP reno registered
+NET: Registered protocol family 1
+Trying to unpack rootfs image as initramfs...
+rootfs image is not initramfs (no cpio magic); looks like an initrd
+Freeing initrd memory: 2960K
+rtc mv_rtc: rtc core: registered kw-rtc as rtc0
+RTC registered
+XOR registered 4 channels
+XOR 2nd invalidate WA enabled
+cesadev_init(c000ebb0)
+mvCesaInit: sessions=640, queue=64, pSram=f0000000
+MV Buttons Driver Load
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+msgmni has been set to 998
+alg: No test for cipher_null (cipher_null-generic)
+alg: No test for ecb(cipher_null) (ecb-cipher_null)
+alg: No test for digest_null (digest_null-generic)
+alg: No test for compress_null (compress_null-generic)
+alg: No test for stdrng (krng)
+alg: No test for hmac(digest_null) (hmac(digest_null-generic))
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+io scheduler noop registered
+io scheduler anticipatory registered (default)
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+serial8250.0: ttyS0 at MMIO 0xf1012000 (irq = 33) is a 16550A
+console [ttyS0] enabled
+brd: module loaded
+loop: module loaded
+Marvell Storage Controller is found, using IRQ 9.
+scsi0 : Marvell Storage Controller
+scsi 0:0:0:0: Direct-Access     ATA      CS900 120GB SSD  CS90 PQ: 0 ANSI: 5
+Integrated Sata device found
+IRQ 21/mvSata: IRQF_DISABLED is not guaranteed on shared IRQs
+scsi1 : Marvell SCSI to SATA adapter
+scsi2 : Marvell SCSI to SATA adapter
+sd 0:0:0:0: [sda] 234441648 512-byte logical blocks: (120 GB/111 GiB)
+sd 0:0:0:0: [sda] Write Protect is off
+sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, supports DPO and FUA
+ sda: sda1 sda2
+sd 0:0:0:0: Attached scsi generic sg0 type 0
+Loading Marvell Ethernet Driver:
+  o Cached descriptors in DRAM
+  o DRAM SW cache-coherency
+  o 2 Giga ports supported
+  o Single RX Queue support - ETH_DEF_RXQ=0
+  o Single TX Queue support - ETH_DEF_TXQ=0
+  o TCP segmentation offload (TSO) supported
+  o Receive checksum offload supported
+  o Transmit checksum offload supported
+  o Network Fast Processing (Routing) supported - (Disabled)
+  o Driver ERROR statistics enabled
+  o Driver INFO statistics enabled
+  o Proc tool API enabled
+  o SKB Reuse supported - (Disabled)
+  o SKB Recycle supported - (Disabled)
+  o Rx descripors: q0=128
+  o Tx descripors: q0=532
+  o Loading network interface(s):
+     o register under mv88fx_eth platform
+sd 0:0:0:0: [sda] Attached SCSI disk
+     o eth0, ifindex = 2, GbE port = 0
+     o eth1, ifindex = 3, GbE port = 1
+
+mvFpRuleDb (d06e0000): 16384 entries, 65536 bytes
+e100: Intel(R) PRO/100 Network Driver, 3.5.24-k2-NAPI
+e100: Copyright(c) 1999-2006 Intel Corporation
+tun: Universal TUN/TAP device driver, 1.6
+tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+NAND device: Manufacturer ID: 0xec, Chip ID: 0x75 (Samsung NAND 32MiB 3,3V 8-bit)
+Scanning device for bad blocks
+Bad eraseblock 1026 at 0x000001008000
+Bad eraseblock 1232 at 0x000001340000
+Bad eraseblock 1436 at 0x000001670000
+Bad eraseblock 1584 at 0x0000018c0000
+Bad eraseblock 1632 at 0x000001980000
+Bad eraseblock 1988 at 0x000001f10000
+5 cmdlinepart partitions found on MTD device nand_mtd
+Using command line partition definition
+Creating 5 MTD partitions on "nand_mtd":
+0x000000000000-0x0000000a0000 : "uboot"
+0x0000000a0000-0x0000000b0000 : "env"
+0x0000000b0000-0x0000002d4000 : "zImage"
+0x0000002d4000-0x0000004f8000 : "initrd"
+0x000000000000-0x000002000000 : "flash"
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ehci_marvell ehci_marvell.70059: Marvell Orion EHCI
+ehci_marvell ehci_marvell.70059: new USB bus registered, assigned bus number 1
+ehci_marvell ehci_marvell.70059: irq 19, io base 0xf1050100
+ehci_marvell ehci_marvell.70059: USB 2.0 started, EHCI 1.00
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+usbcore: registered new interface driver ums-datafab
+usbcore: registered new interface driver ums-freecom
+usbcore: registered new interface driver ums-usbat
+mice: PS/2 mouse device common for all mice
+i2c /dev entries driver
+adt7473 0-002e: adt7473 chip found
+md: linear personality registered for level -1
+md: raid1 personality registered for level 1
+device-mapper: ioctl: 4.15.0-ioctl (2009-04-01) initialised: dm-devel@redhat.com
+wix gpio_init
+wix_lcm: WIX LCM driver version 0.1
+TCP cubic registered
+NET: Registered protocol family 17
+RPC: Registered udp transport module.
+RPC: Registered tcp transport module.
+802.1Q VLAN Support v1.8 Ben Greear <greearb@candelatech.com>
+All bugs added by David S. Miller <davem@redhat.com>
+rtc mv_rtc: setting system clock to 2023-01-30 17:51:31 UTC (1675101091)
+md: Waiting for all devices to be available before autodetect
+md: If you don't use raid, use raid=noautodetect
+md: Autodetecting RAID arrays.
+md: Scanned 0 and added 0 devices.
+md: autorun ...
+md: ... autorun DONE.
+RAMDISK: gzip image found at block 0
+usb 1-1: new high speed USB device using ehci_marvell and address 2
+usb 1-1: configuration #1 chosen from 1 choice
+hub 1-1:1.0: USB hub found
+hub 1-1:1.0: 4 ports detected
+EXT2-fs warning: checktime reached, running e2fsck is recommended
+VFS: Mounted root (ext2 filesystem) on device 1:0.
+Looking for shell in cmdline: console=ttyS0,115200 mtdparts=nand_mtd:0xa0000@0x0(uboot),0x10000@0xa0000(env),0x224000@0xb0000(zImage),0x224000@0x2d4000(initrd),32m@0x0(flash)
+cat: can't open '/sys/block/sdb/removable': No such file or directory
+cat: can't open '/sys/block/sdc/removable': No such file or directory
+cat: can't open '/sys/block/sdd/removable': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+mdadm: No devices to examine
+cat: can't open '/sys/block///size': No such file or directory
+Sys UUID is :0
+Valid Disk 1 in md0: 
+Valid Disk 2 in md0: 
+Valid Disk 3 in md0: 
+Valid Disk 4 in md0: 
+USB Device node is sdb
+Checking to see the if the reset button is pressed or not
+Started
+/dev/btns file does not exist creating it
+Opened /dev/btns with fd 3
+Reset Key Status: Button Id = 29 Push Count = 1 Release Count = 0
+Reset Button key got pressed
+usb 1-1.1: new high speed USB device using ehci_marvell and address 3
+usb 1-1.1: configuration #1 chosen from 1 choice
+scsi3 : SCSI emulation for USB Mass Storage devices
+Checking if there is an attached EMC Imager
+scsi 3:0:0:0: Direct-Access              USB DISK         PMAP PQ: 0 ANSI: 0 CCS
+sd 3:0:0:0: Attached scsi generic sg1 type 0
+sd 3:0:0:0: [sdb] 3932160 512-byte logical blocks: (2.01 GB/1.87 GiB)
+sd 3:0:0:0: [sdb] Write Protect is off
+sd 3:0:0:0: [sdb] Assuming drive cache: write through
+sd 3:0:0:0: [sdb] Assuming drive cache: write through
+ sdb: sdb1
+sd 3:0:0:0: [sdb] Assuming drive cache: write through
+sd 3:0:0:0: [sdb] Attached SCSI removable disk
+FAT: utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+Checking for pre-image script... none.
+Image tar file found: /usb_drive/emctools/ix4-200d_images/*.tgz
+Extract Image tar file.
+apps
+apps.md5
+config
+config.md5
+initrd
+initrd.md5
+oem
+oem.md5
+zImage
+zImage.md5
+apps is valid
+config is valid
+initrd is valid
+zImage is valid
+Found EMC Imager with apps and config image...
+Started USB Imaging...
+mknod: /dev/md0: File exists
+Checking for valid image in hard drives
+Valid disk 1 is  Valid Disk 2 is 
+mdadm: /dev/md0 not identified in config file.
+mount: mounting /dev/md0_vg/BFDlv on /sysroot/boot failed: No such file or directory
+Going to do a full install
+rm: cannot remove '/usb_drive/emctools/ix4-200d_images/reinstall': No such file or directory
+umount: cannot umount /sysroot/boot: Invalid argument
+  Volume group "md0_vg" not found
+md: md0 stopped.
+mdadm: stopped /dev/md0
+md: md1 stopped.
+mdadm: stopped /dev/md1
+mdadm: Unrecognised md component device - /dev/sda1
+mdadm: Couldn't open /dev/sdb1 for write - not zeroing
+mdadm: Couldn't open /dev/sdc1 for write - not zeroing
+mdadm: Couldn't open /dev/sdd1 for write - not zeroing
+10000+0 records in
+10000+0 records out
+mdadm: Unrecognised md component device - /dev/sda1
+Creating Parition /dev/sda
+sdb is not a hard drive
+cat: can't open '/sys/block/sdc/removable': No such file or directory
+sdc is not a hard drive
+cat: can't open '/sys/block/sdd/removable': No such file or directory
+sdd is nomd: bind<sda1>
+t a hard drive
+raid1: raid set md0 active with 1 out of 4 mirrors
+Creating raid 1.md0: detected capacity change from 0 to 21484339200
+..
+mdadm: array /dev/md0 started.
+ md0: unknown partition table
+  Physical volume "/dev/md0" successfully created
+  Volume group "md0_vg" successfully created
+  Logical volume "BFDlv" created
+mke2fs 1.41.3 (12-Oct-2008)
+ext2fs_check_if_mount: No such file or directory while determining whether /dev/md0_vg/BFDlv is mounted.
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+262144 inodes, 1048576 blocks
+52428 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=1073741824
+32 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Writing inode tables:  0/32 1/32 2/32 3/32 4/32 5/32 6/32 7/32 8/32 9/3210/3211/3212/3213/3214/3215/3216/3217/3218/3219/3220/3221/3222/3223/3224/3225/3226/3227/3228/3229/3230/3231/32done                            
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 20 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+  1 logical volume(s) in volume group "md0_vg" now active
+Copied apps config and oem image
+md: md0 stopped.
+md: unbind<sda1>
+md: export_rdev(sda1)
+mdadm: stopped /dev/md0
+Erasing 16 Kibyte @ 0 --  0 % complete.Erasing 16 Kibyte @ 4000 --  0 % complete.Erasing 16 Kibyte @ 8000 --  1 % complete.Erasing 16 Kibyte @ c000 --  2 % complete.Erasing 16 Kibyte @ 10000 --  2 % complete.Erasing 16 Kibyte @ 14000 --  3 % complete.Erasing 16 Kibyte @ 18000 --  4 % complete.Erasing 16 Kibyte @ 1c000 --  5 % complete.Erasing 16 Kibyte @ 20000 --  5 % complete.Erasing 16 Kibyte @ 24000 --  6 % complete.Erasing 16 Kibyte @ 28000 --  7 % complete.Erasing 16 Kibyte @ 2c000 --  8 % complete.Erasing 16 Kibyte @ 30000 --  8 % complete.Erasing 16 Kibyte @ 34000 --  9 % complete.Erasing 16 Kibyte @ 38000 -- 10 % complete.Erasing 16 Kibyte @ 3c000 -- 10 % complete.Erasing 16 Kibyte @ 40000 -- 11 % complete.Erasing 16 Kibyte @ 44000 -- 12 % complete.Erasing 16 Kibyte @ 48000 -- 13 % complete.Erasing 16 Kibyte @ 4c000 -- 13 % complete.Erasing 16 Kibyte @ 50000 -- 14 % complete.Erasing 16 Kibyte @ 54000 -- 15 % complete.Erasing 16 Kibyte @ 58000 -- 16 % complete.Erasing 16 Kibyte @ 5c000 -- 16 % complete.Erasing 16 Kibyte @ 60000 -- 17 % complete.Erasing 16 Kibyte @ 64000 -- 18 % complete.Erasing 16 Kibyte @ 68000 -- 18 % complete.Erasing 16 Kibyte @ 6c000 -- 19 % complete.Erasing 16 Kibyte @ 70000 -- 20 % complete.Erasing 16 Kibyte @ 74000 -- 21 % complete.Erasing 16 Kibyte @ 78000 -- 21 % complete.Erasing 16 Kibyte @ 7c000 -- 22 % complete.Erasing 16 Kibyte @ 80000 -- 23 % complete.Erasing 16 Kibyte @ 84000 -- 24 % complete.Erasing 16 Kibyte @ 88000 -- 24 % complete.Erasing 16 Kibyte @ 8c000 -- 25 % complete.Erasing 16 Kibyte @ 90000 -- 26 % complete.Erasing 16 Kibyte @ 94000 -- 27 % complete.Erasing 16 Kibyte @ 98000 -- 27 % complete.Erasing 16 Kibyte @ 9c000 -- 28 % complete.Erasing 16 Kibyte @ a0000 -- 29 % complete.Erasing 16 Kibyte @ a4000 -- 29 % complete.Erasing 16 Kibyte @ a8000 -- 30 % complete.Erasing 16 Kibyte @ ac000 -- 31 % complete.Erasing 16 Kibyte @ b0000 -- 32 % complete.Erasing 16 Kibyte @ b4000 -- 32 % complete.Erasing 16 Kibyte @ b8000 -- 33 % complete.Erasing 16 Kibyte @ bc000 -- 34 % complete.Erasing 16 Kibyte @ c0000 -- 35 % complete.Erasing 16 Kibyte @ c4000 -- 35 % complete.Erasing 16 Kibyte @ c8000 -- 36 % complete.Erasing 16 Kibyte @ cc000 -- 37 % complete.Erasing 16 Kibyte @ d0000 -- 37 % complete.Erasing 16 Kibyte @ d4000 -- 38 % complete.Erasing 16 Kibyte @ d8000 -- 39 % complete.Erasing 16 Kibyte @ dc000 -- 40 % complete.Erasing 16 Kibyte @ e0000 -- 40 % complete.Erasing 16 Kibyte @ e4000 -- 41 % complete.Erasing 16 Kibyte @ e8000 -- 42 % complete.Erasing 16 Kibyte @ ec000 -- 43 % complete.Erasing 16 Kibyte @ f0000 -- 43 % complete.Erasing 16 Kibyte @ f4000 -- 44 % complete.Erasing 16 Kibyte @ f8000 -- 45 % complete.Erasing 16 Kibyte @ fc000 -- 45 % complete.Erasing 16 Kibyte @ 100000 -- 46 % complete.Erasing 16 Kibyte @ 104000 -- 47 % complete.Erasing 16 Kibyte @ 108000 -- 48 % complete.Erasing 16 Kibyte @ 10c000 -- 48 % complete.Erasing 16 Kibyte @ 110000 -- 49 % complete.Erasing 16 Kibyte @ 114000 -- 50 % complete.Erasing 16 Kibyte @ 118000 -- 51 % complete.Erasing 16 Kibyte @ 11c000 -- 51 % complete.Erasing 16 Kibyte @ 120000 -- 52 % complete.Erasing 16 Kibyte @ 124000 -- 53 % complete.Erasing 16 Kibyte @ 128000 -- 54 % complete.Erasing 16 Kibyte @ 12c000 -- 54 % complete.Erasing 16 Kibyte @ 130000 -- 55 % complete.Erasing 16 Kibyte @ 134000 -- 56 % complete.Erasing 16 Kibyte @ 138000 -- 56 % complete.Erasing 16 Kibyte @ 13c000 -- 57 % complete.Erasing 16 Kibyte @ 140000 -- 58 % complete.Erasing 16 Kibyte @ 144000 -- 59 % complete.Erasing 16 Kibyte @ 148000 -- 59 % complete.Erasing 16 Kibyte @ 14c000 -- 60 % complete.Erasing 16 Kibyte @ 150000 -- 61 % complete.Erasing 16 Kibyte @ 154000 -- 62 % complete.Erasing 16 Kibyte @ 158000 -- 62 % complete.Erasing 16 Kibyte @ 15c000 -- 63 % complete.Erasing 16 Kibyte @ 160000 -- 64 % complete.Erasing 16 Kibyte @ 164000 -- 64 % complete.Erasing 16 Kibyte @ 168000 -- 65 % complete.Erasing 16 Kibyte @ 16c000 -- 66 % complete.Erasing 16 Kibyte @ 170000 -- 67 % complete.Erasing 16 Kibyte @ 174000 -- 67 % complete.Erasing 16 Kibyte @ 178000 -- 68 % complete.Erasing 16 Kibyte @ 17c000 -- 69 % complete.Erasing 16 Kibyte @ 180000 -- 70 % complete.Erasing 16 Kibyte @ 184000 -- 70 % complete.Erasing 16 Kibyte @ 188000 -- 71 % complete.Erasing 16 Kibyte @ 18c000 -- 72 % complete.Erasing 16 Kibyte @ 190000 -- 72 % complete.Erasing 16 Kibyte @ 194000 -- 73 % complete.Erasing 16 Kibyte @ 198000 -- 74 % complete.Erasing 16 Kibyte @ 19c000 -- 75 % complete.Erasing 16 Kibyte @ 1a0000 -- 75 % complete.Erasing 16 Kibyte @ 1a4000 -- 76 % complete.Erasing 16 Kibyte @ 1a8000 -- 77 % complete.Erasing 16 Kibyte @ 1ac000 -- 78 % complete.Erasing 16 Kibyte @ 1b0000 -- 78 % complete.Erasing 16 Kibyte @ 1b4000 -- 79 % complete.Erasing 16 Kibyte @ 1b8000 -- 80 % complete.Erasing 16 Kibyte @ 1bc000 -- 81 % complete.Erasing 16 Kibyte @ 1c0000 -- 81 % complete.Erasing 16 Kibyte @ 1c4000 -- 82 % complete.Erasing 16 Kibyte @ 1c8000 -- 83 % complete.Erasing 16 Kibyte @ 1cc000 -- 83 % complete.Erasing 16 Kibyte @ 1d0000 -- 84 % complete.Erasing 16 Kibyte @ 1d4000 -- 85 % complete.Erasing 16 Kibyte @ 1d8000 -- 86 % complete.Erasing 16 Kibyte @ 1dc000 -- 86 % complete.Erasing 16 Kibyte @ 1e0000 -- 87 % complete.Erasing 16 Kibyte @ 1e4000 -- 88 % complete.Erasing 16 Kibyte @ 1e8000 -- 89 % complete.Erasing 16 Kibyte @ 1ec000 -- 89 % complete.Erasing 16 Kibyte @ 1f0000 -- 90 % complete.Erasing 16 Kibyte @ 1f4000 -- 91 % complete.Erasing 16 Kibyte @ 1f8000 -- 91 % complete.Erasing 16 Kibyte @ 1fc000 -- 92 % complete.Erasing 16 Kibyte @ 200000 -- 93 % complete.Erasing 16 Kibyte @ 204000 -- 94 % complete.Erasing 16 Kibyte @ 208000 -- 94 % complete.Erasing 16 Kibyte @ 20c000 -- 95 % complete.Erasing 16 Kibyte @ 210000 -- 96 % complete.Erasing 16 Kibyte @ 214000 -- 97 % complete.Erasing 16 Kibyte @ 218000 -- 97 % complete.Erasing 16 Kibyte @ 21c000 -- 98 % complete.Erasing 16 Kibyte @ 220000 -- 99 % complete.
+Image 3032589 bytes, NAND page 512 bytes, OOB area 512 bytes, device size 2244608 bytes
+Input file does not fit into device: Success
+Data did not fit into device, due to bad blocks
+: Success
+Erasing 16 Kibyte @ 0 --  0 % complete.Erasing 16 Kibyte @ 4000 --  0 % complete.Erasing 16 Kibyte @ 8000 --  1 % complete.Erasing 16 Kibyte @ c000 --  2 % complete.Erasing 16 Kibyte @ 10000 --  2 % complete.Erasing 16 Kibyte @ 14000 --  3 % complete.Erasing 16 Kibyte @ 18000 --  4 % complete.Erasing 16 Kibyte @ 1c000 --  5 % complete.Erasing 16 Kibyte @ 20000 --  5 % complete.Erasing 16 Kibyte @ 24000 --  6 % complete.Erasing 16 Kibyte @ 28000 --  7 % complete.Erasing 16 Kibyte @ 2c000 --  8 % complete.Erasing 16 Kibyte @ 30000 --  8 % complete.Erasing 16 Kibyte @ 34000 --  9 % complete.Erasing 16 Kibyte @ 38000 -- 10 % complete.Erasing 16 Kibyte @ 3c000 -- 10 % complete.Erasing 16 Kibyte @ 40000 -- 11 % complete.Erasing 16 Kibyte @ 44000 -- 12 % complete.Erasing 16 Kibyte @ 48000 -- 13 % complete.Erasing 16 Kibyte @ 4c000 -- 13 % complete.Erasing 16 Kibyte @ 50000 -- 14 % complete.Erasing 16 Kibyte @ 54000 -- 15 % complete.Erasing 16 Kibyte @ 58000 -- 16 % complete.Erasing 16 Kibyte @ 5c000 -- 16 % complete.Erasing 16 Kibyte @ 60000 -- 17 % complete.Erasing 16 Kibyte @ 64000 -- 18 % complete.Erasing 16 Kibyte @ 68000 -- 18 % complete.Erasing 16 Kibyte @ 6c000 -- 19 % complete.Erasing 16 Kibyte @ 70000 -- 20 % complete.Erasing 16 Kibyte @ 74000 -- 21 % complete.Erasing 16 Kibyte @ 78000 -- 21 % complete.Erasing 16 Kibyte @ 7c000 -- 22 % complete.Erasing 16 Kibyte @ 80000 -- 23 % complete.Erasing 16 Kibyte @ 84000 -- 24 % complete.Erasing 16 Kibyte @ 88000 -- 24 % complete.Erasing 16 Kibyte @ 8c000 -- 25 % complete.Erasing 16 Kibyte @ 90000 -- 26 % complete.Erasing 16 Kibyte @ 94000 -- 27 % complete.Erasing 16 Kibyte @ 98000 -- 27 % complete.Erasing 16 Kibyte @ 9c000 -- 28 % complete.Erasing 16 Kibyte @ a0000 -- 29 % complete.Erasing 16 Kibyte @ a4000 -- 29 % complete.Erasing 16 Kibyte @ a8000 -- 30 % complete.Erasing 16 Kibyte @ ac000 -- 31 % complete.Erasing 16 Kibyte @ b0000 -- 32 % complete.Erasing 16 Kibyte @ b4000 -- 32 % complete.Erasing 16 Kibyte @ b8000 -- 33 % complete.Erasing 16 Kibyte @ bc000 -- 34 % complete.Erasing 16 Kibyte @ c0000 -- 35 % complete.Erasing 16 Kibyte @ c4000 -- 35 % complete.Erasing 16 Kibyte @ c8000 -- 36 % complete.Erasing 16 Kibyte @ cc000 -- 37 % complete.Erasing 16 Kibyte @ d0000 -- 37 % complete.Erasing 16 Kibyte @ d4000 -- 38 % complete.Erasing 16 Kibyte @ d8000 -- 39 % complete.Erasing 16 Kibyte @ dc000 -- 40 % complete.Erasing 16 Kibyte @ e0000 -- 40 % complete.Erasing 16 Kibyte @ e4000 -- 41 % complete.Erasing 16 Kibyte @ e8000 -- 42 % complete.Erasing 16 Kibyte @ ec000 -- 43 % complete.Erasing 16 Kibyte @ f0000 -- 43 % complete.Erasing 16 Kibyte @ f4000 -- 44 % complete.Erasing 16 Kibyte @ f8000 -- 45 % complete.Erasing 16 Kibyte @ fc000 -- 45 % complete.Erasing 16 Kibyte @ 100000 -- 46 % complete.Erasing 16 Kibyte @ 104000 -- 47 % complete.Erasing 16 Kibyte @ 108000 -- 48 % complete.Erasing 16 Kibyte @ 10c000 -- 48 % complete.Erasing 16 Kibyte @ 110000 -- 49 % complete.Erasing 16 Kibyte @ 114000 -- 50 % complete.Erasing 16 Kibyte @ 118000 -- 51 % complete.Erasing 16 Kibyte @ 11c000 -- 51 % complete.Erasing 16 Kibyte @ 120000 -- 52 % complete.Erasing 16 Kibyte @ 124000 -- 53 % complete.Erasing 16 Kibyte @ 128000 -- 54 % complete.Erasing 16 Kibyte @ 12c000 -- 54 % complete.Erasing 16 Kibyte @ 130000 -- 55 % complete.Erasing 16 Kibyte @ 134000 -- 56 % complete.Erasing 16 Kibyte @ 138000 -- 56 % complete.Erasing 16 Kibyte @ 13c000 -- 57 % complete.Erasing 16 Kibyte @ 140000 -- 58 % complete.Erasing 16 Kibyte @ 144000 -- 59 % complete.Erasing 16 Kibyte @ 148000 -- 59 % complete.Erasing 16 Kibyte @ 14c000 -- 60 % complete.Erasing 16 Kibyte @ 150000 -- 61 % complete.Erasing 16 Kibyte @ 154000 -- 62 % complete.Erasing 16 Kibyte @ 158000 -- 62 % complete.Erasing 16 Kibyte @ 15c000 -- 63 % complete.Erasing 16 Kibyte @ 160000 -- 64 % complete.Erasing 16 Kibyte @ 164000 -- 64 % complete.Erasing 16 Kibyte @ 168000 -- 65 % complete.Erasing 16 Kibyte @ 16c000 -- 66 % complete.Erasing 16 Kibyte @ 170000 -- 67 % complete.Erasing 16 Kibyte @ 174000 -- 67 % complete.Erasing 16 Kibyte @ 178000 -- 68 % complete.Erasing 16 Kibyte @ 17c000 -- 69 % complete.Erasing 16 Kibyte @ 180000 -- 70 % complete.Erasing 16 Kibyte @ 184000 -- 70 % complete.Erasing 16 Kibyte @ 188000 -- 71 % complete.Erasing 16 Kibyte @ 18c000 -- 72 % complete.Erasing 16 Kibyte @ 190000 -- 72 % complete.Erasing 16 Kibyte @ 194000 -- 73 % complete.Erasing 16 Kibyte @ 198000 -- 74 % complete.Erasing 16 Kibyte @ 19c000 -- 75 % complete.Erasing 16 Kibyte @ 1a0000 -- 75 % complete.Erasing 16 Kibyte @ 1a4000 -- 76 % complete.Erasing 16 Kibyte @ 1a8000 -- 77 % complete.Erasing 16 Kibyte @ 1ac000 -- 78 % complete.Erasing 16 Kibyte @ 1b0000 -- 78 % complete.Erasing 16 Kibyte @ 1b4000 -- 79 % complete.Erasing 16 Kibyte @ 1b8000 -- 80 % complete.Erasing 16 Kibyte @ 1bc000 -- 81 % complete.Erasing 16 Kibyte @ 1c0000 -- 81 % complete.Erasing 16 Kibyte @ 1c4000 -- 82 % complete.Erasing 16 Kibyte @ 1c8000 -- 83 % complete.Erasing 16 Kibyte @ 1cc000 -- 83 % complete.Erasing 16 Kibyte @ 1d0000 -- 84 % complete.Erasing 16 Kibyte @ 1d4000 -- 85 % complete.Erasing 16 Kibyte @ 1d8000 -- 86 % complete.Erasing 16 Kibyte @ 1dc000 -- 86 % complete.Erasing 16 Kibyte @ 1e0000 -- 87 % complete.Erasing 16 Kibyte @ 1e4000 -- 88 % complete.Erasing 16 Kibyte @ 1e8000 -- 89 % complete.Erasing 16 Kibyte @ 1ec000 -- 89 % complete.Erasing 16 Kibyte @ 1f0000 -- 90 % complete.Erasing 16 Kibyte @ 1f4000 -- 91 % complete.Erasing 16 Kibyte @ 1f8000 -- 91 % complete.Erasing 16 Kibyte @ 1fc000 -- 92 % complete.Erasing 16 Kibyte @ 200000 -- 93 % complete.Erasing 16 Kibyte @ 204000 -- 94 % complete.Erasing 16 Kibyte @ 208000 -- 94 % complete.Erasing 16 Kibyte @ 20c000 -- 95 % complete.Erasing 16 Kibyte @ 210000 -- 96 % complete.Erasing 16 Kibyte @ 214000 -- 97 % complete.Erasing 16 Kibyte @ 218000 -- 97 % complete.Erasing 16 Kibyte @ 21c000 -- 98 % complete.Erasing 16 Kibyte @ 220000 -- 99 % complete.
+Writing data to block 0
+Writing data to block 4000
+Writing data to block 8000
+Writing data to block c000
+Writing data to block 10000
+Writing data to block 14000
+Writing data to block 18000
+Writing data to block 1c000
+Writing data to block 20000
+Writing data to block 24000
+Writing data to block 28000
+Writing data to block 2c000
+Writing data to block 30000
+Writing data to block 34000
+Writing data to block 38000
+Writing data to block 3c000
+Writing data to block 40000
+Writing data to block 44000
+Writing data to block 48000
+Writing data to block 4c000
+Writing data to block 50000
+Writing data to block 54000
+Writing data to block 58000
+Writing data to block 5c000
+Writing data to block 60000
+Writing data to block 64000
+Writing data to block 68000
+Writing data to block 6c000
+Writing data to block 70000
+Writing data to block 74000
+Writing data to block 78000
+Writing data to block 7c000
+Writing data to block 80000
+Writing data to block 84000
+Writing data to block 88000
+Writing data to block 8c000
+Writing data to block 90000
+Writing data to block 94000
+Writing data to block 98000
+Writing data to block 9c000
+Writing data to block a0000
+Writing data to block a4000
+Writing data to block a8000
+Writing data to block ac000
+Writing data to block b0000
+Writing data to block b4000
+Writing data to block b8000
+Writing data to block bc000
+Writing data to block c0000
+Writing data to block c4000
+Writing data to block c8000
+Writing data to block cc000
+Writing data to block d0000
+Writing data to block d4000
+Writing data to block d8000
+Writing data to block dc000
+Writing data to block e0000
+Writing data to block e4000
+Writing data to block e8000
+Writing data to block ec000
+Writing data to block f0000
+Writing data to block f4000
+Writing data to block f8000
+Writing data to block fc000
+Writing data to block 100000
+Writing data to block 104000
+Writing data to block 108000
+Writing data to block 10c000
+Writing data to block 110000
+Writing data to block 114000
+Writing data to block 118000
+Writing data to block 11c000
+Writing data to block 120000
+Writing data to block 124000
+Writing data to block 128000
+Writing data to block 12c000
+Writing data to block 130000
+Writing data to block 134000
+Writing data to block 138000
+Writing data to block 13c000
+Writing data to block 140000
+Writing data to block 144000
+Writing data to block 148000
+Writing data to block 14c000
+Writing data to block 150000
+Writing data to block 154000
+Writing data to block 158000
+Writing data to block 15c000
+Writing data to block 160000
+Writing data to block 164000
+Writing data to block 168000
+Writing data to block 16c000
+Writing data to block 170000
+Writing data to block 174000
+Writing data to block 178000
+Writing data to block 17c000
+Writing data to block 180000
+Writing data to block 184000
+Writing data to block 188000
+Writing data to block 18c000
+Writing data to block 190000
+Writing data to block 194000
+Writing data to block 198000
+Writing data to block 19c000
+Writing data to block 1a0000
+Writing data to block 1a4000
+Writing data to block 1a8000
+Writing data to block 1ac000
+Writing data to block 1b0000
+Writing data to block 1b4000
+Writing data to block 1b8000
+Writing data to block 1bc000
+Writing data to block 1c0000
+Writing data to block 1c4000
+Writing data to block 1c8000
+Writing data to block 1cc000
+Writing data to block 1d0000
+Writing data to block 1d4000
+Writing data to block 1d8000
+Writing data to block 1dc000
+Writing data to block 1e0000
+Writing data to block 1e4000
+Writing data to block 1e8000
+Writing data to block 1ec000
+Writing data to block 1f0000
+Writing data to block 1f4000
+Writing data to block 1f8000
+Remove the temp folder.
+/imager_contents/emc_imager.sh: line 241: sync: not found
+Imaging Successful. Please remove the USB drive before the next power on
+Constructing root filesystem...
+cp: cannot stat '/sysroot/mnt/apps/ram': No such file or directory
+cp: cannot stat 'sysroot/mnt/apps/var': No such file or directory
+Bootstrapping ...
+tmpfs: No value for mount option 'relatime'
+mount: mounting none on / failed: Invalid argument
+Initialization complete.
+Freeing init memory: 124K
+init started: BusyBox v1.9.2 (2019-04-05 08:39:46 EDT)
+starting pid 828, tty '': '/etc/init.d/rcS'
+starting pid 831, tty '': 'umount'
+BusyBox v1.9.2 (2019-04-05 08:39:46 EDT) multi-call binary
+
+Usage: umount [flags] FILESYSTEM|DIRECTORY
+
+Unmount file systems
+
+Options:
+
+	-r	Try to remount devices as read-only if mount is busy
+	-l	Lazy umount (detach filesystem)
+	-f	Force umount (i.e., unreachable NFS server)
+	-D	Do not free loop device (if a loop device has been used)
+
+The system is going down NOW!
+Sending SIGTERM to all processes
+Sending SIGKILL to all processes
+Requesting system poweroff
+md: stopping all md devices.
+sd 0:0:0:0: [sda] Synchronizing SCSI cache
+sd 0:0:0:0: [sda] Synchronizing SCSI cache
+Power down.

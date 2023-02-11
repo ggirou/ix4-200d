@@ -1,0 +1,33 @@
+Module                  Size  Used by
+sr_mod                 14716  0 
+cdrom                  36772  1 sr_mod
+raid456                55972  0 
+raid6_pq               78080  1 raid456
+async_xor               2064  1 raid456
+async_memcpy            1456  1 raid456
+async_tx                2492  3 raid456,async_xor,async_memcpy
+xor                     6220  2 raid456,async_xor
+raid10                 23048  0 
+raid0                   7448  0 
+xfs                   541860  2 
+ufsd                  504316  0 
+rfcomm                 28228  0 
+l2cap                  22228  3 rfcomm
+usbhid                 27048  0 
+usblp                  12376  0 
+ums_jumpshot            5524  0 
+ums_sddr55              6992  0 
+ums_sddr09             11603  0 
+btusb                  12400  0 
+bluetooth              57652  3 rfcomm,l2cap,btusb
+msdos                   7832  0 
+udf                    87140  0 
+crc_itu_t               1684  1 udf
+isofs                  25852  0 
+ext4                  222216  0 
+jbd2                   56404  1 ext4
+ext3                  127360  0 
+jbd                    45520  1 ext3
+mbcache                 7140  1 ext3
+nfsd                  107128  1 
+exportfs                3868  2 xfs,nfsd
