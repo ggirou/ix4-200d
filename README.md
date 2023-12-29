@@ -192,6 +192,13 @@ From u-boot:
     echo 0 > /sys/class/hwmon/hwmon0/pwm3
     echo 255 > /sys/class/hwmon/hwmon0/pwm3
 
+# Similar works
+
+- ix4-200d: https://github.com/1000001101000/ix4-200d-research
+- Blackarmor NAS 400: https://github.com/hn/seagate-blackarmor-nas
+- ix4-300d: https://github.com/benoitm974/ix4-300d
+- ix4-300d: https://github.com/5p0ng3b0b/ix4-300d
+
 # Known issues
 
 https://bugzilla.kernel.org/show_bug.cgi?id=216094
